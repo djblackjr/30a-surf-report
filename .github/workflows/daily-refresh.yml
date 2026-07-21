@@ -1,0 +1,56 @@
+name: Daily Conditions Refresh
+
+"on":
+  schedule:
+    # 08:13 UTC = ~3:13 AM Central. Kept as a fallback trigger — the 331
+    # Bridge app found GitHub's native schedule trigger unreliable and
+    # switched to an external cron-job.org ping hitting workflow_dispatch
+    # directly. Set that up here too once this repo is live.
+    - cron: '13 8 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Fetch live weather/tide/wave conditions and update conditions.json
+        run: node scripts/update-conditions.mjs
+
+      - name: Refresh beach flag status and surf zone forecast
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-surf-safety.mjs
+
+      - name: Refresh local surf fishing report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-surf-report.mjs
+
+      - name: Commit and push if changed
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-refresh surf conditions"
+          file_pattern: src/data/conditions.json
+
+      - name: Trigger Pages deploy
+        # Same workaround as the 331 Bridge app: a push made with the
+        # workflow's default GITHUB_TOKEN does NOT trigger other workflows'
+        # `on: push` rules, so the auto-commit above would never kick off
+        # deploy-pages.yml on its own. A real PAT (DEPLOY_TOKEN secret)
+        # dispatching the workflow directly isn't subject to that restriction.
+        if: steps.commit.outputs.changes_detected == 'true'
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/djblackjr/30a-surf-report/actions/workflows/deploy-pages.yml/dispatches \
+            -d '{"ref":"main"}'

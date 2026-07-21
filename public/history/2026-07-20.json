@@ -1,0 +1,141 @@
+{
+  "date": "Monday, July 20, 2026",
+  "dateISO": "2026-07-20",
+  "wind": {
+    "speed": 25,
+    "dir": "ESE",
+    "description": "ESE 20 to 25 mph"
+  },
+  "weather": "Chance Showers And Thunderstorms then Showers And Thunderstorms · High 84°F",
+  "tide": "High tide ~4:59 AM · Low tide ~4:14 PM · Sunrise 5:55 AM",
+  "tideEvents": [
+    {
+      "type": "H",
+      "time": "4:59 AM"
+    },
+    {
+      "type": "L",
+      "time": "4:14 PM"
+    }
+  ],
+  "sunrise": "5:55 AM",
+  "sunset": "7:46 PM",
+  "stormWindow": "before 7AM",
+  "stormChance": 93,
+  "sky": "Cloudy",
+  "moonPhase": "First Quarter (~44% illuminated) — moderate tidal push",
+  "waterTemp": 85,
+  "wave": {
+    "height": 3.018,
+    "period": 4.85,
+    "direction": "SE",
+    "swellHeight": 2.428,
+    "swellPeriod": 4.85,
+    "swellDirection": "SE",
+    "windWaveHeight": 1.772
+  },
+  "lastUpdated": "7/20/2026, 11:42:06 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "forecast": [
+    {
+      "day": "Tue, Jul 21",
+      "label": "Today",
+      "high": 84,
+      "low": null,
+      "wind": "ESE 20 to 25 mph",
+      "storms": 93,
+      "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms",
+      "fishingScore": 3.3,
+      "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms. Mostly sunny, with a high near 84. East southeast wind 20 to 25 mph, with gusts as high as 40 mph. Chance of precipitation is 90%. New rainfall amounts between a quarter and half of an inch possible.",
+      "emoji": "⛈️"
+    },
+    {
+      "day": "Wed, Jul 22",
+      "label": "Tomorrow",
+      "high": 85,
+      "low": null,
+      "wind": "S 20 to 25 mph",
+      "storms": 51,
+      "headline": "Showers And Thunderstorms Likely · Heat index 100",
+      "fishingScore": 5,
+      "aiCall": "Showers and thunderstorms likely before 1pm, then a chance of showers and thunderstorms. Mostly sunny, with a high near 85. Heat index values as high as 100. South wind 20 to 25 mph, with gusts as high as 35 mph. Chance of precipitation is 50%.",
+      "emoji": "⛈️"
+    },
+    {
+      "day": "Thu, Jul 23",
+      "label": "Thursday",
+      "high": 86,
+      "low": null,
+      "wind": "SSW 15 mph",
+      "storms": 46,
+      "headline": "Chance Showers And Thunderstorms",
+      "fishingScore": 6.2,
+      "aiCall": "A slight chance of rain showers before 7am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. Chance of precipitation is 50%.",
+      "emoji": "⛈️"
+    }
+  ],
+  "openMeteo": [
+    {
+      "high": 88,
+      "low": 74,
+      "stormChance": 48,
+      "windSpeed": 15,
+      "windDir": "NE",
+      "summary": "Overcast"
+    },
+    {
+      "high": 84,
+      "low": 76,
+      "stormChance": 58,
+      "windSpeed": 24,
+      "windDir": "E",
+      "summary": "Violent rain showers"
+    },
+    {
+      "high": 85,
+      "low": 80,
+      "stormChance": 56,
+      "windSpeed": 26,
+      "windDir": "S",
+      "summary": "Light drizzle"
+    }
+  ],
+  "yrNo": {
+    "high": null,
+    "low": null,
+    "stormChance": 0,
+    "windSpeed": 9,
+    "windDir": "NE",
+    "summary": "partlycloudy night"
+  },
+  "previousDay": {
+    "date": "Monday, July 20, 2026",
+    "wind": {
+      "dir": "S",
+      "speed": 10
+    },
+    "high": 89,
+    "stormChance": 20,
+    "tide": "High tide ~11:30 AM · Low tide ~5:15 PM · Sunrise 6:00 AM",
+    "wave": {
+      "height": 1.5,
+      "period": 5,
+      "direction": "S",
+      "swellHeight": 1,
+      "swellPeriod": 6,
+      "swellDirection": "S",
+      "windWaveHeight": 1
+    }
+  },
+  "beachFlag": {
+    "color": "unknown",
+    "ripCurrentRisk": "high",
+    "surfHeight": "4-8 ft (tropical swell, building)",
+    "purpleFlag": false,
+    "notes": "A High Surf Advisory is in effect for the Florida Panhandle today (July 21) through July 23 due to swells from Tropical Storm Bertha, which formed in the Gulf and was tracking NW toward the Panhandle as of Monday. The NHC explicitly warns of life-threatening surf and rip current conditions along the Gulf coast of Florida. Rip current risk was rated HIGH for Monday–Tuesday per WCTV/NWS; do NOT enter the water — surf fishing from the beach is possible but wade-in or wading conditions are extremely dangerous. The SWFD swfd.org/beach-safety/surf-conditions page did not return a live flag widget in search results, so today's specific flag color (likely red or double red) could not be confirmed — check swfd.org directly or text SAFETY to 31279 before going.",
+    "source": "NWS Tallahassee forecast.weather.gov (High Surf Advisory July 21–23); NHC/Tropical Storm Bertha advisories via spokesman.com, bocanewsnow.com (July 20–21, 2026); WCTV/TravelersToday rip current reporting; swfd.org (flag system reference only — no live widget retrieved) · Auto-refreshed via Claude API",
+    "updated": "July 20, 2026"
+  },
+  "surfBiteReport": "The most recent available reports are from roughly 10–21 days ago, so treat this as a general current-season picture rather than a real-time snapshot. Water temperature at the surf zone is running 85°F. Pompano has been the headline surf species across the entire stretch from 30A through Panama City Beach, with multiple reports of solid catches in July — scouting for clean, sargassum-free water is the key, as June grass and sargassum have periodically fouled the surf zone and shut the bite down when thick. Redfish have also shown up nearshore in the surf and close to passes, with schools reported feeding aggressively on falling tides around the full moon period. Spanish mackerel have been active as well, hitting lures with virtually every cast during some recent sessions. Sand fleas, peeled shrimp, and FishBites in ghost shrimp or chartreuse scents have been the go-to surf baits for pompano and whiting; jack crevalle schools are also cruising the beach and can provide unexpected drag-ripping action.",
+  "surfBiteSource": "Half Hitch Tackle PCB fishing report (7-1-26); FishingBooker 30A fishing reports (July 9–11, 2026) · Auto-refreshed via Claude API",
+  "surfBiteUpdated": "July 20, 2026"
+}
