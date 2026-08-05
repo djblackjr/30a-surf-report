@@ -88,6 +88,16 @@ async function callClaude(prompt) {
 async function main() {
   const existing = JSON.parse(await readFile(OUT_PATH, "utf-8"));
 
+  // One flag status covers the whole South Walton / 30A coast (SWFD is a
+  // single fire district for the corridor), so this writes into `shared`
+  // rather than per-location. update-conditions.mjs always runs first in
+  // the daily pipeline and performs the flat-shape migration, so
+  // existing.shared is expected to exist by the time this runs.
+  if (!existing.shared) {
+    console.error("conditions.json is missing `shared` — run update-conditions.mjs first. Skipping (non-fatal).");
+    process.exit(0);
+  }
+
   let result;
   try {
     result = await callClaude(buildPrompt());
@@ -103,19 +113,22 @@ async function main() {
 
   const updated = {
     ...existing,
-    beachFlag: {
-      color: result.flagColor,
-      ripCurrentRisk: result.ripCurrentRisk,
-      surfHeight: result.surfHeight,
-      purpleFlag: !!result.purpleFlag,
-      notes: result.notes,
-      source: `${result.source} · Auto-refreshed via Claude API`,
-      updated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
+    shared: {
+      ...existing.shared,
+      beachFlag: {
+        color: result.flagColor,
+        ripCurrentRisk: result.ripCurrentRisk,
+        surfHeight: result.surfHeight,
+        purpleFlag: !!result.purpleFlag,
+        notes: result.notes,
+        source: `${result.source} · Auto-refreshed via Claude API`,
+        updated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
+      },
     },
   };
 
   await writeFile(OUT_PATH, JSON.stringify(updated, null, 2) + "\n");
-  console.log("Beach safety updated:", updated.beachFlag.color, "·", updated.beachFlag.ripCurrentRisk, "rip risk");
+  console.log("Beach safety updated:", updated.shared.beachFlag.color, "·", updated.shared.beachFlag.ripCurrentRisk, "rip risk");
 }
 
 main();

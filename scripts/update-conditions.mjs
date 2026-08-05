@@ -1,21 +1,32 @@
 // scripts/update-conditions.mjs
 // Fetches live weather (NWS), tides (NOAA CO-OPS), wave/swell (Open-Meteo
-// Marine), and sunrise/sunset (sunrise-sunset.org) for Grayton Beach, FL
-// (30A), computes the moon phase locally, and rewrites src/data/conditions.json.
-// All sources are free and require no API key.
+// Marine), and sunrise/sunset (sunrise-sunset.org) for every beach in
+// src/data/locations.json, computes the moon phase locally, and rewrites
+// src/data/conditions.json.
 //
 // Adapted from the sibling 331 Bridge Fishing Report app's script of the
-// same name — same pipeline shape, pointed at a Gulf-facing surf spot
+// same name — same pipeline shape, pointed at Gulf-facing surf spots
 // instead of a bay, with wave/swell added as a new data source.
+//
+// conditions.json is split into two parts:
+//   - `shared`: one regional fact, not per-beach — tideEvents (single NOAA
+//     station, not lat/lon-dependent), moon phase (pure calc), plus
+//     beachFlag/surfBiteReport/surfBiteSource/surfBiteUpdated (written by
+//     the other two daily scripts, untouched here).
+//   - `locations[id]`: genuinely coordinate-specific — forecast, wind,
+//     weather, sun times, wave/swell, water temp, and a `tide` display
+//     string (shared tide times + this beach's own sunrise). Looped over
+//     every beach in locations.json since every South Walton beach along
+//     30A shares the same NWS office and tide gauge, but wave/weather do
+//     vary (even if slightly) by exact coordinate.
 //
 // Run manually:   node scripts/update-conditions.mjs
 // Run on schedule: see .github/workflows/daily-refresh.yml
 
 import { writeFile, readFile, mkdir } from "fs/promises";
+import locations from "../src/data/locations.json" with { type: "json" };
 
-const LAT = 30.3252;  // Grayton Beach, FL (30A) — the single flagship spot for now
-const LON = -86.1584;
-const TIDE_STATION = "8729511"; // NOAA: Destin, East Pass, FL — nearest gauge, ~20mi west; there's no station directly on the 30A stretch
+const TIDE_STATION = "8729511"; // NOAA: Destin, East Pass, FL — nearest gauge to the whole 30A corridor; no station sits directly on 30A itself
 const USER_AGENT = "30a-surf-report (github.com/djblackjr/30a-surf-report)";
 const OUT_PATH = new URL("../src/data/conditions.json", import.meta.url);
 const HISTORY_DIR = new URL("../public/history/", import.meta.url);
@@ -27,10 +38,11 @@ async function getJson(url, opts = {}) {
 }
 
 // ── Weather: National Weather Service (api.weather.gov) ─────────────────────
-// NWS's API auto-routes to whichever office actually covers these coordinates
-// (Grayton Beach falls under NWS Tallahassee) — no need to hardcode an office.
-async function getForecast() {
-  const point = await getJson(`https://api.weather.gov/points/${LAT},${LON}`);
+// NWS's API auto-routes to whichever office actually covers a given point
+// (every 30A beach here falls under NWS Tallahassee) — no need to hardcode
+// an office; each location just calls this with its own lat/lon.
+async function getForecast(lat, lon) {
+  const point = await getJson(`https://api.weather.gov/points/${lat},${lon}`);
   const forecast = await getJson(point.properties.forecast);
   return forecast.properties.periods;
 }
@@ -106,8 +118,8 @@ function degToCompass(deg) {
   const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   return dirs[Math.round(deg / 45) % 8];
 }
-async function getOpenMeteo() {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant,weathercode&timezone=America%2FChicago&forecast_days=3&temperature_unit=fahrenheit&windspeed_unit=mph`;
+async function getOpenMeteo(lat, lon) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant,weathercode&timezone=America%2FChicago&forecast_days=3&temperature_unit=fahrenheit&windspeed_unit=mph`;
   const data = await getJson(url);
   const d = data.daily;
   return d.time.map((_, i) => ({
@@ -121,11 +133,13 @@ async function getOpenMeteo() {
 }
 // ── Water temp + wave/swell: Open-Meteo Marine API ──────────────────────────
 // Free, no key. Wave data is the one genuinely new data category this app
-// needs that the bay app never did — a bay has no meaningful surf.
+// needs that the bay app never did — a bay has no meaningful surf. This is
+// also the main reason each beach gets its own fetch instead of sharing one:
+// wave height/direction can genuinely differ beach to beach along the coast.
 const round1 = (n) => (typeof n === "number" ? Math.round(n * 10) / 10 : null);
 
-async function getMarine() {
-  const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${LAT}&longitude=${LON}&current=sea_surface_temperature,wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,wind_wave_height&temperature_unit=fahrenheit&length_unit=imperial`;
+async function getMarine(lat, lon) {
+  const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}&current=sea_surface_temperature,wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,wind_wave_height&temperature_unit=fahrenheit&length_unit=imperial`;
   const data = await getJson(url);
   const c = data.current;
   return {
@@ -142,6 +156,9 @@ async function getMarine() {
   };
 }
 
+// Tide is a single physical NOAA gauge shared by the whole 30A corridor —
+// not lat/lon-dependent, so this is called once and shared across every
+// location rather than looped.
 async function getTideData() {
   const today = new Date();
   const ymd = today.toISOString().slice(0, 10).replace(/-/g, "");
@@ -156,8 +173,8 @@ async function getTideData() {
   return { text, events };
 }
 
-async function getSunTimes() {
-  const url = `https://api.sunrise-sunset.org/json?lat=${LAT}&lng=${LON}&formatted=0`;
+async function getSunTimes(lat, lon) {
+  const url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&formatted=0`;
   const data = await getJson(url);
   const fmt = (iso) => new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
   return { sunrise: fmt(data.results.sunrise), sunset: fmt(data.results.sunset) };
@@ -193,73 +210,127 @@ function extractStormWindow(text) {
   return m ? `${m[1].toLowerCase()} ${m[2].toUpperCase()}` : "";
 }
 
-async function main() {
-  // Destructure yrNo out rather than just not re-setting it — `updated` below
-  // spreads `existing` first, so a dropped field otherwise silently survives
-  // forever by inheriting whatever its last real value was.
-  const { yrNo: _droppedYrNo, ...existing } = JSON.parse(await readFile(OUT_PATH, "utf-8"));
+// One-time migration: today's conditions.json (if it predates the
+// multi-location split) is a flat single-beach object. Nest it under
+// locations["grayton-beach"] and pull the regional fields out to `shared`
+// so the next scheduled run picks up cleanly with no manual JSON editing.
+function migrateIfNeeded(raw) {
+  if (raw.locations) return raw; // already migrated
+  const { date, dateISO, beachFlag, surfBiteReport, surfBiteSource, surfBiteUpdated, ...rest } = raw;
+  return {
+    shared: { date, dateISO, beachFlag, surfBiteReport, surfBiteSource, surfBiteUpdated },
+    locations: Object.keys(rest).length ? { "grayton-beach": rest } : {},
+  };
+}
 
-  const periods = await getForecast();
+async function buildLocation(loc, existingLoc, tideText) {
+  const periods = await getForecast(loc.lat, loc.lon);
   const today = periods.find((p) => p.isDaytime) || periods[0];
   const windMph = parseWindSpeed(today.windSpeed);
   const windDir = (today.windDirection.match(/[NSEW]+/) || ["E"])[0];
 
   const forecast = buildForecastEntries(periods);
-  const tide = await getTideData().catch(() => ({ text: existing.tide, events: existing.tideEvents || [] }));
-  const sun = await getSunTimes().catch(() => ({ sunrise: existing.sunrise, sunset: existing.sunset }));
-  const openMeteo = await getOpenMeteo().catch((err) => {
-    console.warn("Open-Meteo fetch failed, keeping previous value:", err.message);
-    return existing.openMeteo || null;
+  const sun = await getSunTimes(loc.lat, loc.lon).catch(() => ({ sunrise: existingLoc.sunrise, sunset: existingLoc.sunset }));
+  const openMeteo = await getOpenMeteo(loc.lat, loc.lon).catch((err) => {
+    console.warn(`[${loc.id}] Open-Meteo fetch failed, keeping previous value:`, err.message);
+    return existingLoc.openMeteo || null;
   });
-  const moon = moonPhase();
-  const marine = await getMarine().catch((err) => {
-    console.warn("Marine (wave/water temp) fetch failed, keeping previous value:", err.message);
-    return { waterTemp: existing.waterTemp ?? null, wave: existing.wave || null };
+  const marine = await getMarine(loc.lat, loc.lon).catch((err) => {
+    console.warn(`[${loc.id}] Marine (wave/water temp) fetch failed, keeping previous value:`, err.message);
+    return { waterTemp: existingLoc.waterTemp ?? null, wave: existingLoc.wave || null };
   });
   const stormChance = forecast[0]?.storms || 0;
-  const stormWindow = extractStormWindow(today.detailedForecast) || existing.stormWindow || "";
+  const stormWindow = extractStormWindow(today.detailedForecast) || existingLoc.stormWindow || "";
 
   const previousDay = {
-    date: existing.date,
-    wind: { dir: existing.wind?.dir, speed: existing.wind?.speed },
-    high: existing.forecast?.[0]?.high,
-    stormChance: existing.stormChance ?? existing.forecast?.[0]?.storms ?? 0,
-    tide: existing.tide,
-    wave: existing.wave,
+    date: existingLoc.date,
+    wind: { dir: existingLoc.wind?.dir, speed: existingLoc.wind?.speed },
+    high: existingLoc.forecast?.[0]?.high,
+    stormChance: existingLoc.stormChance ?? existingLoc.forecast?.[0]?.storms ?? 0,
+    tide: existingLoc.tide,
+    wave: existingLoc.wave,
   };
 
-  const updated = {
-    ...existing,
-    date: new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
-    dateISO: new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago" }).format(new Date()),
+  return {
     wind: { speed: windMph, dir: windDir, description: `${today.windDirection} ${today.windSpeed}` },
     weather: `${today.shortForecast} · High ${today.temperature}°F${heatIndexFrom(today.detailedForecast) ? ` · Heat index up to ${heatIndexFrom(today.detailedForecast)}°F` : ""}`,
-    tide: `${tide.text} · Sunrise ${sun.sunrise}`,
-    tideEvents: tide.events.length ? tide.events : existing.tideEvents,
+    // Tide times themselves come from the one shared NOAA gauge (see
+    // getTideData below), but the display string includes sunrise, which
+    // is genuinely per-location — composed here rather than in `shared`.
+    tide: `${tideText} · Sunrise ${sun.sunrise}`,
     sunrise: sun.sunrise,
     sunset: sun.sunset,
     stormWindow,
     stormChance,
     sky: deriveSky(today.shortForecast),
-    moonPhase: moon,
     waterTemp: marine.waterTemp,
     wave: marine.wave,
-    lastUpdated: `${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT · Source: National Weather Service + NOAA Tides (station ${TIDE_STATION}) + Open-Meteo Marine · Auto-refreshed`,
     forecast,
     openMeteo,
     previousDay,
-    // beachFlag / surfBiteReport / surfBiteSource / surfBiteUpdated intentionally
-    // untouched here — those come from update-surf-safety.mjs and
-    // update-surf-report.mjs, which read web content via Claude and can't be
-    // done with a plain structured-data fetch the way weather/tide/wave can.
+  };
+}
+
+async function main() {
+  const rawExisting = JSON.parse(await readFile(OUT_PATH, "utf-8"));
+  // Drop the retired yrNo field rather than just not re-setting it — the
+  // spread below inherits from `existing`, so a dropped field would
+  // otherwise silently survive forever from its last real value.
+  const { yrNo: _droppedYrNo, ...existing } = migrateIfNeeded(rawExisting);
+
+  const tide = await getTideData().catch((err) => {
+    console.warn("Tide fetch failed, keeping previous value:", err.message);
+    // Fall back to any existing per-location tide string with its
+    // location-specific " · Sunrise ..." suffix stripped back off, since
+    // that gets re-appended per location below.
+    const fallbackFull = existing.locations?.[locations[0]?.id]?.tide || "";
+    const text = fallbackFull.replace(/\s*·\s*Sunrise.*$/, "") || "Tide data unavailable";
+    return { text, events: existing.shared.tideEvents || [] };
+  });
+  const moon = moonPhase();
+
+  const updatedLocations = {};
+  for (const loc of locations) {
+    const existingLoc = existing.locations?.[loc.id] || {};
+    try {
+      updatedLocations[loc.id] = await buildLocation(loc, existingLoc, tide.text);
+      console.log(`[${loc.id}] updated`);
+    } catch (err) {
+      console.warn(`[${loc.id}] update failed entirely, keeping previous value:`, err.message);
+      updatedLocations[loc.id] = existingLoc;
+    }
+  }
+
+  const dateStr = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" });
+  const dateISO = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago" }).format(new Date());
+  const lastUpdated = `${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT · Source: National Weather Service + NOAA Tides (station ${TIDE_STATION}) + Open-Meteo Marine · Auto-refreshed`;
+
+  const updated = {
+    shared: {
+      ...existing.shared,
+      date: dateStr,
+      dateISO,
+      // tideEvents feeds the tide curve chart — one shared NOAA-gauge curve
+      // for every location. The display string with sunrise baked in lives
+      // per-location instead (see buildLocation).
+      tideEvents: tide.events.length ? tide.events : existing.shared.tideEvents,
+      moonPhase: moon,
+      lastUpdated,
+      // beachFlag / surfBiteReport / surfBiteSource / surfBiteUpdated
+      // intentionally untouched here — those come from update-surf-safety.mjs
+      // and update-surf-report.mjs, which read web content via Claude and
+      // can't be done with a plain structured-data fetch the way
+      // weather/tide/wave can.
+    },
+    locations: updatedLocations,
   };
 
-  if (existing.dateISO) {
+  if (existing.shared?.dateISO) {
     try {
       await mkdir(HISTORY_DIR, { recursive: true });
-      const archivePath = new URL(`${existing.dateISO}.json`, HISTORY_DIR);
+      const archivePath = new URL(`${existing.shared.dateISO}.json`, HISTORY_DIR);
       await writeFile(archivePath, JSON.stringify(existing, null, 2) + "\n");
-      console.log("Archived previous day to public/history/" + existing.dateISO + ".json");
+      console.log("Archived previous day to public/history/" + existing.shared.dateISO + ".json");
     } catch (err) {
       console.warn("Archiving failed (non-fatal, continuing with the main update):", err.message);
     }
@@ -268,7 +339,7 @@ async function main() {
   }
 
   await writeFile(OUT_PATH, JSON.stringify(updated, null, 2) + "\n");
-  console.log("conditions.json updated:", updated.lastUpdated);
+  console.log("conditions.json updated:", updated.shared.lastUpdated);
 }
 
 main().catch((err) => {

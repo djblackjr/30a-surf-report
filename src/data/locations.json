@@ -1,0 +1,37 @@
+[
+  {
+    "id": "dune-allen-beach",
+    "name": "Dune Allen Beach",
+    "lat": 30.3527,
+    "lon": -86.2513,
+    "access": "Dune Allen Regional Beach Access · 5999 W County Hwy 30A, Santa Rosa Beach FL 32459 · Free public parking (18 spaces incl. ADA), dune walkover, restrooms, showers, bike racks. Nearest tackle: Sunset Sam's Bait & Tackle, Santa Rosa Beach."
+  },
+  {
+    "id": "blue-mountain-beach",
+    "name": "Blue Mountain Beach",
+    "lat": 30.3374,
+    "lon": -86.1972,
+    "access": "Blue Mountain Regional Beach Access · 2365 W County Hwy 30A, Santa Rosa Beach FL 32459 · Free public parking, posted beach flag, lifeguards, restrooms — right near Blue Mountain Creamery. Nearest tackle: Sunset Sam's Bait & Tackle, Santa Rosa Beach."
+  },
+  {
+    "id": "grayton-beach",
+    "name": "Grayton Beach",
+    "lat": 30.3252,
+    "lon": -86.1584,
+    "access": "Grayton Beach State Park · 357 Main Park Rd, Santa Rosa Beach FL 32459 · (850) 267-8300 · Open 8 AM–sunset, entry fee applies. Public beach access at Grayton Beach Access, Fannin Cottages, and the Grayton Beach roundabout also work if the park lot fills up. Nearest tackle: Sunset Sam's Bait & Tackle, Santa Rosa Beach."
+  },
+  {
+    "id": "seagrove-beach",
+    "name": "Seagrove Beach",
+    "lat": 30.3186,
+    "lon": -86.1303,
+    "access": "Seagrove Regional Beach Access · 3910 E County Hwy 30A, Santa Rosa Beach FL 32459 · 23 parking spaces (incl. ADA/bike), restrooms, handicap-accessible dune walkover with rinse showers. SWFD lifeguards (Tower 21) staffed 10 AM–6 PM in season. Nearest tackle: Yellowfin Ocean Sports, Santa Rosa Beach."
+  },
+  {
+    "id": "inlet-beach",
+    "name": "Inlet Beach",
+    "lat": 30.2769,
+    "lon": -86.008,
+    "access": "Inlet Beach Regional Access · 438 S Orange St, Inlet Beach FL 32461 · Walton County's largest beach access — 117 parking spaces, 3 dune walkovers, restrooms, seasonal lifeguards. Nearest tackle: Yellowfin Ocean Sports / Bay Baits, South Walton."
+  }
+]

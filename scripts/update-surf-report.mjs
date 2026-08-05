@@ -17,7 +17,7 @@ if (!API_KEY) {
 }
 
 function buildPrompt(waterTemp) {
-  return `Search for current surf fishing reports (this week if possible) for the Florida panhandle Gulf-front coast between Sandestin/30A and Panama City Beach — Grayton Beach, Seaside, WaterColor, Inlet Beach, and Panama City Beach specifically. Focus on surf-zone species: pompano, whiting, redfish, bluefish, sheepshead, Spanish mackerel — not offshore/pier-only species like red snapper or grouper unless there's genuinely nothing else current.
+  return `Search for current surf fishing reports (this week if possible) for the Florida panhandle Gulf-front coast between Sandestin/30A and Panama City Beach — Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seaside, WaterColor, Seagrove Beach, Inlet Beach, and Panama City Beach specifically. Focus on surf-zone species: pompano, whiting, redfish, bluefish, sheepshead, Spanish mackerel — not offshore/pier-only species like red snapper or grouper unless there's genuinely nothing else current.
 
 Check these sources for current reports:
 - halfhitch.com's Panama City Beach fishing report series (halfhitch.com/blog/pcb-fishing-report-*) — a local tackle shop that posts roughly weekly, dated reports
@@ -59,9 +59,24 @@ async function callClaude(prompt) {
 async function main() {
   const existing = JSON.parse(await readFile(OUT_PATH, "utf-8"));
 
+  // One regional bite report covers the whole 30A corridor, so this writes
+  // into `shared` rather than per-location. update-conditions.mjs always
+  // runs first in the daily pipeline and performs the flat-shape migration,
+  // so existing.shared is expected to exist by the time this runs.
+  if (!existing.shared) {
+    console.error("conditions.json is missing `shared` — run update-conditions.mjs first. Skipping (non-fatal).");
+    process.exit(0);
+  }
+
+  // Grayton Beach's water temp stands in for the whole corridor here — these
+  // beaches sit close enough together that Gulf water temp doesn't
+  // meaningfully differ, and the prompt only uses this as a same-day sanity
+  // check against whatever approximate figure search results turn up.
+  const waterTemp = existing.locations?.["grayton-beach"]?.waterTemp;
+
   let result;
   try {
-    result = await callClaude(buildPrompt(existing.waterTemp));
+    result = await callClaude(buildPrompt(waterTemp));
   } catch (err) {
     console.error("Surf report update failed, leaving previous value in place:", err.message);
     process.exit(0);
@@ -74,13 +89,16 @@ async function main() {
 
   const updated = {
     ...existing,
-    surfBiteReport: result.surfBiteReport,
-    surfBiteSource: `${result.surfBiteSource} · Auto-refreshed via Claude API`,
-    surfBiteUpdated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
+    shared: {
+      ...existing.shared,
+      surfBiteReport: result.surfBiteReport,
+      surfBiteSource: `${result.surfBiteSource} · Auto-refreshed via Claude API`,
+      surfBiteUpdated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
+    },
   };
 
   await writeFile(OUT_PATH, JSON.stringify(updated, null, 2) + "\n");
-  console.log("Surf report updated:", updated.surfBiteUpdated);
+  console.log("Surf report updated:", updated.shared.surfBiteUpdated);
 }
 
 main();

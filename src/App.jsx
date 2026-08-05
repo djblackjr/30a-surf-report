@@ -1,13 +1,19 @@
 import { useState } from "react";
 import dailyData from "./data/conditions.json";
+import LOCATIONS from "./data/locations.json";
+
+const DEFAULT_LOCATION_ID = "grayton-beach";
+const LOCATION_STORAGE_KEY = "30a-location";
 
 // ── SHARED CONDITIONS ─────────────────────────────────────────────────────────
 // Same split as the sibling 331 Bridge app: only evergreen config lives here.
 // Everything day-to-day (wind, weather, tide, wave/swell, beach flag, bite
 // report) comes from src/data/conditions.json, which the daily scripts
-// overwrite automatically.
+// overwrite automatically. `access` lives per-location in locations.json
+// instead, since every beach has its own park/address details — regs and
+// the surf-reading tip below are genuinely statewide/generic, so they stay
+// here regardless of which beach is selected.
 const STATIC_CONDITIONS = {
-  access: "Grayton Beach State Park · 357 Main Park Rd, Santa Rosa Beach FL 32459 · (850) 267-8300 · Open 8 AM–sunset, entry fee applies. Public beach access at Grayton Beach Access, Fannin Cottages, and the Grayton Beach roundabout also work if the park lot fills up. Nearest tackle: Sunset Sam's Bait & Tackle, Santa Rosa Beach.",
   readingTheSurf: "Pompano and whiting feed in the troughs — the shallow gutters between the beach and the first sandbar, and between the first and second sandbars — not out past the bar. Don't cast over the fish: the first 20-40 yards is usually the money water. Sand fleas (mole crabs) washing out of the swash are the tell that pompano are actively feeding right there.",
   regulations: [
     { species: "Pompano", rules: "11 in fork length min · 6 per person per day" },
@@ -22,8 +28,18 @@ const STATIC_CONDITIONS = {
   ],
 };
 
-const CONDITIONS = { ...dailyData, ...STATIC_CONDITIONS };
-const FORECAST = CONDITIONS.forecast;
+function buildConditions(locationId) {
+  const loc = LOCATIONS.find((l) => l.id === locationId) || LOCATIONS.find((l) => l.id === DEFAULT_LOCATION_ID);
+  const locationDaily = dailyData.locations?.[loc.id] || {};
+  return {
+    ...dailyData.shared,
+    ...locationDaily,
+    ...STATIC_CONDITIONS,
+    locationId: loc.id,
+    locationName: loc.name,
+    access: loc.access,
+  };
+}
 
 // ── RATING SYSTEM ────────────────────────────────────────────────────────────
 function ratingLabel(score) {
@@ -42,7 +58,7 @@ function ratingColor(score) {
 // wind/storm forecast day is still a bad day to wade the wash if it's double
 // red or the swell is pushing 4ft.
 function surfScore(C) {
-  let score = FORECAST[0]?.fishingScore ?? 7;
+  let score = C.forecast?.[0]?.fishingScore ?? 7;
   const flag = C.beachFlag?.color;
   if (flag === "red") score -= 2;
   else if (flag === "yellow") score -= 0.5;
@@ -84,11 +100,11 @@ function minutesToTime(mins) {
   return `${h}:${String(m).padStart(2, "0")} ${ap}`;
 }
 
-function getBestWindow() {
-  const sunrise = timeToMinutes(CONDITIONS.sunrise || "6:00 AM");
+function getBestWindow(C) {
+  const sunrise = timeToMinutes(C.sunrise || "6:00 AM");
   let end = sunrise + 5 * 60;
   let reason = "before the afternoon heat builds";
-  const stormWindow = CONDITIONS.stormWindow || "";
+  const stormWindow = C.stormWindow || "";
   const stormMatch = stormWindow.match(/before\s+(\d+)\s*(AM|PM)/i);
   if (stormMatch) {
     const stormEnd = timeToMinutes(`${stormMatch[1]}:00 ${stormMatch[2]}`);
@@ -100,24 +116,24 @@ function getBestWindow() {
   return { start: sunrise, end, startText: minutesToTime(sunrise), endText: minutesToTime(end), reason };
 }
 
-function getConditionsDiff() {
-  const prev = CONDITIONS.previousDay;
+function getConditionsDiff(C) {
+  const prev = C.previousDay;
   if (!prev || !Object.keys(prev).length) return null;
   const changes = [];
-  if (prev.wind?.dir && prev.wind.dir !== CONDITIONS.wind.dir) {
-    changes.push(`wind shifted ${prev.wind.dir} → ${CONDITIONS.wind.dir}`);
+  if (prev.wind?.dir && prev.wind.dir !== C.wind.dir) {
+    changes.push(`wind shifted ${prev.wind.dir} → ${C.wind.dir}`);
   }
-  const todayHigh = FORECAST[0]?.high;
+  const todayHigh = C.forecast?.[0]?.high;
   if (typeof prev.high === "number" && typeof todayHigh === "number" && prev.high !== todayHigh) {
     const dir = todayHigh > prev.high ? "up" : "down";
     changes.push(`high ${dir} ${Math.abs(todayHigh - prev.high)}° (${prev.high}° → ${todayHigh}°)`);
   }
-  const todayStorms = CONDITIONS.stormChance ?? FORECAST[0]?.storms ?? 0;
+  const todayStorms = C.stormChance ?? C.forecast?.[0]?.storms ?? 0;
   if (typeof prev.stormChance === "number" && prev.stormChance !== todayStorms) {
     const dir = todayStorms > prev.stormChance ? "up" : "down";
     changes.push(`storm chance ${dir} ${Math.abs(todayStorms - prev.stormChance)}% (${prev.stormChance}% → ${todayStorms}%)`);
   }
-  const prevWave = prev.wave?.height, todayWave = CONDITIONS.wave?.height;
+  const prevWave = prev.wave?.height, todayWave = C.wave?.height;
   if (typeof prevWave === "number" && typeof todayWave === "number" && Math.abs(prevWave - todayWave) >= 0.5) {
     const dir = todayWave > prevWave ? "up" : "down";
     changes.push(`surf ${dir} to ${todayWave}ft (was ${prevWave}ft)`);
@@ -322,7 +338,7 @@ function ForecastStrip({ C, todayScore }) {
   return (
     <Collapsible title="📅 3-Day Look Ahead" defaultOpen>
       <div style={{ marginTop: 12 }}>
-        {FORECAST.map((day, i) => {
+        {(C.forecast || []).map((day, i) => {
           const sc = i === 0 ? todayScore : day.fishingScore;
           const color = ratingColor(sc);
           const rating = i === 0 ? surfStatusLabel(C, sc) : ratingLabel(sc);
@@ -355,18 +371,66 @@ function ForecastStrip({ C, todayScore }) {
   );
 }
 
+// ── LOCATION SWITCHER — horizontally-scrollable pill row, one per 30A beach
+// in locations.json, geographic (west→east) order. Selection persists to
+// localStorage so a returning visitor keeps their pick. ─────────────────────
+function LocationSwitcher({ selectedId, onSelect }) {
+  return (
+    <div style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 4, marginBottom: 12, WebkitOverflowScrolling: "touch" }}>
+      {LOCATIONS.map((loc) => {
+        const active = loc.id === selectedId;
+        return (
+          <button
+            key={loc.id}
+            onClick={() => onSelect(loc.id)}
+            style={{
+              flexShrink: 0,
+              background: active ? "#12314a" : "#0e2439",
+              border: `1px solid ${active ? "#5ec8f2" : "#12314a"}`,
+              borderRadius: 20,
+              padding: "7px 14px",
+              color: active ? "#eaf5ff" : "#7fb3d9",
+              fontSize: 14,
+              fontWeight: active ? 700 : 600,
+              cursor: "pointer",
+              fontFamily: "'Space Grotesk',sans-serif",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {loc.name}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [shared, setShared] = useState(false);
-  const C = CONDITIONS;
+  const [locationId, setLocationId] = useState(() => {
+    try {
+      const stored = localStorage.getItem(LOCATION_STORAGE_KEY);
+      return LOCATIONS.some((l) => l.id === stored) ? stored : DEFAULT_LOCATION_ID;
+    } catch {
+      return DEFAULT_LOCATION_ID;
+    }
+  });
+
+  function selectLocation(id) {
+    setLocationId(id);
+    try { localStorage.setItem(LOCATION_STORAGE_KEY, id); } catch { /* storage unavailable */ }
+  }
+
+  const C = buildConditions(locationId);
   const score = surfScore(C);
-  const bestWindow = getBestWindow();
-  const conditionsDiff = getConditionsDiff();
+  const bestWindow = getBestWindow(C);
+  const conditionsDiff = getConditionsDiff(C);
   const surfBiteAge = C.surfBiteUpdated ? Math.round((new Date(C.date) - new Date(C.surfBiteUpdated)) / 86400000) : null;
 
   async function shareReport() {
     const flag = C.beachFlag?.color ? `${C.beachFlag.color} flag` : "flag status unknown";
-    const text = `Grayton Beach (30A) Surf Fishing Report — ${C.date}\n${C.weather}\n${flag}${C.beachFlag?.surfHeight ? ` · surf ${C.beachFlag.surfHeight}` : ""}\nScore today: ${score}/10 · ${surfStatusLabel(C, score)}\nBest window: ${bestWindow.startText}–${bestWindow.endText} (${bestWindow.reason})`;
+    const text = `${C.locationName} (30A) Surf Fishing Report — ${C.date}\n${C.weather}\n${flag}${C.beachFlag?.surfHeight ? ` · surf ${C.beachFlag.surfHeight}` : ""}\nScore today: ${score}/10 · ${surfStatusLabel(C, score)}\nBest window: ${bestWindow.startText}–${bestWindow.endText} (${bestWindow.reason})`;
     if (navigator.share) {
       try { await navigator.share({ title: "30A Surf Report", text }); return; } catch { /* cancelled or unsupported */ }
     }
@@ -385,12 +449,17 @@ export default function App() {
         <div style={{ marginBottom: 4, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
           <div>
             <div style={{ fontSize: 15, letterSpacing: "0.16em", color: "#5ec8f2", textTransform: "uppercase", marginBottom: 3 }}>🏄 Daily Surf Intel</div>
-            <h1 style={{ margin: 0, fontSize: 25, fontWeight: 700, color: "#f5faff", lineHeight: 1.2 }}>Grayton Beach · 30A</h1>
+            <h1 style={{ margin: 0, fontSize: 25, fontWeight: 700, color: "#f5faff", lineHeight: 1.2 }}>{C.locationName} · 30A</h1>
             <div style={{ fontSize: 16, color: "#7fb3d9", marginTop: 2 }}>Surf Fishing Report · Walton County, FL · {C.date}</div>
           </div>
           <button onClick={shareReport} style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 8, padding: "8px 12px", color: "#7fb3d9", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "'Space Grotesk',sans-serif", whiteSpace: "nowrap", flexShrink: 0 }}>
             {shared ? "✓ Copied" : "📤 Share"}
           </button>
+        </div>
+
+        {/* Location switcher */}
+        <div style={{ marginTop: 14 }}>
+          <LocationSwitcher selectedId={locationId} onSelect={selectLocation} />
         </div>
 
         {/* Beach flag safety banner — before the score, on purpose */}
