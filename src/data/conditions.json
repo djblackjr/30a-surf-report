@@ -27,14 +27,14 @@
   "waterTemp": 85,
   "wave": {
     "height": 1.2,
-    "period": 4.6,
+    "period": 4.7,
     "direction": "SW",
     "swellHeight": 0.8,
-    "swellPeriod": 3.4,
+    "swellPeriod": 3.3,
     "swellDirection": "SW",
     "windWaveHeight": 0.1
   },
-  "lastUpdated": "8/4/2026, 9:20:57 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "lastUpdated": "8/4/2026, 10:01:46 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
   "forecast": [
     {
       "day": "Wed, Aug 5",
@@ -83,17 +83,17 @@
       "summary": "Overcast"
     },
     {
-      "high": 90,
+      "high": 89,
       "low": 77,
-      "stormChance": 5,
-      "windSpeed": 11,
+      "stormChance": 6,
+      "windSpeed": 10,
       "windDir": "SW",
       "summary": "Overcast"
     },
     {
       "high": 88,
       "low": 79,
-      "stormChance": 6,
+      "stormChance": 5,
       "windSpeed": 10,
       "windDir": "S",
       "summary": "Light drizzle"
@@ -112,22 +112,22 @@
       "height": 1.2,
       "period": 4.6,
       "direction": "SW",
-      "swellHeight": 0.7,
-      "swellPeriod": 3.5,
+      "swellHeight": 0.8,
+      "swellPeriod": 3.4,
       "swellDirection": "SW",
-      "windWaveHeight": 0.2
+      "windWaveHeight": 0.1
     }
   },
   "beachFlag": {
-    "color": "unknown",
+    "color": "yellow",
     "ripCurrentRisk": "moderate",
-    "surfHeight": "1-2 ft (model estimate)",
+    "surfHeight": "0-1 ft (Surfline/Grayton Beach); 1-3 ft (NWS panhandle range)",
     "purpleFlag": false,
-    "notes": "No confirmed August 5 flag posting was retrieved from swfd.org or 30a.com (most recent cached data is from late July); the most current NWS/Florida Disaster summary (~Aug 2) indicated moderate rip current risk for the Eastern Panhandle with surf near 1–3 ft. Surf fishing conditions may be manageable, but verify today's flag directly at swfd.org or by texting SAFETY to 31279 before heading out.",
-    "source": "floridadisaster.org (~Aug 2 NWS TAE summary), seatemperature.info/Swellinfo model for Grayton Beach, 30a.com/beachflag (stale, last changed 07/28/2026), swfd.org (live flag widget not crawlable in plain text), Surfline (spot guide only, no live report retrieved) · Auto-refreshed via Claude API",
+    "notes": "The 30a.com beach flag widget (sourced from SWFD) last showed yellow on 07/28/2026 — no confirmed Aug 5 update was retrievable from swfd.org or 30a.com, so treat flag color as likely-yellow but unconfirmed for today; moderate rip current risk is consistent with recent NWS/floridadisaster.org data for the eastern panhandle. Surfline rates Grayton Beach POOR at 0-1 ft with a small S swell — manageable for surf fishing from shore, but always verify the flag in person and heed lifeguard guidance on rip currents.",
+    "source": "Surfline (Grayton Beach spot page, ~current); 30a.com/beachflag (SWFD-sourced widget, last updated 07/28/2026); floridadisaster.org (NWS statewide summary, ~08/02/2026); NWS MOB Surf Zone Forecast (Okaloosa/western panhandle); NWS TAE Surf Zone Forecast (Walton/Bay); swfd.org/beach-safety/surf-conditions (flag system reference only) · Auto-refreshed via Claude API",
     "updated": "August 4, 2026"
   },
-  "surfBiteReport": "As of July 31, the Panama City Beach surf zone is the relative bright spot after Tropical Storm Bertha churned up the Gulf, though the water remains stained. Pompano are actively feeding despite the dirty conditions, with multiple anglers reporting solid catches — look for the schools rather than soaking bait in a random spot. Hardhead catfish are the main nuisance mixed in with the pompano, and the storm has reshaped sandbars and cuts along the beach, so scouting your preferred stretch before setting up is worth the extra time. Shrimp and sand fleas tipped with Fishbites or Fish Gum are the top-producing baits right now, though live sand fleas are scarce — bring blanched fleas from home. Water temperature is 85°F; high tide is falling in the late-morning window, making an early start the best tactical choice for the weekend of August 1–3.",
-  "surfBiteSource": "Half Hitch Tackle (halfhitch.com) PCB Fishing Reports dated July 31, 2026 and July 27, 2026 · Auto-refreshed via Claude API",
+  "surfBiteReport": "The most current readable report for this stretch of Florida Panhandle Gulf-front coast is from noeoutdoors.com/pcb, dated roughly three to four weeks ago (late July 2026), so treat it as recent-but-not-this-week. Along the beaches from Panama City Beach through the 30A corridor, the surf was producing Spanish mackerel, whiting, redfish, and jack crevalle, with action concentrated in the first and second troughs rather than at maximum casting distance — watching for birds and jumping baitfish helped anglers pick the right spots. Water temperature is 85°F. Sand fleas are a reliable and abundant surf bait right now if you can rake them out of the wash, and they've been the go-to for pompano and whiting in clear, non-grassy stretches of beach. Bluefish and Spanish mackerel have also been showing up opportunistically, especially when bait schools move through; a fast-moving lure kept ready alongside live or cut bait is a smart two-pronged approach for this time of year.",
+  "surfBiteSource": "noeoutdoors.com/pcb (late July 2026, ~3–4 weeks old) · Auto-refreshed via Claude API",
   "surfBiteUpdated": "August 4, 2026"
 }
