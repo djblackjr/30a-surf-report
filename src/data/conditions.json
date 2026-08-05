@@ -34,7 +34,7 @@
     "swellDirection": "SW",
     "windWaveHeight": 0.2
   },
-  "lastUpdated": "8/4/2026, 8:31:33 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "lastUpdated": "8/4/2026, 8:37:51 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
   "forecast": [
     {
       "day": "Wed, Aug 5",
@@ -110,24 +110,24 @@
     "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
     "wave": {
       "height": 1.2,
-      "period": 4.5,
+      "period": 4.6,
       "direction": "SW",
       "swellHeight": 0.7,
-      "swellPeriod": 3.6,
+      "swellPeriod": 3.5,
       "swellDirection": "SW",
       "windWaveHeight": 0.2
     }
   },
   "beachFlag": {
-    "color": "yellow",
-    "ripCurrentRisk": "moderate",
-    "surfHeight": "1-3 ft",
+    "color": "unknown",
+    "ripCurrentRisk": "unknown",
+    "surfHeight": "unknown",
     "purpleFlag": false,
-    "notes": "The 30a.com flag widget (last changed 7/28, last refreshed 7/30) and a third-party SWFD aggregator both showed yellow; NWS Mobile's most current SRF for Okaloosa/western panhandle shows moderate rip current risk with 2–3 ft surf — conditions are manageable for surf fishing but stay aware of rip currents at any cut or structure. Verify the live flag at swfd.org or text SAFETY to 31279 before heading out, as today's SWFD post could not be directly confirmed.",
-    "source": "30a.com/beachflag (last refreshed 7/30/26, stale), whatsgoodlocal.com (SWFD aggregator), NWS Mobile Surf Zone Forecast (forecast.weather.gov/product.php?site=MOB&product=SRF), seatemperature.info/Swellinfo (Grayton Beach wave model); Surfline live data unavailable; NWS TAE SRF for FLZ108 not retrievable for Aug 4 · Auto-refreshed via Claude API",
+    "notes": "No confirmed August 5, 2026 flag status or NWS SRF for the Walton/Bay panhandle coast was retrievable today — the most recent 30a.com flag widget shows Yellow (last changed 07/28, last refreshed 07/30) and the most recent NWS TAE SRF found is from June 22, both too stale to report as current. For today's actual flag and rip current risk, check swfd.org/beach-safety/surf-conditions directly, text SAFETY to 31279, or visit forecast.weather.gov (issued by NWS Tallahassee) before heading out.",
+    "source": "30a.com/beachflag (stale, last refreshed 07/30/2026), swfd.org/beach-safety/surf-conditions (no live flag returned), tgftp.nws.noaa.gov NWS TAE SRF (most recent copy dated June 22 2026), Surfline Grayton Beach spot page (no live report returned) · Auto-refreshed via Claude API",
     "updated": "August 4, 2026"
   },
-  "surfBiteReport": "The most recent available report for the Panama City Beach surf zone is approximately three weeks old (mid-July 2026), so treat this as recent-but-not-this-week intel. At that point, the surf bite along PCB beaches was described as steady, particularly during early morning and the last couple of hours before sunset, with baitfish schools running thick along the shoreline and predators trailing them closely. Spanish mackerel, whiting, and redfish were the primary surf-zone species showing up, with anglers advised to target the deeper cuts and troughs between sandbars rather than casting maximum distance. Water temperature today at this location is 85°F. No current (this week) report was retrievable for the 30A corridor specifically (Grayton Beach, Seaside, WaterColor, Inlet Beach).",
-  "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, approximately 3 weeks old) · Auto-refreshed via Claude API",
+  "surfBiteReport": "The most recent surf fishing reports for the PCB-to-30A Gulf front are approximately 3 weeks old (July 2026). With water at 85°F and baitfish thick along the beaches, predators are actively following the schools — Spanish mackerel, whiting, redfish, and jack crevalle are the primary surf-zone species being landed from the sand. Whiting are the most consistent producers, best targeted with sand fleas, shrimp, or Fishbites worked in the deeper troughs between sandbars rather than cast to the horizon. Spanish mackerel and ladyfish are cruising the beachfront and can be intercepted with fast-retrieved spoons or small metal jigs, especially when birds are working bait near the surface. Fishing peaks sharply in the first few hours after daylight and again in the last two hours before sunset; midday heat pushes most fish deeper or off the bite entirely.",
+  "surfBiteSource": "noeoutdoors.com/pcb (July 2026, ~3 weeks old) · Auto-refreshed via Claude API",
   "surfBiteUpdated": "August 4, 2026"
 }
