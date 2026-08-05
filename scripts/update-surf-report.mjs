@@ -1,35 +1,47 @@
-// scripts/update-surf-report.mjs
-// Calls the Claude API (with web search enabled) once a day to research
-// current surf fishing reports for the 30A / Panama City Beach corridor and
-// write a fresh summary into conditions.json. Same reasoning as the sibling
-// 331 Bridge app's update-bite-report.mjs: there's no structured API for
-// "current fishing chatter," so this needs a model reading and synthesizing
-// real text, not a plain JSON fetch.
+// Finds a genuinely current, firsthand surf-fishing report for 30A and
+// writes a short summary into conditions.json. Claude is used only to read
+// unstructured articles/podcast summaries; source dates, hosts, and maximum
+// ages are validated deterministically before anything reaches the app.
 
 import { readFile, writeFile } from "fs/promises";
 
 const OUT_PATH = new URL("../src/data/conditions.json", import.meta.url);
 const API_KEY = process.env.ANTHROPIC_API_KEY;
+const DAY_MS = 86_400_000;
+const TIME_ZONE = "America/Chicago";
+const SOURCE_RULES = {
+  "greatdaysoutdoors.com": { maxAgeDays: 14, label: "Northwest Florida Fishing Report / Reel30A" },
+  "www.greatdaysoutdoors.com": { maxAgeDays: 14, label: "Northwest Florida Fishing Report / Reel30A" },
+  "northwestfloridafishingreport.libsyn.com": { maxAgeDays: 14, label: "Northwest Florida Fishing Report / Reel30A" },
+  "halfhitch.com": { maxAgeDays: 7, label: "Half Hitch PCB Fishing Report" },
+  "www.halfhitch.com": { maxAgeDays: 7, label: "Half Hitch PCB Fishing Report" },
+};
 
 if (!API_KEY) {
   console.error("ANTHROPIC_API_KEY not set — skipping surf report update (non-fatal).");
   process.exit(0);
 }
 
-function buildPrompt(waterTemp) {
-  return `Search for current surf fishing reports (this week if possible) for the Florida panhandle Gulf-front coast between Sandestin/30A and Panama City Beach — Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seaside, WaterColor, Seagrove Beach, Inlet Beach, and Panama City Beach specifically. Focus on surf-zone species: pompano, whiting, redfish, bluefish, sheepshead, Spanish mackerel — not offshore/pier-only species like red snapper or grouper unless there's genuinely nothing else current.
+function localDateISO(date = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE }).format(date);
+}
 
-Check these sources for current reports:
-- halfhitch.com's Panama City Beach fishing report series (halfhitch.com/blog/pcb-fishing-report-*) — a local tackle shop that posts roughly weekly, dated reports
-- noeoutdoors.com/pcb — an inshore/surf/pier report page for Panama City Beach
-- hightidecharters30a.com — a 30A-specific charter with its own fishing report archive
+function buildPrompt(waterTemp, todayISO) {
+  return `Today is ${todayISO}. Find the newest genuinely current surf-fishing catch report that applies to the 30A / South Walton beach corridor in Florida (Dune Allen, Blue Mountain Beach, Grayton Beach, Seagrove, or Inlet Beach).
 
-Only use a source if it actually has a current post (this week or last) that you can genuinely read. If a given source's most recent content is old or you can't access/find one, silently skip it — do not mention that source, or the fact that you checked/omitted it, anywhere in your response. Only reference a source in surfBiteReport or surfBiteSource if it actually contributed content to the summary.
+Search in this order:
+1. Northwest Florida Fishing Report, on greatdaysoutdoors.com or northwestfloridafishingreport.libsyn.com. Prefer an episode or written summary featuring Blake Hunter of Reel30A and explicitly discussing 30A, South Walton, Miramar-to-Panama-City-Beach surf fishing, or the Emerald Coast surf. It is acceptable only if published within the last 14 days.
+2. Half Hitch's Panama City Beach fishing-report series at halfhitch.com/blog. Use only a dated post with a real Surf Fishing section published within the last 7 days.
 
-Write a short (3-5 sentence) summary in your own words — paraphrase everything, never quote any source directly, even in quotation marks. If the most recent available reports are more than a week old, say so plainly rather than presenting stale info as brand new.
-${waterTemp ? `\nIf you mention water temperature, use ${waterTemp}°F — a same-day measured reading for this exact spot — rather than whatever approximate figure turns up in search results, which is often paraphrased from a days-old blog post.` : ""}
-Respond with ONLY a JSON object, no other text, no markdown fences:
-{"surfBiteReport": "your summary here", "surfBiteSource": "brief attribution, e.g. site names you drew from"}`;
+Do not use NOE Outdoors, Reddit, Facebook, generic seasonal forecasts, undated guide pages, charter advertising, old articles, search-result snippets you cannot open, or offshore/pier reports presented as surf reports. Do not infer a current bite from weather, water temperature, past seasonal patterns, or a report older than its allowed window.
+
+If a qualifying source exists, summarize only what it actually reports about surf-zone catches, bait, grass/water clarity, beach structure, and tactics in 3-5 concise sentences. Paraphrase; do not quote. ${waterTemp ? `The app's current model sea-surface temperature is ${waterTemp}°F; do not describe it as a measured temperature and do not use it to invent a bite pattern.` : ""}
+
+Return ONLY JSON:
+{"status":"current","surfBiteReport":"summary","sources":[{"name":"source/publication and local expert","url":"direct article or episode URL","publishedDate":"YYYY-MM-DD"}]}
+
+If nothing qualifies, return ONLY:
+{"status":"unavailable","surfBiteReport":null,"sources":[]}`;
 }
 
 async function callClaude(prompt) {
@@ -42,63 +54,84 @@ async function callClaude(prompt) {
     },
     body: JSON.stringify({
       model: "claude-sonnet-4-6",
-      max_tokens: 1000,
+      max_tokens: 1400,
       messages: [{ role: "user", content: prompt }],
       tools: [{ type: "web_search_20250305", name: "web_search" }],
     }),
   });
   if (!res.ok) throw new Error(`Anthropic API error: ${res.status} ${await res.text()}`);
   const data = await res.json();
-  const textBlocks = data.content.filter((b) => b.type === "text").map((b) => b.text);
-  const raw = textBlocks.join("\n").trim();
+  const raw = data.content.filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();
   const cleaned = raw.replace(/^```json\s*|\s*```$/g, "");
   const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
   return JSON.parse(jsonMatch ? jsonMatch[0] : cleaned);
 }
 
-async function main() {
-  const existing = JSON.parse(await readFile(OUT_PATH, "utf-8"));
-
-  // One regional bite report covers the whole 30A corridor, so this writes
-  // into `shared` rather than per-location. update-conditions.mjs always
-  // runs first in the daily pipeline and performs the flat-shape migration,
-  // so existing.shared is expected to exist by the time this runs.
-  if (!existing.shared) {
-    console.error("conditions.json is missing `shared` — run update-conditions.mjs first. Skipping (non-fatal).");
-    process.exit(0);
-  }
-
-  // Grayton Beach's water temp stands in for the whole corridor here — these
-  // beaches sit close enough together that Gulf water temp doesn't
-  // meaningfully differ, and the prompt only uses this as a same-day sanity
-  // check against whatever approximate figure search results turn up.
-  const waterTemp = existing.locations?.["grayton-beach"]?.waterTemp;
-
-  let result;
-  try {
-    result = await callClaude(buildPrompt(waterTemp));
-  } catch (err) {
-    console.error("Surf report update failed, leaving previous value in place:", err.message);
-    process.exit(0);
-  }
-
-  if (!result.surfBiteReport) {
-    console.error("Unexpected response shape, leaving previous value in place.");
-    process.exit(0);
-  }
-
-  const updated = {
-    ...existing,
-    shared: {
-      ...existing.shared,
-      surfBiteReport: result.surfBiteReport,
-      surfBiteSource: `${result.surfBiteSource} · Auto-refreshed via Claude API`,
-      surfBiteUpdated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
-    },
-  };
-
-  await writeFile(OUT_PATH, JSON.stringify(updated, null, 2) + "\n");
-  console.log("Surf report updated:", updated.shared.surfBiteUpdated);
+function validateSources(sources, todayISO) {
+  const today = new Date(`${todayISO}T12:00:00-05:00`);
+  return (Array.isArray(sources) ? sources : []).flatMap((source) => {
+    let url;
+    try { url = new URL(source.url); } catch { return []; }
+    const rule = SOURCE_RULES[url.hostname.toLowerCase()];
+    if (!rule || url.protocol !== "https:") return [];
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(source.publishedDate || "")) return [];
+    const published = new Date(`${source.publishedDate}T12:00:00-05:00`);
+    const ageDays = Math.floor((today - published) / DAY_MS);
+    if (!Number.isFinite(ageDays) || ageDays < 0 || ageDays > rule.maxAgeDays) return [];
+    return [{ name: source.name || rule.label, url: url.href, publishedDate: source.publishedDate, ageDays }];
+  }).sort((a, b) => a.ageDays - b.ageDays);
 }
 
-main();
+function unavailableFields(refreshedAt) {
+  return {
+    surfBiteStatus: "unavailable",
+    surfBiteReport: "No current local 30A surf-fishing report is available from the monitored firsthand sources.",
+    surfBiteSource: null,
+    surfBiteSourceUrl: null,
+    surfBiteSourceDate: null,
+    surfBiteRefreshedAt: refreshedAt,
+  };
+}
+
+async function main() {
+  const existing = JSON.parse(await readFile(OUT_PATH, "utf-8"));
+  if (!existing.shared) throw new Error("conditions.json is missing `shared`; run update-conditions.mjs first");
+
+  const todayISO = localDateISO();
+  const refreshedAt = new Date().toISOString();
+  const waterTemp = existing.locations?.["grayton-beach"]?.waterTemp;
+  let result;
+  try {
+    result = await callClaude(buildPrompt(waterTemp, todayISO));
+  } catch (err) {
+    console.error("Surf report research failed, leaving previous value in place:", err.message);
+    process.exit(0);
+  }
+
+  const sources = validateSources(result.sources, todayISO);
+  const hasCurrentReport = result.status === "current" && typeof result.surfBiteReport === "string"
+    && result.surfBiteReport.trim().length > 0 && sources.length > 0;
+  const primary = sources[0];
+  const fields = hasCurrentReport ? {
+    surfBiteStatus: "current",
+    surfBiteReport: result.surfBiteReport.trim(),
+    surfBiteSource: sources.map((s) => `${s.name} (${s.publishedDate})`).join(" + "),
+    surfBiteSourceUrl: primary.url,
+    surfBiteSourceDate: primary.publishedDate,
+    surfBiteRefreshedAt: refreshedAt,
+  } : unavailableFields(refreshedAt);
+
+  const updated = { ...existing, shared: { ...existing.shared, ...fields } };
+  // Remove the legacy refresh-date field: freshness now comes from the
+  // publication date of the underlying report, not the day Claude checked.
+  delete updated.shared.surfBiteUpdated;
+  await writeFile(OUT_PATH, JSON.stringify(updated, null, 2) + "\n");
+  console.log(hasCurrentReport
+    ? `Surf report updated from ${primary.name}, published ${primary.publishedDate}`
+    : "No qualifying report found; published an explicit unavailable state");
+}
+
+main().catch((err) => {
+  console.error("Surf report update failed, leaving conditions.json untouched:", err.message);
+  process.exit(1);
+});

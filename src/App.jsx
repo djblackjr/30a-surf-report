@@ -426,7 +426,7 @@ export default function App() {
   const score = surfScore(C);
   const bestWindow = getBestWindow(C);
   const conditionsDiff = getConditionsDiff(C);
-  const surfBiteAge = C.surfBiteUpdated ? Math.round((new Date(C.date) - new Date(C.surfBiteUpdated)) / 86400000) : null;
+  const surfBiteAge = C.surfBiteSourceDate ? Math.max(0, Math.round((new Date(C.date) - new Date(`${C.surfBiteSourceDate}T12:00:00`)) / 86400000)) : null;
 
   async function shareReport() {
     const flag = C.beachFlag?.color ? `${C.beachFlag.color} flag` : "flag status unknown";
@@ -546,10 +546,14 @@ export default function App() {
         <div style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 10, padding: "13px 16px", marginBottom: 4 }}>
           <div style={{ fontSize: 16, color: "#7fb3d9", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8, fontWeight: 600 }}>🎣 What's Being Caught — Local Reports</div>
           <p style={{ margin: "0 0 6px 0", fontSize: 16, color: "#eaf5ff", lineHeight: 1.7 }}>{C.surfBiteReport}</p>
-          {C.surfBiteSource && <div style={{ fontSize: 15, color: "#7fb3d9", fontStyle: "italic" }}>{C.surfBiteSource}</div>}
+          {C.surfBiteSource && (
+            <div style={{ fontSize: 15, color: "#7fb3d9", fontStyle: "italic" }}>
+              {C.surfBiteSourceUrl ? <a href={C.surfBiteSourceUrl} target="_blank" rel="noreferrer" style={{ color: "#7fb3d9" }}>{C.surfBiteSource}</a> : C.surfBiteSource}
+            </div>
+          )}
           {surfBiteAge != null && (
             <div style={{ fontSize: 14, fontWeight: 600, marginTop: 6, color: surfBiteAge > 14 ? "#f87171" : surfBiteAge > 7 ? "#facc15" : "#7fb3d9" }}>
-              {surfBiteAge === 0 ? "Refreshed today" : `Last refreshed ${surfBiteAge} day${surfBiteAge === 1 ? "" : "s"} ago`}
+              {surfBiteAge === 0 ? "Source published today" : `Source published ${surfBiteAge} day${surfBiteAge === 1 ? "" : "s"} ago`}
             </div>
           )}
         </div>

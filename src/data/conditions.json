@@ -15,9 +15,12 @@
       "nwsIssuedAt": "2026-08-05T07:19:00+00:00",
       "updatedAt": "2026-08-05T15:04:54.212Z"
     },
-    "surfBiteReport": "The most current report available for the Panama City Beach and 30A surf zone is approximately 3 weeks old (mid-July 2026), so treat this as recent but not this week's conditions. With water at 84°F, baitfish are thick along the beaches from Dune Allen through PCB and predators are stacked behind them — the pattern holding across this entire stretch. Spanish mackerel, whiting, and redfish have been the primary surf-zone species, with jack crevalle mixing in; focus your casts on the deeper cuts and troughs between sandbars rather than bombing long casts past the second bar, as most of these fish are feeding much closer to shore than anglers expect. The bite windows are tight in peak summer heat — dawn through roughly 9 a.m. and again the last two hours before sunset are producing the most action, with midday fishing slow unless you drop into deeper troughs or shade your presentation. Sand fleas, shrimp, Fishbites, and Fish Gum are the go-to surf baits; keep a fast spoon or gotcha plug rigged on a second rod for the Spanish mackerel schools that appear and disappear quickly along the beach. Pompano are present but numbers are typically thinner on this coast in peak August heat compared to spring, as they tend to push to slightly deeper, cooler water once surface temps climb above the low 80s.",
-    "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, approx. 3 weeks old) · Auto-refreshed via Claude API",
-    "surfBiteUpdated": "August 5, 2026",
+    "surfBiteStatus": "current",
+    "surfBiteReport": "The surf zone along the Florida Panhandle beach corridor has been the bright spot of the week despite water still carrying stain from Tropical Storm Bertha. Pompano are feeding actively and catch reports have been climbing, though hardhead catfish remain a persistent bycatch mixed into the schools. Baitfish are starting to return to the area but have not fully recovered to pre-storm levels, and additional wind and rain could slow the improvement. The top producing setup has been shrimp or sand fleas tipped with Fishbites or Fish Gum; live sand fleas are scarce right now so anglers should plan on bringing blanched (parboiled) fleas instead. Timing the higher tide, which has been running during late morning, appears to be the best window to target pompano before afternoon summer storm activity develops.",
+    "surfBiteSource": "Half Hitch Tackle – Panama City Beach Fishing Report (2026-07-31)",
+    "surfBiteSourceUrl": "https://halfhitch.com/blog/pcb-fishing-report-7-31-26",
+    "surfBiteSourceDate": "2026-07-31",
+    "surfBiteRefreshedAt": "2026-08-05T15:13:56.121Z",
     "tideEvents": [
       {
         "type": "H",
