@@ -3,13 +3,13 @@
     "date": "Tuesday, August 4, 2026",
     "dateISO": "2026-08-04",
     "beachFlag": {
-      "color": "red",
-      "ripCurrentRisk": "moderate",
-      "surfHeight": "1-2 ft",
+      "color": "unknown",
+      "ripCurrentRisk": "unknown",
+      "surfHeight": "0-2 ft (estimated)",
       "purpleFlag": false,
-      "notes": "A single red flag (high hazard) was the most recently cached live reading for South Walton/Miramar Beach sourced from swfd.org; surf is small at 0–1 ft per Surfline but rip current risk remains the main concern — wade and surf fish with caution, stay aware of footing in the shorebreak, and verify the current flag at swfd.org or by texting SAFETY to 31279 before heading out since the flag can be updated twice daily. No purple flag confirmed for today specifically, though marine life (jellyfish/stingrays) has been an ongoing presence along 30A this season.",
-      "source": "whatsgoodlocal.com (live feed via swfd.org, ~1 week ago cache); Surfline Grayton Beach (0–1 ft, POOR); floridadisaster.org NWS summary (~Aug 1–2 2026, moderate rip Eastern Panhandle, surf 1–3 ft); 30a.com/beachflag (yellow, last refreshed 07/30/2026); NWS TAE Surf Zone Forecast (forecast.weather.gov/SRF/TAE) · Auto-refreshed via Claude API",
-      "updated": "August 4, 2026"
+      "notes": "No verified August 5, 2026 flag or rip current posting was retrievable: the 30a.com SWFD widget was last refreshed July 30, the SWFD surf-conditions page returned only static system description text, and the most recent NWS MOB surf zone forecast found was dated July 31–Aug 1. For today's confirmed flag, text SAFETY to 31279 or check swfd.org directly; for Okaloosa/Walton surf zone forecast text or rip risk, visit forecast.weather.gov and select the TAE or MOB SRF product.",
+      "source": "swfd.org (no live flag returned), 30a.com/beachflag (stale — last refreshed 07/30/2026), Surfline Grayton Beach (timestamp unconfirmed), NWS MOB SRF (most recent retrieved: Jul 31 2026), NWS TAE SRF (most recent retrieved: Jun 22 2026) · Auto-refreshed via Claude API",
+      "updated": "August 5, 2026"
     },
     "surfBiteReport": "The most recent available reports for this stretch of coast are from late July 2026, roughly one to three weeks old rather than this week. Along the Gulf-front beaches from Panama City Beach toward 30A, surf anglers were finding Spanish mackerel, whiting, redfish, and jack crevalle in the wash, with pompano also showing up in good numbers — one captain in the area reported 44 keeper pompano in a single outing. The key, as usual in summer, is locating clean-water pockets free of floating grass, then fishing the first and second troughs early in the morning before beach traffic picks up. Water temperature at the surf line today is 85°F, which is typical for early August and keeps fish active but pushes the better bites to dawn and dusk windows.",
     "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026), captainexperiences.com PCB reports (late July 2026) · Auto-refreshed via Claude API",
