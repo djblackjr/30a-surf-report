@@ -7,34 +7,34 @@
     "description": "SW 0 to 10 mph"
   },
   "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
-  "tide": "High tide ~3:32 AM · Low tide ~1:10 PM · Sunrise 6:03 AM",
+  "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
   "tideEvents": [
     {
       "type": "H",
-      "time": "3:32 AM"
+      "time": "10:56 PM"
     },
     {
       "type": "L",
-      "time": "1:10 PM"
+      "time": "10:15 AM"
     }
   ],
-  "sunrise": "6:03 AM",
-  "sunset": "7:37 PM",
+  "sunrise": "6:04 AM",
+  "sunset": "7:36 PM",
   "stormWindow": "before 9AM",
   "stormChance": 20,
   "sky": "Cloudy",
-  "moonPhase": "Last Quarter (~58% illuminated) — moderate tidal push",
+  "moonPhase": "Last Quarter (~47% illuminated) — moderate tidal push",
   "waterTemp": 85,
   "wave": {
     "height": 1.2,
-    "period": 3.9,
+    "period": 4.5,
     "direction": "SW",
     "swellHeight": 0.7,
-    "swellPeriod": 3.9,
+    "swellPeriod": 3.6,
     "swellDirection": "SW",
-    "windWaveHeight": 0.7
+    "windWaveHeight": 0.2
   },
-  "lastUpdated": "8/4/2026, 6:41:50 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "lastUpdated": "8/4/2026, 8:23:01 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
   "forecast": [
     {
       "day": "Wed, Aug 5",
@@ -88,34 +88,34 @@
       "stormChance": 6,
       "windSpeed": 10,
       "windDir": "SW",
-      "summary": "Overcast"
+      "summary": "Partly cloudy"
     },
     {
-      "high": 94,
+      "high": 93,
       "low": 76,
       "stormChance": 6,
-      "windSpeed": 12,
+      "windSpeed": 11,
       "windDir": "S",
-      "summary": "Thunderstorm"
+      "summary": "Light drizzle"
     }
   ],
   "previousDay": {
-    "date": "Monday, August 3, 2026",
+    "date": "Tuesday, August 4, 2026",
     "wind": {
-      "dir": "WNW",
+      "dir": "SW",
       "speed": 10
     },
     "high": 87,
-    "stormChance": 14,
-    "tide": "High tide ~3:31 AM · Low tide ~10:44 AM · Sunrise 6:03 AM",
+    "stormChance": 20,
+    "tide": "High tide ~3:32 AM · Low tide ~1:10 PM · Sunrise 6:03 AM",
     "wave": {
-      "height": 2.6,
-      "period": 4.5,
+      "height": 1.2,
+      "period": 3.9,
       "direction": "SW",
-      "swellHeight": 1.9,
-      "swellPeriod": 4.9,
+      "swellHeight": 0.7,
+      "swellPeriod": 3.9,
       "swellDirection": "SW",
-      "windWaveHeight": 1.6
+      "windWaveHeight": 0.7
     }
   },
   "beachFlag": {
