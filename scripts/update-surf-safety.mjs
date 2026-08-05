@@ -1,66 +1,83 @@
 // scripts/update-surf-safety.mjs
-// Calls the Claude API (with web search enabled) once a day to check today's
-// beach warning flag status and rip current risk for the Grayton Beach / South
-// Walton (30A) coast, and writes it into conditions.json.
+// Determines today's beach warning flag status and rip current risk for the
+// South Walton / 30A coast and writes it into conditions.json.
 //
-// There's no free structured API for beach flag color (it's set by lifeguards
-// twice a day and posted to a fire-district website, not a data feed), and no
-// clean JSON field for rip current risk either — this genuinely needs a model
-// reading a page and a text forecast product, same reasoning as why
+// Flag color + purple (marine pest) flag: fetched directly from
+// visitsouthwalton.com/beach-safety/, South Walton's official visitor site.
+// Its flag widget is plain server-rendered HTML — the color is right there
+// in an <img alt="..."> — updated by SWFD, no JS execution or LLM guessing
+// needed. This is ground truth, not a best-effort scrape: prefer it over
+// anything Claude might find via search, which was liable to surface a
+// stale cached copy from some third-party aggregator instead.
+//
+// Rip current risk + surf height + a practical note: still need Claude
+// (with web search) reading the NWS Surf Zone Forecast text product — there's
+// no clean structured API for that, same reasoning as why
 // update-bite-report.mjs in the sibling 331 Bridge app needs Claude rather
-// than a plain fetch. This is the one script with no direct bay-app analog:
-// a bay has no surf, so it never needed a safety-flag concept at all.
+// than a plain fetch.
 
 import { readFile, writeFile } from "fs/promises";
 
 const OUT_PATH = new URL("../src/data/conditions.json", import.meta.url);
 const API_KEY = process.env.ANTHROPIC_API_KEY;
+const USER_AGENT = "30a-surf-report (github.com/djblackjr/30a-surf-report)";
 
 if (!API_KEY) {
   console.error("ANTHROPIC_API_KEY not set — skipping beach safety update (non-fatal).");
   process.exit(0);
 }
 
-function buildPrompt() {
-  return `Search for TODAY's beach warning flag color and rip current risk for the South Walton / 30A coast (Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seagrove Beach, and Inlet Beach, FL — all Walton County), and for the wider Okaloosa/Walton/Bay County Florida panhandle Gulf coast.
+// Ground-truth flag color + marine-pest (purple) flag, scraped directly from
+// the official South Walton visitor site. Throws if the site's unreachable
+// or its markup has changed shape — callers fall back to Claude search.
+async function fetchOfficialFlag() {
+  const url = "https://www.visitsouthwalton.com/beach-safety/";
+  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+  if (!res.ok) throw new Error(`${url} -> ${res.status}`);
+  const html = await res.text();
 
-The flag system is set and posted county-wide by the South Walton Fire District (SWFD) — it is the same flag for every beach in Walton County on a given day, not set per individual beach. So you do NOT need independent confirmation from every single beach access point — a reading from any one Walton County source is enough, AS LONG AS it is genuinely from today. Do not hedge or mark it unconfirmed merely because it only came from one beach instead of all five.
+  const idx = html.indexOf('class="flagWrapper"');
+  if (idx === -1) throw new Error("flagWrapper widget not found — site layout may have changed");
+  const block = html.slice(idx, idx + 800);
 
-That said, currency (is this actually today's flag?) is a separate requirement from coverage (does it need to come from every beach?), and currency is not negotiable. A source that is more than 1-2 days old — a "last refreshed" widget from a week ago, a cached feed, a stale aggregator page — is NOT today's flag status, full stop, no matter how confidently it's presented. If every source you can find is stale like that, do not report its color as the answer with the staleness buried as a caveat in "notes" — set "flagColor" and "ripCurrentRisk" to "unknown" instead, and explain in "notes" that no genuinely current reading was found. A confidently-stated wrong answer is worse than an honest "unknown" here.
+  const altMatch = block.match(/<img alt="((?:Double Red|Green|Yellow|Red)[^"]*)"/i);
+  if (!altMatch) throw new Error(`Could not find a flag <img alt="..."> in the widget: ${block.slice(0, 200)}`);
+  const colorMatch = altMatch[1].match(/double red|green|yellow|red/i);
+  if (!colorMatch) throw new Error(`Could not parse a flag color out of: "${altMatch[1]}"`);
 
-If available, Surfline's latest surf report for Grayton Beach (or the nearest 30A surf spot) should be preferred for surf height/wave detail. If you (the caller) supply a short Surfline summary string, include it in your reasoning and prefer its surf-height detail where it is clearly current. Also check the South Walton Fire District's surf conditions page (swfd.org/beach-safety/surf-conditions) for today's posted flag color, and the NWS Surf Zone Forecast for the Florida panhandle coast (issued by NWS Tallahassee, forecast.weather.gov) for today's rip current risk category and surf height range.
+  return {
+    color: colorMatch[0].toLowerCase(),
+    purpleFlag: /Marine Pests Flag/i.test(block),
+    source: url,
+  };
+}
 
-If Surfline is available and current, prefer its wave detail; if Surfline is unavailable, rely on NWS and the local fire district page. The flag system is: green (low hazard), yellow (medium hazard, moderate surf/currents), red (high hazard, strong surf/currents), double red (water closed to the public). A purple flag flying alongside another color means dangerous marine life reported (jellyfish, stingrays, etc) — include that only if it's actually flying today.
+// Rip current risk / surf height / notes only — flag color and purple flag
+// are already known ground truth by the time this runs, so Claude doesn't
+// need to (and shouldn't try to) re-derive or second-guess them.
+function buildRiskPrompt(officialFlag) {
+  return `Today's official South Walton beach flag (from visitsouthwalton.com, South Walton's visitor site — already confirmed, do not second-guess it) is: ${officialFlag.color}${officialFlag.purpleFlag ? " with a purple (marine pest / jellyfish) flag also flying" : ""}.
+
+Search for TODAY's rip current risk category and surf height range for the South Walton / 30A coast (Walton County, FL — Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seagrove Beach, Inlet Beach), from the NWS Surf Zone Forecast (issued by NWS Tallahassee, forecast.weather.gov) and, if available and clearly current, Surfline's latest surf report for Grayton Beach or the nearest 30A spot for surf-height detail.
+
+Currency matters: a source more than 1-2 days old is not today's reading. If you can't find a genuinely current rip current risk or surf height, set that field to "unknown" rather than presenting stale data as current — an honest "unknown" beats a confidently wrong number.
+
+Respond with ONLY a JSON object, no other text, no markdown fences:
+{"ripCurrentRisk": "low|moderate|high|unknown", "surfHeight": "e.g. 1-2 ft", "notes": "1-2 sentence practical note for someone deciding whether to surf fish today", "source": "brief attribution, e.g. site names you drew from"}`;
+}
+
+// Fallback prompt used only if the official-site scrape itself fails (site
+// down, markup changed) — asks Claude to find everything via search,
+// including the flag color, same as before this direct-fetch was added.
+function buildFullFallbackPrompt() {
+  return `visitsouthwalton.com (South Walton's official visitor site, normally the authoritative flag source) could not be reached, so search for TODAY's beach warning flag color and rip current risk for the South Walton / 30A coast (Walton County, FL — Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seagrove Beach, Inlet Beach) some other way — check the South Walton Fire District's page (swfd.org/beach-safety/surf-conditions) and the NWS Surf Zone Forecast (forecast.weather.gov, issued by NWS Tallahassee) for today's posted flag color and rip current risk category, and Surfline's latest Grayton Beach report if available for surf height.
+
+The flag is set county-wide by SWFD — the same flag flies at every Walton County beach on a given day, so a reading from any one source is enough; you do not need independent confirmation from every beach. But currency is non-negotiable regardless of source count: a "last refreshed" widget from days ago, a cached feed, or a stale aggregator page is NOT today's flag. If everything you find is stale, set "flagColor" and "ripCurrentRisk" to "unknown" and say so honestly in "notes" — a confidently-stated wrong answer is worse than an honest "unknown".
+
+The flag system is: green (low hazard), yellow (medium hazard, moderate surf/currents), red (high hazard, strong surf/currents), double red (water closed to the public). A purple flag flying alongside another color means dangerous marine life reported (jellyfish, stingrays, etc) — include that only if it's actually flying today.
 
 Respond with ONLY a JSON object, no other text, no markdown fences:
 {"flagColor": "green|yellow|red|double red|unknown", "ripCurrentRisk": "low|moderate|high|unknown", "surfHeight": "e.g. 1-2 ft", "purpleFlag": false, "notes": "1-2 sentence practical note for someone deciding whether to surf fish today", "source": "brief attribution, e.g. site names you drew from"}`;
-}
-
-async function fetchSurfline() {
-  // Try a couple of simple Surfline URL patterns and look for a numeric
-  // surf height. This is best-effort: Surfline pages can be JS-heavy, so
-  // we perform a lightweight text scrape and regex extraction.
-  const candidates = [
-    'https://www.surfline.com/surf-report/grayton-beach',
-    'https://www.surfline.com/surf-report/grayton-beach-fl/5842041f4e65fad6a77088d4'
-  ];
-  for (const url of candidates) {
-    try {
-      const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-      if (!res.ok) continue;
-      const text = await res.text();
-      // Prefer explicit "ft" ranges like "1-2 ft" or "2 ft" or the word "Flat"
-      const rangeMatch = text.match(/(\d+(?:\.\d+)?\s*-\s*\d+(?:\.\d+)?\s*ft)/i);
-      const singleMatch = text.match(/(\d+(?:\.\d+)?\s*ft)/i);
-      const flatMatch = text.match(/\bflat\b/i);
-      if (rangeMatch) return { surfline: rangeMatch[1].replace(/\s+/g, ' '), source: url };
-      if (singleMatch) return { surfline: singleMatch[1].replace(/\s+/g, ' '), source: url };
-      if (flatMatch) return { surfline: 'Flat', source: url };
-    } catch (e) {
-      // ignore and try next
-    }
-  }
-  return null;
 }
 
 async function callClaude(prompt) {
@@ -100,30 +117,41 @@ async function main() {
     process.exit(0);
   }
 
+  const officialFlag = await fetchOfficialFlag().catch((err) => {
+    console.warn("Official flag scrape failed, falling back to Claude search for the flag itself too:", err.message);
+    return null;
+  });
+
   let result;
   try {
-    result = await callClaude(buildPrompt());
+    result = await callClaude(officialFlag ? buildRiskPrompt(officialFlag) : buildFullFallbackPrompt());
   } catch (err) {
     console.error("Beach safety update failed, leaving previous value in place:", err.message);
     process.exit(0);
   }
 
-  if (!result.flagColor) {
+  const flagColor = officialFlag?.color ?? result.flagColor;
+  const purpleFlag = officialFlag ? officialFlag.purpleFlag : !!result.purpleFlag;
+  if (!flagColor) {
     console.error("Unexpected response shape, leaving previous value in place.");
     process.exit(0);
   }
+
+  const source = officialFlag
+    ? `visitsouthwalton.com/beach-safety (official flag) + ${result.source} (rip risk/surf height) · Auto-refreshed`
+    : `${result.source} · Auto-refreshed via Claude API`;
 
   const updated = {
     ...existing,
     shared: {
       ...existing.shared,
       beachFlag: {
-        color: result.flagColor,
+        color: flagColor,
         ripCurrentRisk: result.ripCurrentRisk,
         surfHeight: result.surfHeight,
-        purpleFlag: !!result.purpleFlag,
+        purpleFlag,
         notes: result.notes,
-        source: `${result.source} · Auto-refreshed via Claude API`,
+        source,
         updated: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }),
       },
     },
