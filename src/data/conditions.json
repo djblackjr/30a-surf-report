@@ -34,7 +34,7 @@
     "swellDirection": "SW",
     "windWaveHeight": 0.2
   },
-  "lastUpdated": "8/4/2026, 8:37:51 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "lastUpdated": "8/4/2026, 8:41:41 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
   "forecast": [
     {
       "day": "Wed, Aug 5",
@@ -119,15 +119,15 @@
     }
   },
   "beachFlag": {
-    "color": "unknown",
-    "ripCurrentRisk": "unknown",
-    "surfHeight": "unknown",
+    "color": "yellow",
+    "ripCurrentRisk": "moderate",
+    "surfHeight": "0-1 ft",
     "purpleFlag": false,
-    "notes": "No confirmed August 5, 2026 flag status or NWS SRF for the Walton/Bay panhandle coast was retrievable today — the most recent 30a.com flag widget shows Yellow (last changed 07/28, last refreshed 07/30) and the most recent NWS TAE SRF found is from June 22, both too stale to report as current. For today's actual flag and rip current risk, check swfd.org/beach-safety/surf-conditions directly, text SAFETY to 31279, or visit forecast.weather.gov (issued by NWS Tallahassee) before heading out.",
-    "source": "30a.com/beachflag (stale, last refreshed 07/30/2026), swfd.org/beach-safety/surf-conditions (no live flag returned), tgftp.nws.noaa.gov NWS TAE SRF (most recent copy dated June 22 2026), Surfline Grayton Beach spot page (no live report returned) · Auto-refreshed via Claude API",
+    "notes": "Conditions are typical summer Gulf flatness with 0-1 ft surf (Surfline, Grayton Beach) and a moderate rip current risk per NWS Tallahassee — good enough for surf fishing from the shore, but stay alert to rip currents even in small surf, especially near troughs and cuts. Flag color is based on the most recently cached 30a.com live feed (last changed 07/28/2026, last refreshed 07/30/2026) and was not confirmed updated for Aug 5 — verify at swfd.org or text SAFETY to 31279 before heading out.",
+    "source": "Surfline (Grayton Beach spot page, 0-1ft POOR); 30a.com/beachflag (yellow, last changed 07/28/2026); floridadisaster.org Florida statewide beach summary (~Aug 2, 2026, moderate rip risk Eastern Panhandle, surf 1-3ft); NWS TAE Surf Zone Forecast (SRF/TAE, moderate rip current risk, ~1ft); swfd.org/beach-safety/surf-conditions (static flag system page, no today's flag color returned) · Auto-refreshed via Claude API",
     "updated": "August 4, 2026"
   },
-  "surfBiteReport": "The most recent surf fishing reports for the PCB-to-30A Gulf front are approximately 3 weeks old (July 2026). With water at 85°F and baitfish thick along the beaches, predators are actively following the schools — Spanish mackerel, whiting, redfish, and jack crevalle are the primary surf-zone species being landed from the sand. Whiting are the most consistent producers, best targeted with sand fleas, shrimp, or Fishbites worked in the deeper troughs between sandbars rather than cast to the horizon. Spanish mackerel and ladyfish are cruising the beachfront and can be intercepted with fast-retrieved spoons or small metal jigs, especially when birds are working bait near the surface. Fishing peaks sharply in the first few hours after daylight and again in the last two hours before sunset; midday heat pushes most fish deeper or off the bite entirely.",
-  "surfBiteSource": "noeoutdoors.com/pcb (July 2026, ~3 weeks old) · Auto-refreshed via Claude API",
+  "surfBiteReport": "The most current readable report found for this stretch is from noeoutdoors.com, dated approximately mid-July 2026 (roughly three weeks old). Along the PCB and adjacent Gulf-front beaches, the surf bite was described as steady, with Spanish mackerel, whiting, redfish, and jack crevalle showing up along the shoreline, particularly during the first and last couple hours of daylight when baitfish schools push close to shore. Water temp today measured at 85°F. The tactic that was producing: targeting the deeper troughs and cuts between sandbars rather than casting to open water, and watching for diving birds or jumping bait before picking a spot. Sargassum grass was variable beach to beach, so moving to find cleaner water made a significant difference in results.",
+  "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, approximately 3 weeks old — most current available) · Auto-refreshed via Claude API",
   "surfBiteUpdated": "August 4, 2026"
 }
