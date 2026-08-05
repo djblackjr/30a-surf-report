@@ -5,17 +5,213 @@
     "beachFlag": {
       "color": "yellow",
       "ripCurrentRisk": "moderate",
-      "surfHeight": "1-3 ft",
+      "surfHeight": "0-1 ft (surf zone); 1-2 ft possible nearshore",
       "purpleFlag": false,
-      "notes": "The 30a.com flag widget (last changed 7/28, last refreshed 7/30) and a third-party SWFD aggregator both showed yellow; NWS Mobile's most current SRF for Okaloosa/western panhandle shows moderate rip current risk with 2–3 ft surf — conditions are manageable for surf fishing but stay aware of rip currents at any cut or structure. Verify the live flag at swfd.org or text SAFETY to 31279 before heading out, as today's SWFD post could not be directly confirmed.",
-      "source": "30a.com/beachflag (last refreshed 7/30/26, stale), whatsgoodlocal.com (SWFD aggregator), NWS Mobile Surf Zone Forecast (forecast.weather.gov/product.php?site=MOB&product=SRF), seatemperature.info/Swellinfo (Grayton Beach wave model); Surfline live data unavailable; NWS TAE SRF for FLZ108 not retrievable for Aug 4 · Auto-refreshed via Claude API",
+      "notes": "Conditions appear manageable for surf fishing with small S-swell surf and yellow (moderate hazard) flags; however, rip currents are possible even in flat surf — wade cautiously, especially near any cuts or beach access channels. The 30A flag widget was last updated July 28 and may not reflect today's exact posting, so verify at swfd.org or by texting SAFETY to 31279 before heading out.",
+      "source": "Surfline (Grayton Beach spot page, 0-1 ft POOR rating); 30A.com beach flag widget (Yellow, last changed 07/28/2026); floridadisaster.org NWS summary (~Aug 2, 2026, moderate rip/1-3 ft panhandle); NWS TAE Surf Zone Forecast (SRF TAE, moderate rip risk, 1-2 ft South Walton); swfd.org flag system reference · Auto-refreshed via Claude API",
       "updated": "August 4, 2026"
     },
-    "surfBiteReport": "The most recent available report for the Panama City Beach surf zone is approximately three weeks old (mid-July 2026), so treat this as recent-but-not-this-week intel. At that point, the surf bite along PCB beaches was described as steady, particularly during early morning and the last couple of hours before sunset, with baitfish schools running thick along the shoreline and predators trailing them closely. Spanish mackerel, whiting, and redfish were the primary surf-zone species showing up, with anglers advised to target the deeper cuts and troughs between sandbars rather than casting maximum distance. Water temperature today at this location is 85°F. No current (this week) report was retrievable for the 30A corridor specifically (Grayton Beach, Seaside, WaterColor, Inlet Beach).",
-    "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, approximately 3 weeks old) · Auto-refreshed via Claude API",
-    "surfBiteUpdated": "August 4, 2026"
+    "surfBiteReport": "Note: The most current report I was able to pull surf-specific content from for the PCB/30A Gulf-front stretch is approximately 3 weeks old (mid-July 2026), so treat this as recent but not this week's conditions. Along the beaches from Panama City Beach westward through the 30A corridor, the surf bite has been steady with Spanish mackerel, whiting, redfish, and jack crevalle showing up consistently — best action runs from first light to around 9 a.m. and again in the final hour or two before sunset, when baitfish push close to shore and predators follow. Water temperature is 85°F. Target the deeper cuts and troughs between sandbars rather than bombing casts to the horizon, as most surf species are feeding surprisingly close in; watch for diving birds or jumping bait to locate the action. Whiting are providing the most reliable numbers on sand fleas, shrimp, and Fishbites fished in the troughs, while Spanish mackerel respond well to spoons and small swimbaits retrieved quickly along the surface.",
+    "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, ~3 weeks old) · Auto-refreshed via Claude API",
+    "surfBiteUpdated": "August 4, 2026",
+    "tideEvents": [
+      {
+        "type": "H",
+        "time": "3:56 AM"
+      },
+      {
+        "type": "L",
+        "time": "3:15 PM"
+      }
+    ],
+    "moonPhase": "Last Quarter (~58% illuminated) — moderate tidal push",
+    "lastUpdated": "8/4/2026, 10:31:42 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed"
   },
   "locations": {
+    "dune-allen-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SW",
+        "description": "SW 5 to 10 mph"
+      },
+      "weather": "Sunny · High 88°F",
+      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "sunrise": "6:04 AM",
+      "sunset": "7:37 PM",
+      "stormWindow": "",
+      "stormChance": 14,
+      "sky": "Bright sun",
+      "waterTemp": 85,
+      "wave": {
+        "height": 1.1,
+        "period": 4.6,
+        "direction": "SW",
+        "swellHeight": 0.7,
+        "swellPeriod": 3.5,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.1
+      },
+      "forecast": [
+        {
+          "day": "Wed, Aug 5",
+          "label": "Today",
+          "high": 88,
+          "low": null,
+          "wind": "SW 5 to 10 mph",
+          "storms": 14,
+          "headline": "Sunny",
+          "fishingScore": 8.4,
+          "aiCall": "Sunny. High near 88, with temperatures falling to around 85 in the afternoon. Southwest wind 5 to 10 mph.",
+          "emoji": "☀️"
+        },
+        {
+          "day": "Thu, Aug 6",
+          "label": "Tomorrow",
+          "high": 88,
+          "low": null,
+          "wind": "SSE 0 to 10 mph",
+          "storms": 13,
+          "headline": "Sunny",
+          "fishingScore": 8.5,
+          "aiCall": "Sunny. High near 88, with temperatures falling to around 85 in the afternoon. South southeast wind 0 to 10 mph.",
+          "emoji": "☀️"
+        },
+        {
+          "day": "Fri, Aug 7",
+          "label": "Friday",
+          "high": 87,
+          "low": null,
+          "wind": "ESE 5 to 10 mph",
+          "storms": 24,
+          "headline": "Slight Chance Showers And Thunderstorms",
+          "fishingScore": 7.5,
+          "aiCall": "A slight chance of showers and thunderstorms after 7am. Mostly sunny, with a high near 87. Chance of precipitation is 20%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 88,
+          "low": 75,
+          "stormChance": 3,
+          "windSpeed": 13,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 91,
+          "low": 78,
+          "stormChance": 6,
+          "windSpeed": 12,
+          "windDir": "SW",
+          "summary": "Partly cloudy"
+        },
+        {
+          "high": 88,
+          "low": 79,
+          "stormChance": 5,
+          "windSpeed": 10,
+          "windDir": "S",
+          "summary": "Overcast"
+        }
+      ],
+      "previousDay": {
+        "wind": {},
+        "stormChance": 0
+      }
+    },
+    "blue-mountain-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SW",
+        "description": "SW 0 to 10 mph"
+      },
+      "weather": "Sunny then Slight Chance Showers And Thunderstorms · High 88°F",
+      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "sunrise": "6:04 AM",
+      "sunset": "7:36 PM",
+      "stormWindow": "",
+      "stormChance": 20,
+      "sky": "Cloudy",
+      "waterTemp": 85,
+      "wave": {
+        "height": 1.1,
+        "period": 4.6,
+        "direction": "SW",
+        "swellHeight": 0.6,
+        "swellPeriod": 3.5,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.1
+      },
+      "forecast": [
+        {
+          "day": "Wed, Aug 5",
+          "label": "Today",
+          "high": 88,
+          "low": null,
+          "wind": "SW 0 to 10 mph",
+          "storms": 20,
+          "headline": "Sunny then Slight Chance Showers And Thunderstorms",
+          "fishingScore": 7.9,
+          "aiCall": "A slight chance of showers and thunderstorms between 1pm and 2pm. Sunny, with a high near 88. Southwest wind 0 to 10 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Thu, Aug 6",
+          "label": "Tomorrow",
+          "high": 88,
+          "low": null,
+          "wind": "SSE 0 to 5 mph",
+          "storms": 13,
+          "headline": "Sunny",
+          "fishingScore": 8.5,
+          "aiCall": "Sunny, with a high near 88. South southeast wind 0 to 5 mph.",
+          "emoji": "☀️"
+        },
+        {
+          "day": "Fri, Aug 7",
+          "label": "Friday",
+          "high": 90,
+          "low": null,
+          "wind": "SE 5 mph",
+          "storms": 26,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.5,
+          "aiCall": "A chance of showers and thunderstorms after 7am. Mostly sunny, with a high near 90. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 87,
+          "low": 75,
+          "stormChance": 4,
+          "windSpeed": 12,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 89,
+          "low": 78,
+          "stormChance": 6,
+          "windSpeed": 11,
+          "windDir": "SW",
+          "summary": "Partly cloudy"
+        },
+        {
+          "high": 88,
+          "low": 79,
+          "stormChance": 5,
+          "windSpeed": 9,
+          "windDir": "S",
+          "summary": "Light drizzle"
+        }
+      ],
+      "previousDay": {
+        "wind": {},
+        "stormChance": 0
+      }
+    },
     "grayton-beach": {
       "wind": {
         "speed": 10,
@@ -23,34 +219,22 @@
         "description": "SW 0 to 10 mph"
       },
       "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
-      "tide": "High tide ~3:32 AM · Low tide ~1:10 PM · Sunrise 6:03 AM",
-      "tideEvents": [
-        {
-          "type": "H",
-          "time": "3:32 AM"
-        },
-        {
-          "type": "L",
-          "time": "1:10 PM"
-        }
-      ],
-      "sunrise": "6:03 AM",
-      "sunset": "7:37 PM",
+      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "sunrise": "6:04 AM",
+      "sunset": "7:36 PM",
       "stormWindow": "before 9AM",
       "stormChance": 20,
       "sky": "Cloudy",
-      "moonPhase": "Last Quarter (~58% illuminated) — moderate tidal push",
       "waterTemp": 85,
       "wave": {
         "height": 1.2,
-        "period": 3.9,
+        "period": 4.8,
         "direction": "SW",
-        "swellHeight": 0.7,
-        "swellPeriod": 3.9,
+        "swellHeight": 0.8,
+        "swellPeriod": 3.3,
         "swellDirection": "SW",
-        "windWaveHeight": 0.7
+        "windWaveHeight": 0.1
       },
-      "lastUpdated": "8/4/2026, 6:41:50 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
       "forecast": [
         {
           "day": "Wed, Aug 5",
@@ -100,39 +284,222 @@
         },
         {
           "high": 89,
-          "low": 78,
+          "low": 77,
           "stormChance": 6,
           "windSpeed": 10,
           "windDir": "SW",
           "summary": "Overcast"
         },
         {
-          "high": 94,
-          "low": 76,
-          "stormChance": 6,
-          "windSpeed": 12,
+          "high": 88,
+          "low": 79,
+          "stormChance": 5,
+          "windSpeed": 10,
           "windDir": "S",
-          "summary": "Thunderstorm"
+          "summary": "Light drizzle"
         }
       ],
       "previousDay": {
-        "date": "Monday, August 3, 2026",
         "wind": {
-          "dir": "WNW",
+          "dir": "SW",
           "speed": 10
         },
         "high": 87,
-        "stormChance": 14,
-        "tide": "High tide ~3:31 AM · Low tide ~10:44 AM · Sunrise 6:03 AM",
+        "stormChance": 20,
+        "tide": "High tide ~3:32 AM · Low tide ~1:10 PM · Sunrise 6:03 AM",
         "wave": {
-          "height": 2.6,
-          "period": 4.5,
+          "height": 1.2,
+          "period": 3.9,
           "direction": "SW",
-          "swellHeight": 1.9,
-          "swellPeriod": 4.9,
+          "swellHeight": 0.7,
+          "swellPeriod": 3.9,
           "swellDirection": "SW",
-          "windWaveHeight": 1.6
+          "windWaveHeight": 0.7
         }
+      }
+    },
+    "seagrove-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SW",
+        "description": "SW 0 to 10 mph"
+      },
+      "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
+      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "sunrise": "6:04 AM",
+      "sunset": "7:36 PM",
+      "stormWindow": "",
+      "stormChance": 20,
+      "sky": "Cloudy",
+      "waterTemp": 85,
+      "wave": {
+        "height": 1.2,
+        "period": 4.8,
+        "direction": "SW",
+        "swellHeight": 0.8,
+        "swellPeriod": 3.3,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.1
+      },
+      "forecast": [
+        {
+          "day": "Wed, Aug 5",
+          "label": "Today",
+          "high": 87,
+          "low": null,
+          "wind": "SW 0 to 10 mph",
+          "storms": 20,
+          "headline": "Slight Chance Showers And Thunderstorms",
+          "fishingScore": 7.8,
+          "aiCall": "A slight chance of showers and thunderstorms between 8am and 2pm. Sunny, with a high near 87. Southwest wind 0 to 10 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Thu, Aug 6",
+          "label": "Tomorrow",
+          "high": 88,
+          "low": null,
+          "wind": "SSE 0 to 10 mph",
+          "storms": 13,
+          "headline": "Sunny",
+          "fishingScore": 8.5,
+          "aiCall": "Sunny. High near 88, with temperatures falling to around 84 in the afternoon. South southeast wind 0 to 10 mph.",
+          "emoji": "☀️"
+        },
+        {
+          "day": "Fri, Aug 7",
+          "label": "Friday",
+          "high": 87,
+          "low": null,
+          "wind": "ESE 5 to 10 mph",
+          "storms": 26,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.5,
+          "aiCall": "A chance of showers and thunderstorms after 7am. Mostly sunny, with a high near 87. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 87,
+          "low": 75,
+          "stormChance": 6,
+          "windSpeed": 12,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 89,
+          "low": 77,
+          "stormChance": 5,
+          "windSpeed": 10,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 88,
+          "low": 78,
+          "stormChance": 5,
+          "windSpeed": 10,
+          "windDir": "S",
+          "summary": "Light drizzle"
+        }
+      ],
+      "previousDay": {
+        "wind": {},
+        "stormChance": 0
+      }
+    },
+    "inlet-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SW",
+        "description": "SW 0 to 10 mph"
+      },
+      "weather": "Slight Chance Showers And Thunderstorms · High 86°F",
+      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:03 AM",
+      "sunrise": "6:03 AM",
+      "sunset": "7:36 PM",
+      "stormWindow": "",
+      "stormChance": 21,
+      "sky": "Cloudy",
+      "waterTemp": 85,
+      "wave": {
+        "height": 1.1,
+        "period": 4.7,
+        "direction": "SW",
+        "swellHeight": 0.8,
+        "swellPeriod": 3.2,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.1
+      },
+      "forecast": [
+        {
+          "day": "Wed, Aug 5",
+          "label": "Today",
+          "high": 86,
+          "low": null,
+          "wind": "SW 0 to 10 mph",
+          "storms": 21,
+          "headline": "Slight Chance Showers And Thunderstorms",
+          "fishingScore": 7.7,
+          "aiCall": "A slight chance of showers and thunderstorms between 8am and 3pm. Sunny, with a high near 86. Southwest wind 0 to 10 mph. Chance of precipitation is 20%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Thu, Aug 6",
+          "label": "Tomorrow",
+          "high": 87,
+          "low": null,
+          "wind": "SE 0 to 5 mph",
+          "storms": 14,
+          "headline": "Sunny",
+          "fishingScore": 8.4,
+          "aiCall": "Sunny, with a high near 87. Southeast wind 0 to 5 mph.",
+          "emoji": "☀️"
+        },
+        {
+          "day": "Fri, Aug 7",
+          "label": "Friday",
+          "high": 87,
+          "low": null,
+          "wind": "ESE 5 mph",
+          "storms": 29,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.3,
+          "aiCall": "A chance of showers and thunderstorms after 7am. Mostly sunny, with a high near 87. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 86,
+          "low": 75,
+          "stormChance": 6,
+          "windSpeed": 12,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 87,
+          "low": 78,
+          "stormChance": 6,
+          "windSpeed": 9,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 87,
+          "low": 77,
+          "stormChance": 6,
+          "windSpeed": 10,
+          "windDir": "S",
+          "summary": "Light drizzle"
+        }
+      ],
+      "previousDay": {
+        "wind": {},
+        "stormChance": 0
       }
     }
   }
