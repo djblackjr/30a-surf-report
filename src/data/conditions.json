@@ -11,21 +11,21 @@
       "source": "whatsgoodlocal.com (live feed via swfd.org, ~1 week ago cache); Surfline Grayton Beach (0–1 ft, POOR); floridadisaster.org NWS summary (~Aug 1–2 2026, moderate rip Eastern Panhandle, surf 1–3 ft); 30a.com/beachflag (yellow, last refreshed 07/30/2026); NWS TAE Surf Zone Forecast (forecast.weather.gov/SRF/TAE) · Auto-refreshed via Claude API",
       "updated": "August 4, 2026"
     },
-    "surfBiteReport": "The most recent Half Hitch PCB report (July 31, 2026 — five days ago) describes the surf as the bright spot of the week despite generally stained, weather-stirred water following Tropical Storm Bertha. A handful of pompano and Spanish mackerel were still being caught, though baitfish counts along the beach remain below pre-storm levels and additional wind and rain over the weekend could slow recovery. Redfish are responding well to the full moon, moving up in the water column on outgoing tides — floating plugs and large soft plastics are the recommended approach. With water temps at 85°F, pompano activity is typically reduced compared to spring peaks, but charter reports from mid-July showed exceptional pompano numbers before the storm; expect that bite to rebuild as conditions clear. The key right now is scouting for clean, grass-free water before committing — sargassum and storm turbidity are the main obstacles along the 30A-to-PCB stretch.",
-    "surfBiteSource": "halfhitch.com (PCB Fishing Report 7-31-26) · Auto-refreshed via Claude API",
+    "surfBiteReport": "The most recent available reports for this stretch of coast are from late July 2026, roughly one to three weeks old rather than this week. Along the Gulf-front beaches from Panama City Beach toward 30A, surf anglers were finding Spanish mackerel, whiting, redfish, and jack crevalle in the wash, with pompano also showing up in good numbers — one captain in the area reported 44 keeper pompano in a single outing. The key, as usual in summer, is locating clean-water pockets free of floating grass, then fishing the first and second troughs early in the morning before beach traffic picks up. Water temperature at the surf line today is 85°F, which is typical for early August and keeps fish active but pushes the better bites to dawn and dusk windows.",
+    "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026), captainexperiences.com PCB reports (late July 2026) · Auto-refreshed via Claude API",
     "surfBiteUpdated": "August 4, 2026",
     "tideEvents": [
       {
         "type": "H",
-        "time": "3:56 AM"
+        "time": "10:56 PM"
       },
       {
         "type": "L",
-        "time": "3:15 PM"
+        "time": "10:15 AM"
       }
     ],
-    "moonPhase": "Last Quarter (~58% illuminated) — moderate tidal push",
-    "lastUpdated": "8/4/2026, 10:43:31 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed"
+    "moonPhase": "Last Quarter (~47% illuminated) — moderate tidal push",
+    "lastUpdated": "8/4/2026, 10:45:51 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed"
   },
   "locations": {
     "dune-allen-beach": {
@@ -35,7 +35,7 @@
         "description": "SW 5 to 10 mph"
       },
       "weather": "Sunny · High 88°F",
-      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
       "sunrise": "6:04 AM",
       "sunset": "7:37 PM",
       "stormWindow": "",
@@ -44,7 +44,7 @@
       "waterTemp": 85,
       "wave": {
         "height": 1.1,
-        "period": 4.6,
+        "period": 4.7,
         "direction": "SW",
         "swellHeight": 0.7,
         "swellPeriod": 3.5,
@@ -141,7 +141,7 @@
         "description": "SW 0 to 10 mph"
       },
       "weather": "Sunny then Slight Chance Showers And Thunderstorms · High 88°F",
-      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
       "sunrise": "6:04 AM",
       "sunset": "7:36 PM",
       "stormWindow": "",
@@ -247,7 +247,7 @@
         "description": "SW 0 to 10 mph"
       },
       "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
-      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
       "sunrise": "6:04 AM",
       "sunset": "7:36 PM",
       "stormWindow": "before 9AM",
@@ -259,7 +259,7 @@
         "period": 4.8,
         "direction": "SW",
         "swellHeight": 0.8,
-        "swellPeriod": 3.3,
+        "swellPeriod": 3.2,
         "swellDirection": "SW",
         "windWaveHeight": 0.1
       },
@@ -353,7 +353,7 @@
         "description": "SW 0 to 10 mph"
       },
       "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
-      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:04 AM",
+      "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:04 AM",
       "sunrise": "6:04 AM",
       "sunset": "7:36 PM",
       "stormWindow": "",
@@ -365,7 +365,7 @@
         "period": 4.8,
         "direction": "SW",
         "swellHeight": 0.8,
-        "swellPeriod": 3.3,
+        "swellPeriod": 3.2,
         "swellDirection": "SW",
         "windWaveHeight": 0.1
       },
@@ -459,7 +459,7 @@
         "description": "SW 0 to 10 mph"
       },
       "weather": "Slight Chance Showers And Thunderstorms · High 86°F",
-      "tide": "High tide ~3:56 AM · Low tide ~3:15 PM · Sunrise 6:03 AM",
+      "tide": "High tide ~10:56 PM · Low tide ~10:15 AM · Sunrise 6:03 AM",
       "sunrise": "6:03 AM",
       "sunset": "7:36 PM",
       "stormWindow": "",
