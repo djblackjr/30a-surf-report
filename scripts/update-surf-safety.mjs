@@ -22,7 +22,9 @@ if (!API_KEY) {
 }
 
 function buildPrompt() {
-  return `Search for TODAY's beach warning flag color and rip current risk for the South Walton / 30A coast (Grayton Beach, FL), and for the wider Okaloosa/Walton/Bay County Florida panhandle Gulf coast.
+  return `Search for TODAY's beach warning flag color and rip current risk for the South Walton / 30A coast (Dune Allen Beach, Blue Mountain Beach, Grayton Beach, Seagrove Beach, and Inlet Beach, FL — all Walton County), and for the wider Okaloosa/Walton/Bay County Florida panhandle Gulf coast.
+
+The flag system is set and posted county-wide by the South Walton Fire District (SWFD) — it is the same flag for every beach in Walton County on a given day, not set per individual beach. So if you find a genuinely current (today's) flag posting from ANY single Walton County beach access point, the SWFD page, or a Walton-County-wide source, treat that as the confirmed answer for the whole South Walton / 30A coast — do not hedge or mark it unconfirmed just because it wasn't independently posted at every single beach.
 
 If available, Surfline's latest surf report for Grayton Beach (or the nearest 30A surf spot) should be preferred for surf height/wave detail. If you (the caller) supply a short Surfline summary string, include it in your reasoning and prefer its surf-height detail where it is clearly current. Also check the South Walton Fire District's surf conditions page (swfd.org/beach-safety/surf-conditions) for today's posted flag color, and the NWS Surf Zone Forecast for the Florida panhandle coast (issued by NWS Tallahassee, forecast.weather.gov) for today's rip current risk category and surf height range.
 

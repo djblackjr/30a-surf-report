@@ -3,12 +3,12 @@
     "date": "Tuesday, August 4, 2026",
     "dateISO": "2026-08-04",
     "beachFlag": {
-      "color": "unknown",
+      "color": "red",
       "ripCurrentRisk": "moderate",
-      "surfHeight": "1-3 ft (estimated)",
+      "surfHeight": "1-2 ft",
       "purpleFlag": false,
-      "notes": "No confirmed today's (Aug 5, 2026) flag color was retrievable — the 30a.com feed is stale (last refreshed 07/30), and SWFD's live widget did not return today's status; text 'SAFETY' to 31279 for the real-time flag. Rip current risk is estimated moderate based on the most recent floridadisaster.org summary (~Aug 2) citing moderate risk for the Eastern Panhandle with surf returning to 1-3 ft; conditions are fishable from the beach but watch for rip currents, especially at low tide and near any cuts or jetties.",
-      "source": "30a.com/beachflag (stale, last refreshed 07/30/2026), swfd.org/beach-safety/surf-conditions (flag system info only, no live widget data returned), floridadisaster.org weather summary (~Aug 2, 2026), NWS TAE Surf Zone Forecast (most current retrieved: Jun 22, 2026), seatemperature.info/Swellinfo (Grayton Beach wave model, undated), Surfline (spot guide only, no live report returned) · Auto-refreshed via Claude API",
+      "notes": "A single red flag (high hazard) was the most recently cached live reading for South Walton/Miramar Beach sourced from swfd.org; surf is small at 0–1 ft per Surfline but rip current risk remains the main concern — wade and surf fish with caution, stay aware of footing in the shorebreak, and verify the current flag at swfd.org or by texting SAFETY to 31279 before heading out since the flag can be updated twice daily. No purple flag confirmed for today specifically, though marine life (jellyfish/stingrays) has been an ongoing presence along 30A this season.",
+      "source": "whatsgoodlocal.com (live feed via swfd.org, ~1 week ago cache); Surfline Grayton Beach (0–1 ft, POOR); floridadisaster.org NWS summary (~Aug 1–2 2026, moderate rip Eastern Panhandle, surf 1–3 ft); 30a.com/beachflag (yellow, last refreshed 07/30/2026); NWS TAE Surf Zone Forecast (forecast.weather.gov/SRF/TAE) · Auto-refreshed via Claude API",
       "updated": "August 4, 2026"
     },
     "surfBiteReport": "The most recent Half Hitch PCB report (July 31, 2026 — five days ago) describes the surf as the bright spot of the week despite generally stained, weather-stirred water following Tropical Storm Bertha. A handful of pompano and Spanish mackerel were still being caught, though baitfish counts along the beach remain below pre-storm levels and additional wind and rain over the weekend could slow recovery. Redfish are responding well to the full moon, moving up in the water column on outgoing tides — floating plugs and large soft plastics are the recommended approach. With water temps at 85°F, pompano activity is typically reduced compared to spring peaks, but charter reports from mid-July showed exceptional pompano numbers before the storm; expect that bite to rebuild as conditions clear. The key right now is scouting for clean, grass-free water before committing — sargassum and storm turbidity are the main obstacles along the 30A-to-PCB stretch.",
