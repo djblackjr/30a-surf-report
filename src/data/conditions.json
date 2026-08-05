@@ -1,141 +1,133 @@
 {
-  "date": "Monday, July 20, 2026",
-  "dateISO": "2026-07-20",
+  "date": "Tuesday, August 4, 2026",
+  "dateISO": "2026-08-04",
   "wind": {
-    "speed": 25,
-    "dir": "ESE",
-    "description": "ESE 20 to 25 mph"
+    "speed": 10,
+    "dir": "SW",
+    "description": "SW 0 to 10 mph"
   },
-  "weather": "Chance Showers And Thunderstorms then Showers And Thunderstorms · High 84°F",
-  "tide": "High tide ~4:59 AM · Low tide ~4:14 PM · Sunrise 5:55 AM",
+  "weather": "Slight Chance Showers And Thunderstorms · High 87°F",
+  "tide": "High tide ~3:32 AM · Low tide ~1:10 PM · Sunrise 6:03 AM",
   "tideEvents": [
     {
       "type": "H",
-      "time": "4:59 AM"
+      "time": "3:32 AM"
     },
     {
       "type": "L",
-      "time": "4:14 PM"
+      "time": "1:10 PM"
     }
   ],
-  "sunrise": "5:55 AM",
-  "sunset": "7:46 PM",
-  "stormWindow": "before 7AM",
-  "stormChance": 93,
+  "sunrise": "6:03 AM",
+  "sunset": "7:37 PM",
+  "stormWindow": "before 9AM",
+  "stormChance": 20,
   "sky": "Cloudy",
-  "moonPhase": "First Quarter (~44% illuminated) — moderate tidal push",
+  "moonPhase": "Last Quarter (~58% illuminated) — moderate tidal push",
   "waterTemp": 85,
   "wave": {
-    "height": 3,
-    "period": 4.9,
-    "direction": "SE",
-    "swellHeight": 2.4,
-    "swellPeriod": 4.9,
-    "swellDirection": "SE",
-    "windWaveHeight": 1.8
+    "height": 1.2,
+    "period": 3.9,
+    "direction": "SW",
+    "swellHeight": 0.7,
+    "swellPeriod": 3.9,
+    "swellDirection": "SW",
+    "windWaveHeight": 0.7
   },
-  "lastUpdated": "7/20/2026, 11:44:31 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "lastUpdated": "8/4/2026, 6:41:50 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
   "forecast": [
     {
-      "day": "Tue, Jul 21",
+      "day": "Wed, Aug 5",
       "label": "Today",
-      "high": 84,
+      "high": 87,
       "low": null,
-      "wind": "ESE 20 to 25 mph",
-      "storms": 93,
-      "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms",
-      "fishingScore": 3.3,
-      "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms. Mostly sunny, with a high near 84. East southeast wind 20 to 25 mph, with gusts as high as 40 mph. Chance of precipitation is 90%. New rainfall amounts between a quarter and half of an inch possible.",
+      "wind": "SW 0 to 10 mph",
+      "storms": 20,
+      "headline": "Slight Chance Showers And Thunderstorms",
+      "fishingScore": 7.9,
+      "aiCall": "A slight chance of showers and thunderstorms between 8am and 2pm. Sunny, with a high near 87. Southwest wind 0 to 10 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
       "emoji": "⛈️"
     },
     {
-      "day": "Wed, Jul 22",
+      "day": "Thu, Aug 6",
       "label": "Tomorrow",
-      "high": 85,
+      "high": 88,
       "low": null,
-      "wind": "S 20 to 25 mph",
-      "storms": 51,
-      "headline": "Showers And Thunderstorms Likely · Heat index 100",
-      "fishingScore": 5,
-      "aiCall": "Showers and thunderstorms likely before 1pm, then a chance of showers and thunderstorms. Mostly sunny, with a high near 85. Heat index values as high as 100. South wind 20 to 25 mph, with gusts as high as 35 mph. Chance of precipitation is 50%.",
-      "emoji": "⛈️"
+      "wind": "SSE 0 to 10 mph",
+      "storms": 12,
+      "headline": "Sunny",
+      "fishingScore": 8.5,
+      "aiCall": "Sunny. High near 88, with temperatures falling to around 85 in the afternoon. South southeast wind 0 to 10 mph.",
+      "emoji": "☀️"
     },
     {
-      "day": "Thu, Jul 23",
-      "label": "Thursday",
-      "high": 86,
+      "day": "Fri, Aug 7",
+      "label": "Friday",
+      "high": 87,
       "low": null,
-      "wind": "SSW 15 mph",
-      "storms": 46,
+      "wind": "ESE 5 to 10 mph",
+      "storms": 25,
       "headline": "Chance Showers And Thunderstorms",
-      "fishingScore": 6.2,
-      "aiCall": "A slight chance of rain showers before 7am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. Chance of precipitation is 50%.",
+      "fishingScore": 7.5,
+      "aiCall": "A chance of showers and thunderstorms after 7am. Mostly sunny, with a high near 87. Chance of precipitation is 30%.",
       "emoji": "⛈️"
     }
   ],
   "openMeteo": [
     {
-      "high": 88,
-      "low": 74,
-      "stormChance": 48,
-      "windSpeed": 15,
-      "windDir": "NE",
+      "high": 87,
+      "low": 75,
+      "stormChance": 4,
+      "windSpeed": 12,
+      "windDir": "SW",
       "summary": "Overcast"
     },
     {
-      "high": 84,
-      "low": 76,
-      "stormChance": 58,
-      "windSpeed": 24,
-      "windDir": "E",
-      "summary": "Violent rain showers"
+      "high": 89,
+      "low": 78,
+      "stormChance": 6,
+      "windSpeed": 10,
+      "windDir": "SW",
+      "summary": "Overcast"
     },
     {
-      "high": 85,
-      "low": 80,
-      "stormChance": 56,
-      "windSpeed": 26,
+      "high": 94,
+      "low": 76,
+      "stormChance": 6,
+      "windSpeed": 12,
       "windDir": "S",
-      "summary": "Light drizzle"
+      "summary": "Thunderstorm"
     }
   ],
-  "yrNo": {
-    "high": null,
-    "low": null,
-    "stormChance": 0,
-    "windSpeed": 9,
-    "windDir": "NE",
-    "summary": "partlycloudy night"
-  },
   "previousDay": {
-    "date": "Monday, July 20, 2026",
+    "date": "Monday, August 3, 2026",
     "wind": {
-      "dir": "ESE",
-      "speed": 25
+      "dir": "WNW",
+      "speed": 10
     },
-    "high": 84,
-    "stormChance": 93,
-    "tide": "High tide ~4:59 AM · Low tide ~4:14 PM · Sunrise 5:55 AM",
+    "high": 87,
+    "stormChance": 14,
+    "tide": "High tide ~3:31 AM · Low tide ~10:44 AM · Sunrise 6:03 AM",
     "wave": {
-      "height": 3.018,
-      "period": 4.85,
-      "direction": "SE",
-      "swellHeight": 2.428,
-      "swellPeriod": 4.85,
-      "swellDirection": "SE",
-      "windWaveHeight": 1.772
+      "height": 2.6,
+      "period": 4.5,
+      "direction": "SW",
+      "swellHeight": 1.9,
+      "swellPeriod": 4.9,
+      "swellDirection": "SW",
+      "windWaveHeight": 1.6
     }
   },
   "beachFlag": {
-    "color": "unknown",
-    "ripCurrentRisk": "high",
-    "surfHeight": "4-8 ft (tropical swell, building)",
+    "color": "yellow",
+    "ripCurrentRisk": "moderate",
+    "surfHeight": "1-3 ft",
     "purpleFlag": false,
-    "notes": "A High Surf Advisory is in effect for the Florida Panhandle today (July 21) through July 23 due to swells from Tropical Storm Bertha, which formed in the Gulf and was tracking NW toward the Panhandle as of Monday. The NHC explicitly warns of life-threatening surf and rip current conditions along the Gulf coast of Florida. Rip current risk was rated HIGH for Monday–Tuesday per WCTV/NWS; do NOT enter the water — surf fishing from the beach is possible but wade-in or wading conditions are extremely dangerous. The SWFD swfd.org/beach-safety/surf-conditions page did not return a live flag widget in search results, so today's specific flag color (likely red or double red) could not be confirmed — check swfd.org directly or text SAFETY to 31279 before going.",
-    "source": "NWS Tallahassee forecast.weather.gov (High Surf Advisory July 21–23); NHC/Tropical Storm Bertha advisories via spokesman.com, bocanewsnow.com (July 20–21, 2026); WCTV/TravelersToday rip current reporting; swfd.org (flag system reference only — no live widget retrieved) · Auto-refreshed via Claude API",
-    "updated": "July 20, 2026"
+    "notes": "The 30a.com flag widget (last changed 7/28, last refreshed 7/30) and a third-party SWFD aggregator both showed yellow; NWS Mobile's most current SRF for Okaloosa/western panhandle shows moderate rip current risk with 2–3 ft surf — conditions are manageable for surf fishing but stay aware of rip currents at any cut or structure. Verify the live flag at swfd.org or text SAFETY to 31279 before heading out, as today's SWFD post could not be directly confirmed.",
+    "source": "30a.com/beachflag (last refreshed 7/30/26, stale), whatsgoodlocal.com (SWFD aggregator), NWS Mobile Surf Zone Forecast (forecast.weather.gov/product.php?site=MOB&product=SRF), seatemperature.info/Swellinfo (Grayton Beach wave model); Surfline live data unavailable; NWS TAE SRF for FLZ108 not retrievable for Aug 4 · Auto-refreshed via Claude API",
+    "updated": "August 4, 2026"
   },
-  "surfBiteReport": "The most recent available reports are from roughly 10–21 days ago, so treat this as a general current-season picture rather than a real-time snapshot. Water temperature at the surf zone is running 85°F. Pompano has been the headline surf species across the entire stretch from 30A through Panama City Beach, with multiple reports of solid catches in July — scouting for clean, sargassum-free water is the key, as June grass and sargassum have periodically fouled the surf zone and shut the bite down when thick. Redfish have also shown up nearshore in the surf and close to passes, with schools reported feeding aggressively on falling tides around the full moon period. Spanish mackerel have been active as well, hitting lures with virtually every cast during some recent sessions. Sand fleas, peeled shrimp, and FishBites in ghost shrimp or chartreuse scents have been the go-to surf baits for pompano and whiting; jack crevalle schools are also cruising the beach and can provide unexpected drag-ripping action.",
-  "surfBiteSource": "Half Hitch Tackle PCB fishing report (7-1-26); FishingBooker 30A fishing reports (July 9–11, 2026) · Auto-refreshed via Claude API",
-  "surfBiteUpdated": "July 20, 2026"
+  "surfBiteReport": "The most recent available report for the Panama City Beach surf zone is approximately three weeks old (mid-July 2026), so treat this as recent-but-not-this-week intel. At that point, the surf bite along PCB beaches was described as steady, particularly during early morning and the last couple of hours before sunset, with baitfish schools running thick along the shoreline and predators trailing them closely. Spanish mackerel, whiting, and redfish were the primary surf-zone species showing up, with anglers advised to target the deeper cuts and troughs between sandbars rather than casting maximum distance. Water temperature today at this location is 85°F. No current (this week) report was retrievable for the 30A corridor specifically (Grayton Beach, Seaside, WaterColor, Inlet Beach).",
+  "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, approximately 3 weeks old) · Auto-refreshed via Claude API",
+  "surfBiteUpdated": "August 4, 2026"
 }

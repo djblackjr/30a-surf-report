@@ -1,0 +1,141 @@
+{
+  "date": "Monday, August 3, 2026",
+  "dateISO": "2026-08-03",
+  "wind": {
+    "speed": 10,
+    "dir": "WNW",
+    "description": "WNW 5 to 10 mph"
+  },
+  "weather": "Sunny · High 87°F",
+  "tide": "High tide ~3:31 AM · Low tide ~10:44 AM · Sunrise 6:03 AM",
+  "tideEvents": [
+    {
+      "type": "H",
+      "time": "3:31 AM"
+    },
+    {
+      "type": "L",
+      "time": "10:44 AM"
+    },
+    {
+      "type": "H",
+      "time": "3:41 PM"
+    },
+    {
+      "type": "L",
+      "time": "6:46 PM"
+    }
+  ],
+  "sunrise": "6:03 AM",
+  "sunset": "7:38 PM",
+  "stormWindow": "before 9AM",
+  "stormChance": 14,
+  "sky": "Bright sun",
+  "moonPhase": "Last Quarter (~68% illuminated) — moderate tidal push",
+  "waterTemp": 85,
+  "wave": {
+    "height": 2.6,
+    "period": 4.5,
+    "direction": "SW",
+    "swellHeight": 1.9,
+    "swellPeriod": 4.9,
+    "swellDirection": "SW",
+    "windWaveHeight": 1.6
+  },
+  "lastUpdated": "8/3/2026, 6:12:23 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+  "forecast": [
+    {
+      "day": "Tue, Aug 4",
+      "label": "Today",
+      "high": 87,
+      "low": null,
+      "wind": "WNW 5 to 10 mph",
+      "storms": 14,
+      "headline": "Sunny",
+      "fishingScore": 8.4,
+      "aiCall": "Sunny, with a high near 87. West northwest wind 5 to 10 mph.",
+      "emoji": "☀️"
+    },
+    {
+      "day": "Wed, Aug 5",
+      "label": "Tomorrow",
+      "high": 86,
+      "low": null,
+      "wind": "SW 5 to 10 mph",
+      "storms": 10,
+      "headline": "Sunny",
+      "fishingScore": 8.6,
+      "aiCall": "Sunny, with a high near 86. Southwest wind 5 to 10 mph.",
+      "emoji": "☀️"
+    },
+    {
+      "day": "Thu, Aug 6",
+      "label": "Thursday",
+      "high": 86,
+      "low": null,
+      "wind": "SSE 0 to 5 mph",
+      "storms": 20,
+      "headline": "Sunny then Slight Chance Showers And Thunderstorms",
+      "fishingScore": 7.8,
+      "aiCall": "A slight chance of showers and thunderstorms after 1pm. Sunny, with a high near 86. Chance of precipitation is 20%.",
+      "emoji": "⛈️"
+    }
+  ],
+  "openMeteo": [
+    {
+      "high": 88,
+      "low": 75,
+      "stormChance": 22,
+      "windSpeed": 14,
+      "windDir": "W",
+      "summary": "Drizzle"
+    },
+    {
+      "high": 87,
+      "low": 75,
+      "stormChance": 6,
+      "windSpeed": 11,
+      "windDir": "SW",
+      "summary": "Overcast"
+    },
+    {
+      "high": 92,
+      "low": 76,
+      "stormChance": 10,
+      "windSpeed": 11,
+      "windDir": "S",
+      "summary": "Overcast"
+    }
+  ],
+  "previousDay": {
+    "date": "Tuesday, July 21, 2026",
+    "wind": {
+      "dir": "ESE",
+      "speed": 25
+    },
+    "high": 84,
+    "stormChance": 88,
+    "tide": "High tide ~4:59 AM · Low tide ~4:14 PM · Sunrise 5:55 AM",
+    "wave": {
+      "height": 4.9,
+      "period": 5.9,
+      "direction": "SE",
+      "swellHeight": 4.2,
+      "swellPeriod": 5.6,
+      "swellDirection": "SE",
+      "windWaveHeight": 2.4
+    }
+  },
+  "beachFlag": {
+    "color": "unknown",
+    "ripCurrentRisk": "unknown",
+    "surfHeight": "unknown",
+    "purpleFlag": false,
+    "notes": "Live data retrieval failed today: the SWFD surf conditions page and Surfline were unreachable, and the NWS search results returned only cached/dated pages for South Florida marine zones — none were current (Aug 4, 2026) Panhandle surf zone forecasts. Please check swfd.org/beach-safety/surf-conditions directly for today's flag color, forecast.weather.gov (NWS Tallahassee, SRF product) for the panhandle surf zone rip current risk, and surfline.com for Grayton Beach wave detail before heading out.",
+    "source": "undefined · Auto-refreshed via Claude API",
+    "updated": "August 4, 2026"
+  },
+  "surfBiteReport": "The most recent available report for this stretch is approximately three weeks old (mid-July 2026). Along the Panama City Beach and adjacent Gulf-front beaches, the surf bite has been steady, particularly during early morning and the last couple of hours before sunset — mid-day heat pushes fish into deeper water or cuts activity sharply. Spanish mackerel, whiting, and redfish are the primary surf-zone targets; mackerel are chasing bait schools close to shore and respond well to spoons and fast-retrieved metals, while whiting are hitting sand fleas, shrimp, and Fishbites fished in the deeper cuts and troughs between sandbars rather than on long-distance casts. Baitfish are thick along the beaches and the predators are following them, so watching for diving birds or jumping bait before picking your spot pays off. Water temperature at this location today is 85°F. No verified current reports (this week) were findable for the 30A corridor specifically (Grayton, Seaside, WaterColor, Inlet Beach), but conditions there typically mirror PCB closely this time of year.",
+  "surfBiteSource": "noeoutdoors.com/pcb (mid-July 2026, ~3 weeks old) · Auto-refreshed via Claude API",
+  "surfBiteUpdated": "August 4, 2026"
+}
