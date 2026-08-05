@@ -142,6 +142,21 @@ function getConditionsDiff(C) {
   return `Since yesterday: ${changes.join(" · ")}.`;
 }
 
+// NWS and Open-Meteo are independent weather forecast sources. This simple
+// average is a quick consensus view for temperature and precipitation only;
+// it deliberately does not average the official beach flag, NWS rip risk,
+// or Open-Meteo marine-model wave guidance.
+function averageWeatherForecast(C) {
+  const nws = C.forecast?.[0];
+  const openMeteo = C.openMeteo?.[0];
+  const highs = [nws?.high, openMeteo?.high].filter((v) => typeof v === "number");
+  const storms = [nws?.storms, openMeteo?.stormChance].filter((v) => typeof v === "number");
+  const avg = (values) => values.length
+    ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length)
+    : null;
+  return { high: avg(highs), storms: avg(storms), sourceCount: Math.min(highs.length, storms.length) };
+}
+
 // ── WIND DIRECTION HELPERS ───────────────────────────────────────────────────
 const DIR16_TO_DEG = {
   N: 0, NNE: 22.5, NE: 45, ENE: 67.5, E: 90, ESE: 112.5, SE: 135, SSE: 157.5,
@@ -426,6 +441,7 @@ export default function App() {
   const score = surfScore(C);
   const bestWindow = getBestWindow(C);
   const conditionsDiff = getConditionsDiff(C);
+  const avgForecast = averageWeatherForecast(C);
   const surfBiteAge = C.surfBiteSourceDate ? Math.max(0, Math.round((new Date(C.date) - new Date(`${C.surfBiteSourceDate}T12:00:00`)) / 86400000)) : null;
 
   async function shareReport() {
@@ -501,6 +517,39 @@ export default function App() {
           <div style={{ fontSize: 14, color: "#7fb3d9", padding: "10px 4px", lineHeight: 1.6 }}>
             🔄 {conditionsDiff}
           </div>
+        )}
+
+        {/* Side-by-side weather-source comparison. Marine safety values stay
+            outside this consensus card because they are different products,
+            not interchangeable forecasts. */}
+        {C.forecast?.[0] && C.openMeteo?.[0] && (
+          <>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8, marginBottom: 8 }}>
+              <div style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 8, padding: "12px 14px" }}>
+                <div style={{ fontSize: 13, color: "#7fb3d9", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 5 }}>NWS (official)</div>
+                <div style={{ fontSize: 16, color: "#eaf5ff", fontWeight: 600 }}>{C.forecast[0].high}°F · {C.forecast[0].storms}% storms</div>
+                <div style={{ fontSize: 14, color: "#7fb3d9", marginTop: 2 }}>{C.forecast[0].wind}</div>
+                {C.waterTemp && <div style={{ fontSize: 14, color: "#7fb3d9", marginTop: 2 }}>🌊 Gulf model SST {C.waterTemp}°F</div>}
+              </div>
+              <div style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 8, padding: "12px 14px" }}>
+                <div style={{ fontSize: 13, color: "#7fb3d9", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 5 }}>Open-Meteo</div>
+                <div style={{ fontSize: 16, color: "#eaf5ff", fontWeight: 600 }}>{C.openMeteo[0].high}°F · {C.openMeteo[0].stormChance}% storms</div>
+                <div style={{ fontSize: 14, color: "#7fb3d9", marginTop: 2 }}>{C.openMeteo[0].windDir} {C.openMeteo[0].windSpeed} mph</div>
+                {C.waterTemp && <div style={{ fontSize: 14, color: "#7fb3d9", marginTop: 2 }}>🌊 Gulf model SST {C.waterTemp}°F</div>}
+              </div>
+            </div>
+            {avgForecast.sourceCount === 2 && (
+              <div style={{ background: "#0b2a3d", border: "1px solid #5ec8f266", borderRadius: 8, padding: "11px 14px", marginBottom: 10, textAlign: "center" }}>
+                <div style={{ fontSize: 13, color: "#5ec8f2", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>Weather consensus (2 sources)</div>
+                <div style={{ fontSize: 16, color: "#eaf5ff", fontWeight: 600 }}>{avgForecast.high}°F · {avgForecast.storms}% storms</div>
+              </div>
+            )}
+            <div style={{ background: "#0b2a3d", border: "1px solid #5ec8f266", borderRadius: 8, padding: "11px 14px", fontSize: 15, color: "#a9dff5", marginBottom: 12, lineHeight: 1.55 }}>
+              {C.stormChance >= 30 ? "⛈️" : C.stormChance >= 10 ? "⛅" : "🌞"} {C.date.split(",")[0]}: {C.stormChance >= 10
+                ? `${C.stormChance}% chance of showers/storms${C.stormWindow ? `, ${C.stormWindow}` : ""} — favor an early trip and watch the radar. `
+                : "No meaningful storm threat in the NWS forecast. "}{C.weather}
+            </div>
+          </>
         )}
 
         {/* Weather + wind + water temp */}
