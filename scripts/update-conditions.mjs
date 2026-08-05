@@ -143,6 +143,15 @@ async function getMarine(lat, lon) {
   const data = await getJson(url);
   const c = data.current;
   return {
+    marineSource: {
+      provider: "Open-Meteo Marine API",
+      type: "model",
+      observed: false,
+      validTime: c.time || null,
+      fetchedAt: new Date().toISOString(),
+      gridLatitude: data.latitude ?? null,
+      gridLongitude: data.longitude ?? null,
+    },
     waterTemp: c.sea_surface_temperature != null ? Math.round(c.sea_surface_temperature) : null,
     wave: {
       height: round1(c.wave_height),
@@ -237,7 +246,11 @@ async function buildLocation(loc, existingLoc, tideText) {
   });
   const marine = await getMarine(loc.lat, loc.lon).catch((err) => {
     console.warn(`[${loc.id}] Marine (wave/water temp) fetch failed, keeping previous value:`, err.message);
-    return { waterTemp: existingLoc.waterTemp ?? null, wave: existingLoc.wave || null };
+    return {
+      marineSource: existingLoc.marineSource || null,
+      waterTemp: existingLoc.waterTemp ?? null,
+      wave: existingLoc.wave || null,
+    };
   });
   const stormChance = forecast[0]?.storms || 0;
   const stormWindow = extractStormWindow(today.detailedForecast) || existingLoc.stormWindow || "";
@@ -265,6 +278,7 @@ async function buildLocation(loc, existingLoc, tideText) {
     sky: deriveSky(today.shortForecast),
     waterTemp: marine.waterTemp,
     wave: marine.wave,
+    marineSource: marine.marineSource,
     forecast,
     openMeteo,
     previousDay,

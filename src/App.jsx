@@ -489,6 +489,9 @@ export default function App() {
                 <div style={{ fontSize: 11, color: "#7fb3d9", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>🌊 Wave / swell</div>
                 <div style={{ color: "#f5faff", fontWeight: 700 }}>{C.wave.height} ft @ {C.wave.period}s</div>
                 <div style={{ fontSize: 11, color: "#a9c8e0", marginTop: 1 }}>Swell {C.wave.swellHeight}ft {C.wave.swellDirection} · {C.wave.swellPeriod}s</div>
+                <div style={{ fontSize: 10, color: "#4a7396", marginTop: 3 }}>
+                  {C.marineSource?.observed === false ? "Model guidance" : "Marine data"} · Open-Meteo
+                </div>
               </div>
             )}
           </div>
@@ -577,7 +580,8 @@ export default function App() {
 
         <div style={{ height: 36 }} />
         <div style={{ textAlign: "center", fontSize: 16, color: "#7fb3d9", lineHeight: 1.7 }}>
-          Data sourced by Claude · Always verify flags and conditions before entering the water<br />{C.lastUpdated}
+          Weather: NWS · waves: Open-Meteo model · tides: NOAA · flag: Visit South Walton/SWFD<br />
+          Always verify posted flags and conditions before entering the water<br />{C.lastUpdated}
         </div>
       </div>
     </div>

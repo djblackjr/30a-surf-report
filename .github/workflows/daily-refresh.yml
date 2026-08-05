@@ -25,8 +25,6 @@ jobs:
         run: node scripts/update-conditions.mjs
 
       - name: Refresh beach flag status and surf zone forecast
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/update-surf-safety.mjs
 
       - name: Refresh local surf fishing report
