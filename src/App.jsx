@@ -600,6 +600,9 @@ export default function App() {
               {C.surfBiteSourceUrl ? <a href={C.surfBiteSourceUrl} target="_blank" rel="noreferrer" style={{ color: "#7fb3d9" }}>{C.surfBiteSource}</a> : C.surfBiteSource}
             </div>
           )}
+          {C.surfBiteSourceKind === "social" && (
+            <div style={{ fontSize: 13, color: "#8fb8d5", marginTop: 4 }}>Public Reel30A social post · direct link and publication date required</div>
+          )}
           {surfBiteAge != null && (
             <div style={{ fontSize: 14, fontWeight: 600, marginTop: 6, color: surfBiteAge > 14 ? "#f87171" : surfBiteAge > 7 ? "#facc15" : "#7fb3d9" }}>
               {surfBiteAge === 0 ? "Source published today" : `Source published ${surfBiteAge} day${surfBiteAge === 1 ? "" : "s"} ago`}

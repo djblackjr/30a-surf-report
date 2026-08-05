@@ -330,7 +330,7 @@ async function main() {
       tideEvents: tide.events.length ? tide.events : existing.shared.tideEvents,
       moonPhase: moon,
       lastUpdated,
-      // beachFlag / surfBiteReport / surfBiteSource / surfBiteUpdated
+      // beachFlag and all surfBite* provenance/report fields
       // intentionally untouched here — those come from update-surf-safety.mjs
       // and update-surf-report.mjs, which read web content via Claude and
       // can't be done with a plain structured-data fetch the way

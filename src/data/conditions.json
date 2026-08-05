@@ -16,11 +16,11 @@
       "updatedAt": "2026-08-05T15:04:54.212Z"
     },
     "surfBiteStatus": "current",
-    "surfBiteReport": "The surf zone along the Florida Panhandle beach corridor has been the bright spot of the week despite water still carrying stain from Tropical Storm Bertha. Pompano are feeding actively and catch reports have been climbing, though hardhead catfish remain a persistent bycatch mixed into the schools. Baitfish are starting to return to the area but have not fully recovered to pre-storm levels, and additional wind and rain could slow the improvement. The top producing setup has been shrimp or sand fleas tipped with Fishbites or Fish Gum; live sand fleas are scarce right now so anglers should plan on bringing blanched (parboiled) fleas instead. Timing the higher tide, which has been running during late morning, appears to be the best window to target pompano before afternoon summer storm activity develops.",
-    "surfBiteSource": "Half Hitch Tackle – Panama City Beach Fishing Report (2026-07-31)",
+    "surfBiteReport": "As of July 31, 2026, the surf zone along the Panama City Beach / South Walton Emerald Coast corridor has been the bright spot in an otherwise storm-affected week. Water clarity remains stained following Tropical Storm Bertha, but pompano have been feeding actively in the surf despite the murky conditions, with reports of good catches continuing to build. Hardhead catfish are mixed in throughout, but anglers who locate the pompano schools are landing multiple fish per outing. The most productive bait combination has been shrimp or sand fleas tipped with Fishbites or Fish Gum; live sand fleas have been scarce so blanched fleas are the recommended alternative. With high tide falling during the late morning, an early-morning start is advised to hit the best tidal window, and anglers should re-scout familiar stretches for storm-reshaped sandbars and cuts before fishing.",
+    "surfBiteSource": "Half Hitch PCB Fishing Report (2026-07-31)",
     "surfBiteSourceUrl": "https://halfhitch.com/blog/pcb-fishing-report-7-31-26",
     "surfBiteSourceDate": "2026-07-31",
-    "surfBiteRefreshedAt": "2026-08-05T15:13:56.121Z",
+    "surfBiteRefreshedAt": "2026-08-05T16:58:53.925Z",
     "tideEvents": [
       {
         "type": "H",
@@ -32,7 +32,8 @@
       }
     ],
     "moonPhase": "Last Quarter (~47% illuminated) — moderate tidal push",
-    "lastUpdated": "8/5/2026, 10:04:24 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed"
+    "lastUpdated": "8/5/2026, 10:04:24 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+    "surfBiteSourceKind": "editorial"
   },
   "locations": {
     "dune-allen-beach": {

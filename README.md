@@ -17,7 +17,7 @@ A daily surf fishing conditions app for Grayton Beach, FL (30A) — the flagship
 Three scripts, run in order by `.github/workflows/daily-refresh.yml`:
 1. `scripts/update-conditions.mjs` — NWS forecast, NOAA tides, Open-Meteo (2nd forecast source + wave/swell), moon phase. Free, no API key. (Yr.no was tried as a 3rd source and dropped — see the bay app's README for why.)
 2. `scripts/update-surf-safety.mjs` — official beach flag plus the latest NWS rip-current risk and surf height. Free, deterministic, no API key.
-3. `scripts/update-surf-report.mjs` — local surf bite report via Claude reading vetted firsthand sources. It prioritizes Northwest Florida Fishing Report/Reel30A reports no older than 14 days, then Half Hitch PCB reports no older than 7 days. Source host and publication age are validated in code; otherwise the app explicitly reports that no current local report is available. Needs `ANTHROPIC_API_KEY`.
+3. `scripts/update-surf-report.mjs` — local surf bite report via Claude reading vetted firsthand sources. It first checks public posts from Reel30A's exact Facebook and Instagram accounts (maximum age 7 days), then Northwest Florida Fishing Report/Reel30A reports (14 days), then Half Hitch PCB reports (7 days). Social content must have a direct public permalink, explicit date, readable fishing-condition caption, and exact account match; login-blocked or ambiguous posts are rejected. Source host, permalink shape, account, and publication age are validated in code; otherwise the app explicitly reports that no current local report is available. Needs `ANTHROPIC_API_KEY`.
 
 Run any of them manually:
 ```bash
