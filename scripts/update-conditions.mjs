@@ -119,41 +119,6 @@ async function getOpenMeteo() {
     summary: WMO_CODES[d.weathercode[i]] || "Unknown",
   }));
 }
-function localDateString(iso) {
-  return new Date(iso).toLocaleDateString("en-US", { timeZone: "America/Chicago" });
-}
-async function getYrNo() {
-  const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${LAT}&lon=${LON}`;
-  const data = await getJson(url, { headers: { "User-Agent": USER_AGENT, Accept: "application/json" } });
-  const todayLocal = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago" }).format(new Date());
-  const entries = (data.properties?.timeseries || []).filter((entry) => localDateString(entry.time) === todayLocal);
-  if (!entries.length) return null;
-  const temps = entries
-    .map((entry) => entry.data.instant?.details?.temperature_2m)
-    .filter((value) => typeof value === "number");
-  const high = temps.length ? Math.round(Math.max(...temps)) : null;
-  const low = temps.length ? Math.round(Math.min(...temps)) : null;
-  const precipHours = entries.filter((entry) => {
-    const amount = entry.data.next_1_hours?.details?.precipitation_amount ?? entry.data.next_6_hours?.details?.precipitation_amount ?? 0;
-    return amount > 0.02;
-  }).length;
-  const stormChance = entries.length ? Math.round((precipHours / entries.length) * 100) : 0;
-  const current = entries[0];
-  const windSpeed = Math.round(current.data.instant?.details?.wind_speed ?? 0);
-  const windDir = current.data.instant?.details?.wind_from_direction ? degToCompass(current.data.instant.details.wind_from_direction) : "";
-  const summary = current.data.next_1_hours?.summary?.symbol_code
-    || current.data.next_6_hours?.summary?.symbol_code
-    || "Yr.no forecast";
-  return {
-    high,
-    low,
-    stormChance,
-    windSpeed,
-    windDir,
-    summary: String(summary).replace(/_/g, " "),
-  };
-}
-
 // ── Water temp + wave/swell: Open-Meteo Marine API ──────────────────────────
 // Free, no key. Wave data is the one genuinely new data category this app
 // needs that the bay app never did — a bay has no meaningful surf.
@@ -229,7 +194,10 @@ function extractStormWindow(text) {
 }
 
 async function main() {
-  const existing = JSON.parse(await readFile(OUT_PATH, "utf-8"));
+  // Destructure yrNo out rather than just not re-setting it — `updated` below
+  // spreads `existing` first, so a dropped field otherwise silently survives
+  // forever by inheriting whatever its last real value was.
+  const { yrNo: _droppedYrNo, ...existing } = JSON.parse(await readFile(OUT_PATH, "utf-8"));
 
   const periods = await getForecast();
   const today = periods.find((p) => p.isDaytime) || periods[0];
@@ -242,10 +210,6 @@ async function main() {
   const openMeteo = await getOpenMeteo().catch((err) => {
     console.warn("Open-Meteo fetch failed, keeping previous value:", err.message);
     return existing.openMeteo || null;
-  });
-  const yrNo = await getYrNo().catch((err) => {
-    console.warn("Yr.no fetch failed, keeping previous value:", err.message);
-    return existing.yrNo || null;
   });
   const moon = moonPhase();
   const marine = await getMarine().catch((err) => {
@@ -283,7 +247,6 @@ async function main() {
     lastUpdated: `${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT · Source: National Weather Service + NOAA Tides (station ${TIDE_STATION}) + Open-Meteo Marine · Auto-refreshed`,
     forecast,
     openMeteo,
-    yrNo,
     previousDay,
     // beachFlag / surfBiteReport / surfBiteSource / surfBiteUpdated intentionally
     // untouched here — those come from update-surf-safety.mjs and

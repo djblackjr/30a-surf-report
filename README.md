@@ -15,7 +15,7 @@ A daily surf fishing conditions app for Grayton Beach, FL (30A) — the flagship
 
 ## Daily data pipeline
 Three scripts, run in order by `.github/workflows/daily-refresh.yml`:
-1. `scripts/update-conditions.mjs` — NWS forecast, NOAA tides, Open-Meteo (2nd forecast source + wave/swell), Yr.no (3rd forecast source), moon phase. Free, no API key.
+1. `scripts/update-conditions.mjs` — NWS forecast, NOAA tides, Open-Meteo (2nd forecast source + wave/swell), moon phase. Free, no API key. (Yr.no was tried as a 3rd source and dropped — see the bay app's README for why.)
 2. `scripts/update-surf-safety.mjs` — beach flag color + rip current risk, via Claude + web search. Needs `ANTHROPIC_API_KEY`.
 3. `scripts/update-surf-report.mjs` — local surf bite report (pompano/whiting/redfish chatter), via Claude + web search. Needs `ANTHROPIC_API_KEY`.
 
