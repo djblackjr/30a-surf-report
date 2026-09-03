@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import dailyData from "./data/conditions.json";
 import LOCATIONS from "./data/locations.json";
 
@@ -98,6 +100,43 @@ function minutesToTime(mins) {
   const ap = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
   return `${h}:${String(m).padStart(2, "0")} ${ap}`;
+}
+
+// Live countdown to the next sunrise/sunset, adapted from the 331 Bridge
+// app's suncalc-driven sun display — this app already has sunrise/sunset
+// strings in conditions.json, so no new dependency is needed, just a ticking
+// clock against the two known times-of-day.
+function getSunStatus(sunrise, sunset) {
+  const sr = timeToMinutes(sunrise || "6:00 AM");
+  const ss = timeToMinutes(sunset || "7:00 PM");
+  if (sr == null || ss == null) return null;
+  const now = new Date();
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const isDaylight = nowMin >= sr && nowMin < ss;
+  const targetMin = isDaylight ? ss : nowMin < sr ? sr : sr + 1440;
+  const diff = targetMin - nowMin;
+  const h = Math.floor(diff / 60), m = diff % 60;
+  return {
+    isDaylight,
+    label: isDaylight ? "🌇 Sunset" : "🌅 Sunrise",
+    text: h > 0 ? `${h}h ${m}m` : `${m}m`,
+  };
+}
+
+function SunCountdown({ sunrise, sunset }) {
+  const [, tick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => tick((t) => t + 1), 60000);
+    return () => clearInterval(id);
+  }, []);
+  const status = getSunStatus(sunrise, sunset);
+  if (!status) return null;
+  return (
+    <div style={{ flex: 1, minWidth: 140, background: "#0e2439", border: "1px solid #12314a", borderRadius: 8, padding: "10px 12px" }}>
+      <div style={{ fontSize: 13, color: "#7fb3d9", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{status.label}</div>
+      <div style={{ fontSize: 15, color: "#f5faff" }}>in {status.text}</div>
+    </div>
+  );
 }
 
 function getBestWindow(C) {
@@ -348,6 +387,217 @@ function BeachFlagBanner({ C }) {
   );
 }
 
+// ── LIVE RADAR ───────────────────────────────────────────────────────────────
+// Same Windy.com embed pattern as the sibling 331 Bridge app — makes "watch
+// the radar" (called out in the storm-chance blurb above) actually
+// actionable instead of requiring a second app. Unlike 331 (single fixed
+// location), this app has 5 beaches, so the embed recenters on whichever
+// beach is currently selected.
+function RadarPanel({ lat, lon, locationName }) {
+  return (
+    <Collapsible title="🌧️ Live Radar" defaultOpen>
+      <div style={{ marginTop: 10, borderRadius: 8, overflow: "hidden", border: "1px solid #12314a" }}>
+        <iframe
+          key={`${lat},${lon}`}
+          title={`Live radar — ${locationName}, FL`}
+          src={`https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&detailLat=${lat}&detailLon=${lon}&width=650&height=400&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1`}
+          width="100%" height="320" frameBorder="0" style={{ display: "block" }}
+        />
+      </div>
+      <div style={{ fontSize: 13, color: "#7fb3d9", marginTop: 6, textAlign: "center" }}>Live radar via Windy.com</div>
+    </Collapsible>
+  );
+}
+
+// ── BEACH MAP ────────────────────────────────────────────────────────────────
+// The 331 Bridge app's "Fishing Intelligence Atlas" is a full SQLite +
+// GeoJSON pipeline mapping bay fishing structures — built for dozens of
+// structure spots across one bay. That doesn't translate here: this app has
+// exactly 5 named beaches (already geocoded in locations.json), and there's
+// no verified sandbar/rip-channel geodata to plot — fabricating precise surf
+// hazard locations for a safety-relevant page would be actively irresponsible.
+// So this is the honest, useful equivalent instead: an interactive map of the
+// 5 real, verified beach accesses, color-coded by today's score, that doubles
+// as another way to switch beaches. Plain Leaflet (no react-leaflet dep,
+// matching 331's own reasoning) with vector circle markers instead of the
+// default pin icon, which sidesteps Leaflet's well-known bundler asset-path
+// breakage entirely.
+function BeachMap({ locationId, onSelect }) {
+  const mapRef = useRef(null);
+  const markersRef = useRef({});
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
+
+  // A plain useEffect+useRef pair only fires once, when BeachMap itself
+  // mounts — but Collapsible unmounts its children while collapsed
+  // ({open && children}), so with defaultOpen={false} the container <div>
+  // doesn't exist yet on that first (only) effect run and the map silently
+  // never initializes. A callback ref fires exactly when the DOM node
+  // actually appears/disappears, so it survives the panel being collapsed
+  // and reopened.
+  const containerRef = useCallback((node) => {
+    if (node) {
+      const map = L.map(node, { scrollWheelZoom: false }).setView([30.32, -86.15], 11);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+        maxZoom: 17,
+      }).addTo(map);
+
+      LOCATIONS.forEach((loc) => {
+        const locC = buildConditions(loc.id);
+        const score = surfScore(locC);
+        const marker = L.circleMarker([loc.lat, loc.lon], {
+          radius: 10,
+          weight: loc.id === locationId ? 4 : 2,
+          color: loc.id === locationId ? "#5ec8f2" : "#0b2a3d",
+          fillColor: surfStatusColor(locC, score),
+          fillOpacity: 0.9,
+        }).addTo(map);
+        marker.bindPopup(`<b>${loc.name}</b><br/>${score}/10 · ${surfStatusLabel(locC, score)}`);
+        marker.on("click", () => onSelectRef.current(loc.id));
+        markersRef.current[loc.id] = marker;
+      });
+
+      mapRef.current = map;
+    } else if (mapRef.current) {
+      mapRef.current.remove();
+      mapRef.current = null;
+      markersRef.current = {};
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Re-highlight the active marker on selection change without rebuilding the map
+  useEffect(() => {
+    Object.entries(markersRef.current).forEach(([id, marker]) => {
+      marker.setStyle({ weight: id === locationId ? 4 : 2, color: id === locationId ? "#5ec8f2" : "#0b2a3d" });
+    });
+  }, [locationId]);
+
+  return (
+    <Collapsible title="🗺️ Beach Map" defaultOpen={false}>
+      <div style={{ marginTop: 10, borderRadius: 8, overflow: "hidden", border: "1px solid #12314a" }}>
+        <div ref={containerRef} style={{ height: 280 }} />
+      </div>
+      <div style={{ fontSize: 13, color: "#7fb3d9", marginTop: 6, textAlign: "center" }}>Dot color = today's score at that beach · tap a dot to switch</div>
+    </Collapsible>
+  );
+}
+
+// ── BAIT / RIG PICKER ────────────────────────────────────────────────────────
+// Same "check off what you've got" pattern as the sibling 331 Bridge app's
+// BaitPicker, but the bait list and every rig/tip below is rewritten from
+// scratch for beach/surf fishing — 331's content (mud minnows, fiddler crabs,
+// oyster bars, pilings) is all estuary/bay tackle and doesn't apply to
+// casting into a Gulf trough. Species referenced match this app's own
+// STATIC_CONDITIONS.regulations list above.
+const ALL_SURF_BAITS = [
+  { id: "none",         label: "None / Bare Hook", emoji: "🚫" },
+  { id: "sand_fleas",   label: "Sand Fleas",       emoji: "🦀" },
+  { id: "shrimp",       label: "Fresh/Live Shrimp", emoji: "🦐" },
+  { id: "cut_bait",     label: "Cut Mullet/Bait",  emoji: "🐟" },
+  { id: "fishbites",    label: "FishBites/Gulp",   emoji: "🪱" },
+  { id: "artificials",  label: "Artificials Only", emoji: "🪝" },
+];
+
+const SURF_BAIT_RECS = {
+  sand_fleas: {
+    rigs: [
+      { name: "Pompano (Hi-Lo) Rig", detail: "2–3 oz pyramid sinker · two dropper loops above it, size 1–2 hooks · cast into the trough between sandbars" },
+      { name: "Single flea, Kahle hook", detail: "Hook through the tail/back so it keeps kicking · fish just past the first sandbar break" },
+    ],
+    tip: "The gold-standard pompano and whiting bait. Hook through the back, not the body, so it still kicks. Fleas washing out of the swash are the tell — pompano are usually feeding right there.",
+  },
+  shrimp: {
+    rigs: [
+      { name: "Pompano rig", detail: "Peeled tail piece on a long-shank hook · 2–3 oz pyramid sinker · cast into the trough" },
+      { name: "Fish-finder rig", detail: "Sliding egg sinker · 18-in fluorocarbon leader · whole shrimp on a circle hook for redfish and bigger whiting" },
+    ],
+    tip: "Fresh dead beats frozen almost every time in the surf. Peel the shell for pompano and whiting; leave shrimp whole for redfish.",
+  },
+  cut_bait: {
+    rigs: [
+      { name: "Fish-finder rig", detail: "3–5 oz sinker to hold in current · 3/0–5/0 circle hook · mullet or menhaden chunk for redfish and bluefish" },
+      { name: "Fixed bottom rig", detail: "Fixed sinker · single strong hook · fish past the outer bar for sharks and bigger black drum" },
+    ],
+    tip: "Bigger, oilier cut bait pulls redfish, bluefish, and the occasional shark. Fish it past the outer sandbar, not the close-in trough where the smaller stuff bites.",
+  },
+  fishbites: {
+    rigs: [
+      { name: "Pompano rig", detail: "Small strip threaded on a long-shank hook · no refrigeration, lasts all day in a pocket" },
+    ],
+    tip: "Sand Flea and Shrimp flavors fool pompano and whiting well enough — a good backup when bait's scarce or it's too hot to keep the real thing fresh.",
+  },
+  artificials: {
+    rigs: [
+      { name: "Doc's Goofy Jig", detail: "1/4–1/2 oz · white or pink · bounced through the trough — the classic pompano jig" },
+      { name: "Gotcha Plug", detail: "Fast retrieve past the second bar · Spanish mackerel and bluefish blitzing bait" },
+      { name: "Kastmaster / Krocodile Spoon", detail: "3/4–1 oz · long casts · same Spanish mackerel/bluefish pattern" },
+      { name: "White bucktail jig", detail: "Steady bottom retrieve · works for whiting and pompano when bait's scarce" },
+    ],
+    tip: "No bait, no problem: a Doc's Goofy Jig worked through the trough covers pompano and whiting, and a Gotcha plug or spoon covers Spanish mackerel and bluefish when you see bait getting blitzed on the surface.",
+  },
+};
+
+function BaitPicker() {
+  const [selected, setSelected] = useState(["none"]);
+
+  function toggle(id) {
+    if (id === "none") { setSelected(["none"]); return; }
+    setSelected((prev) => {
+      const cleared = prev.filter((x) => x !== "none");
+      return cleared.includes(id) ? cleared.filter((x) => x !== id) : [...cleared, id];
+    });
+  }
+
+  const isNone = selected.includes("none");
+  const recs = selected.flatMap((id) => SURF_BAIT_RECS[id]?.rigs || []);
+  const tips = [...new Set(selected.map((id) => SURF_BAIT_RECS[id]?.tip).filter(Boolean))];
+
+  return (
+    <Collapsible title="🪝 What's In Your Bucket?" defaultOpen={false}>
+      <div style={{ marginTop: 12 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
+          {ALL_SURF_BAITS.map((b) => {
+            const on = selected.includes(b.id);
+            return (
+              <button key={b.id} onClick={() => toggle(b.id)} style={{
+                padding: "10px 10px", borderRadius: 8, border: on ? "1px solid #5ec8f2" : "1px solid #12314a",
+                background: on ? "#0b2a3d" : "#0e2439", cursor: "pointer",
+                fontFamily: "'Space Grotesk',sans-serif", textAlign: "left",
+                display: "flex", alignItems: "center", gap: 8, transition: "all 0.15s",
+              }}>
+                <span style={{ fontSize: 22 }}>{b.emoji}</span>
+                <span style={{ fontSize: 15, fontWeight: 600, color: on ? "#5ec8f2" : "#7fb3d9", lineHeight: 1.3 }}>{b.label}</span>
+                {on && <span style={{ marginLeft: "auto", color: "#5ec8f2", fontSize: 16 }}>✓</span>}
+              </button>
+            );
+          })}
+        </div>
+
+        {tips.map((tip, i) => (
+          <div key={i} style={{ background: "#0b2a3d", border: "1px solid #5ec8f233", borderRadius: 8, padding: "10px 14px", marginBottom: 10, fontSize: 15, color: "#a9dff5", lineHeight: 1.6 }}>
+            💡 {tip}
+          </div>
+        ))}
+
+        {recs.length > 0 ? recs.map((r, i) => (
+          <div key={i} style={{ marginBottom: 8, padding: "10px 13px", background: "#0e2439", borderRadius: 8, border: "1px solid #12314a" }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: "#a9c8e0" }}>{r.name}</div>
+            <div style={{ fontSize: 15, color: "#7fb3d9", marginTop: 3, lineHeight: 1.55 }}>{r.detail}</div>
+          </div>
+        )) : isNone ? (
+          <div style={{ textAlign: "center", color: "#7fb3d9", fontSize: 15, padding: "16px 0", lineHeight: 1.6 }}>
+            No bait or lures — that's fine. Focus on finding the trough (the gutter between sandbars), fish it at first light, and let sand fleas or bait fish tell you where the action is.
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", color: "#7fb3d9", fontSize: 15, padding: "16px 0" }}>Select what you have above to see rigging tips.</div>
+        )}
+      </div>
+    </Collapsible>
+  );
+}
+
 // ── 3-DAY LOOK AHEAD ─────────────────────────────────────────────────────────
 function ForecastStrip({ C, todayScore }) {
   return (
@@ -438,6 +688,7 @@ export default function App() {
   }
 
   const C = buildConditions(locationId);
+  const activeLoc = LOCATIONS.find((l) => l.id === locationId) || LOCATIONS.find((l) => l.id === DEFAULT_LOCATION_ID);
   const score = surfScore(C);
   const bestWindow = getBestWindow(C);
   const conditionsDiff = getConditionsDiff(C);
@@ -476,6 +727,11 @@ export default function App() {
         {/* Location switcher */}
         <div style={{ marginTop: 14 }}>
           <LocationSwitcher selectedId={locationId} onSelect={selectLocation} />
+        </div>
+
+        {/* Beach map */}
+        <div style={{ marginTop: 10 }}>
+          <BeachMap locationId={locationId} onSelect={selectLocation} />
         </div>
 
         {/* Beach flag safety banner — before the score, on purpose */}
@@ -552,6 +808,9 @@ export default function App() {
           </>
         )}
 
+        {/* Live radar */}
+        <RadarPanel lat={activeLoc.lat} lon={activeLoc.lon} locationName={activeLoc.name} />
+
         {/* Weather + wind + water temp */}
         <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: 220, background: "#0e2439", border: "1px solid #12314a", borderRadius: 8, padding: "10px 12px", display: "flex", alignItems: "center", gap: 12 }}>
@@ -578,6 +837,7 @@ export default function App() {
             <div style={{ fontSize: 13, color: "#7fb3d9", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>🌙 Moon</div>
             <div style={{ fontSize: 15, color: "#f5faff" }}>{C.moonPhase}</div>
           </div>
+          <SunCountdown sunrise={C.sunrise} sunset={C.sunset} />
         </div>
 
         {/* Tide curve */}
@@ -616,6 +876,9 @@ export default function App() {
         <Collapsible title="📖 Reading the Surf" defaultOpen={false}>
           <div style={{ fontSize: 16, color: "#eaf5ff", lineHeight: 1.7, paddingTop: 10 }}>{C.readingTheSurf}</div>
         </Collapsible>
+
+        {/* Bait / rig picker */}
+        <BaitPicker />
 
         {/* Access */}
         <div style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 10, padding: "13px 16px", marginBottom: 10 }}>
