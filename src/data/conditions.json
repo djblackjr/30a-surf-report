@@ -1,7 +1,7 @@
 {
   "shared": {
-    "date": "Thursday, September 3, 2026",
-    "dateISO": "2026-09-03",
+    "date": "Friday, September 4, 2026",
+    "dateISO": "2026-09-04",
     "beachFlag": {
       "color": "yellow",
       "ripCurrentRisk": "moderate",
@@ -9,11 +9,11 @@
       "purpleFlag": true,
       "notes": "Purple flag: potentially hazardous marine life is reported.",
       "source": "Visit South Walton official flag widget + NWS Tallahassee Surf Zone Forecast (FLZ108)",
-      "updated": "September 3, 2026",
+      "updated": "September 4, 2026",
       "sourceUrl": "https://www.visitsouthwalton.com/beach-safety/",
-      "nwsProductUrl": "https://api.weather.gov/products/f65ee6d1-60d8-4ea0-b9e5-6be60436d82a",
-      "nwsIssuedAt": "2026-09-03T07:18:00+00:00",
-      "updatedAt": "2026-09-03T12:48:22.892Z"
+      "nwsProductUrl": "https://api.weather.gov/products/9f879f49-8166-42ce-9136-79911969389a",
+      "nwsIssuedAt": "2026-09-04T06:11:00+00:00",
+      "updatedAt": "2026-09-04T12:41:49.965Z"
     },
     "surfBiteStatus": "unavailable",
     "surfBiteReport": "No current local 30A surf-fishing report is available from the monitored firsthand sources.",
@@ -24,498 +24,38 @@
     "tideEvents": [
       {
         "type": "H",
-        "time": "10:02 PM"
+        "time": "11:10 PM"
       },
       {
         "type": "L",
-        "time": "10:03 AM"
+        "time": "11:23 AM"
       }
     ],
-    "moonPhase": "Last Quarter (~57% illuminated) — moderate tidal push",
-    "lastUpdated": "9/3/2026, 7:48:22 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+    "moonPhase": "Last Quarter (~46% illuminated) — moderate tidal push",
+    "lastUpdated": "9/4/2026, 7:41:49 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
     "surfBiteSourceKind": null
   },
   "locations": {
     "dune-allen-beach": {
       "wind": {
         "speed": 10,
-        "dir": "ESE",
-        "description": "ESE 5 to 10 mph"
+        "dir": "SE",
+        "description": "SE 5 to 10 mph"
       },
-      "weather": "Partly Sunny then Chance Showers And Thunderstorms · High 88°F · Heat index up to 102°F",
-      "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
-      "sunrise": "6:21 AM",
-      "sunset": "7:06 PM",
-      "stormWindow": "after 1PM",
-      "stormChance": 39,
-      "sky": "Cloudy",
-      "waterTemp": 87,
-      "wave": {
-        "height": 0.7,
-        "period": 4.8,
-        "direction": "S",
-        "swellHeight": 0.4,
-        "swellPeriod": 6,
-        "swellDirection": "S",
-        "windWaveHeight": 0.2
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-09-03T12:45",
-        "fetchedAt": "2026-09-03T12:47:55.303Z",
-        "gridLatitude": 30.375,
-        "gridLongitude": -86.29166
-      },
-      "forecast": [
-        {
-          "day": "Thu, Sep 3",
-          "label": "Today",
-          "high": 88,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 39,
-          "headline": "Partly Sunny then Chance Showers And Thunderstorms · Heat index 102",
-          "fishingScore": 6.9,
-          "aiCall": "A chance of showers and thunderstorms after 1pm. Partly sunny, with a high near 88. Heat index values as high as 102. East southeast wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Fri, Sep 4",
-          "label": "Tomorrow",
-          "high": 86,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 68,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 5.8,
-          "aiCall": "A chance of showers and thunderstorms before 11am, then showers and thunderstorms likely between 11am and 1pm, then showers and thunderstorms likely. Mostly sunny, with a high near 86. East southeast wind 5 to 10 mph. Chance of precipitation is 70%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Sat, Sep 5",
-          "label": "Saturday",
-          "high": 86,
-          "low": null,
-          "wind": "WSW 5 to 10 mph",
-          "storms": 55,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 6.3,
-          "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms likely between 7am and 1pm, then a chance of showers and thunderstorms. Sunny, with a high near 86. West southwest wind 5 to 10 mph. Chance of precipitation is 60%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 93,
-          "low": 78,
-          "stormChance": 15,
-          "windSpeed": 10,
-          "windDir": "SW",
-          "summary": "Overcast"
-        },
-        {
-          "high": 87,
-          "low": 78,
-          "stormChance": 56,
-          "windSpeed": 11,
-          "windDir": "E",
-          "summary": "Overcast"
-        },
-        {
-          "high": 91,
-          "low": 75,
-          "stormChance": 48,
-          "windSpeed": 6,
-          "windDir": "NW",
-          "summary": "Thunderstorm"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 10
-        },
-        "high": 89,
-        "stormChance": 20,
-        "tide": "High tide ~9:11 PM · Low tide ~8:17 AM · Sunrise 6:21 AM",
-        "wave": {
-          "height": 0.7,
-          "period": 5.4,
-          "direction": "S",
-          "swellHeight": 0.5,
-          "swellPeriod": 4.6,
-          "swellDirection": "SE",
-          "windWaveHeight": 0.1
-        }
-      }
-    },
-    "blue-mountain-beach": {
-      "wind": {
-        "speed": 5,
-        "dir": "ESE",
-        "description": "ESE 5 mph"
-      },
-      "weather": "Partly Sunny then Chance Showers And Thunderstorms · High 91°F · Heat index up to 103°F",
-      "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
-      "sunrise": "6:21 AM",
-      "sunset": "7:06 PM",
-      "stormWindow": "after 1PM",
-      "stormChance": 41,
-      "sky": "Cloudy",
-      "waterTemp": 87,
-      "wave": {
-        "height": 0.6,
-        "period": 4.9,
-        "direction": "S",
-        "swellHeight": 0.4,
-        "swellPeriod": 5.9,
-        "swellDirection": "S",
-        "windWaveHeight": 0.1
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-09-03T12:45",
-        "fetchedAt": "2026-09-03T12:48:01.822Z",
-        "gridLatitude": 30.375,
-        "gridLongitude": -86.20833
-      },
-      "forecast": [
-        {
-          "day": "Thu, Sep 3",
-          "label": "Today",
-          "high": 91,
-          "low": null,
-          "wind": "ESE 5 mph",
-          "storms": 41,
-          "headline": "Partly Sunny then Chance Showers And Thunderstorms · Heat index 103",
-          "fishingScore": 6.9,
-          "aiCall": "A chance of showers and thunderstorms after 1pm. Partly sunny. High near 91, with temperatures falling to around 88 in the afternoon. Heat index values as high as 103. East southeast wind around 5 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Fri, Sep 4",
-          "label": "Tomorrow",
-          "high": 87,
-          "low": null,
-          "wind": "ESE 5 mph",
-          "storms": 71,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely · Heat index 100",
-          "fishingScore": 5.7,
-          "aiCall": "A chance of showers and thunderstorms before 11am, then showers and thunderstorms likely between 11am and 1pm, then showers and thunderstorms likely. Mostly sunny, with a high near 87. Heat index values as high as 100. East southeast wind around 5 mph. Chance of precipitation is 70%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Sat, Sep 5",
-          "label": "Saturday",
-          "high": 87,
-          "low": null,
-          "wind": "SW 0 to 10 mph",
-          "storms": 56,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 6.3,
-          "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms likely between 7am and 1pm, then a chance of showers and thunderstorms. Sunny, with a high near 87. Southwest wind 0 to 10 mph. Chance of precipitation is 60%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 90,
-          "low": 78,
-          "stormChance": 16,
-          "windSpeed": 9,
-          "windDir": "SW",
-          "summary": "Overcast"
-        },
-        {
-          "high": 85,
-          "low": 77,
-          "stormChance": 53,
-          "windSpeed": 11,
-          "windDir": "E",
-          "summary": "Overcast"
-        },
-        {
-          "high": 86,
-          "low": 80,
-          "stormChance": 47,
-          "windSpeed": 14,
-          "windDir": "W",
-          "summary": "Thunderstorm"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 5
-        },
-        "high": 92,
-        "stormChance": 20,
-        "tide": "High tide ~9:11 PM · Low tide ~8:17 AM · Sunrise 6:21 AM",
-        "wave": {
-          "height": 0.7,
-          "period": 5.4,
-          "direction": "S",
-          "swellHeight": 0.5,
-          "swellPeriod": 4.6,
-          "swellDirection": "SE",
-          "windWaveHeight": 0.1
-        }
-      }
-    },
-    "grayton-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "ESE",
-        "description": "ESE 5 to 10 mph"
-      },
-      "weather": "Partly Sunny then Chance Showers And Thunderstorms · High 88°F · Heat index up to 100°F",
-      "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
-      "sunrise": "6:21 AM",
-      "sunset": "7:06 PM",
-      "stormWindow": "after 1PM",
-      "stormChance": 41,
-      "sky": "Cloudy",
-      "waterTemp": 87,
-      "wave": {
-        "height": 0.7,
-        "period": 5,
-        "direction": "S",
-        "swellHeight": 0.5,
-        "swellPeriod": 5.9,
-        "swellDirection": "S",
-        "windWaveHeight": 0.1
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-09-03T12:45",
-        "fetchedAt": "2026-09-03T12:48:02.756Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.12499
-      },
-      "forecast": [
-        {
-          "day": "Thu, Sep 3",
-          "label": "Today",
-          "high": 88,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 41,
-          "headline": "Partly Sunny then Chance Showers And Thunderstorms · Heat index 100",
-          "fishingScore": 6.9,
-          "aiCall": "A chance of showers and thunderstorms after 1pm. Partly sunny, with a high near 88. Heat index values as high as 100. East southeast wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Fri, Sep 4",
-          "label": "Tomorrow",
-          "high": 85,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 71,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 5.7,
-          "aiCall": "A chance of showers and thunderstorms before 11am, then showers and thunderstorms likely between 11am and 1pm, then showers and thunderstorms likely. Mostly sunny, with a high near 85. East southeast wind 5 to 10 mph. Chance of precipitation is 70%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Sat, Sep 5",
-          "label": "Saturday",
-          "high": 86,
-          "low": null,
-          "wind": "WSW 5 to 10 mph",
-          "storms": 56,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 6.3,
-          "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms likely between 7am and 1pm, then a chance of showers and thunderstorms. Sunny, with a high near 86. West southwest wind 5 to 10 mph. Chance of precipitation is 60%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 91,
-          "low": 78,
-          "stormChance": 16,
-          "windSpeed": 9,
-          "windDir": "SW",
-          "summary": "Light drizzle"
-        },
-        {
-          "high": 85,
-          "low": 77,
-          "stormChance": 54,
-          "windSpeed": 11,
-          "windDir": "E",
-          "summary": "Overcast"
-        },
-        {
-          "high": 90,
-          "low": 75,
-          "stormChance": 48,
-          "windSpeed": 8,
-          "windDir": "NW",
-          "summary": "Rain showers"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 5
-        },
-        "high": 89,
-        "stormChance": 20,
-        "tide": "High tide ~9:11 PM · Low tide ~8:17 AM · Sunrise 6:20 AM",
-        "wave": {
-          "height": 0.7,
-          "period": 5.4,
-          "direction": "S",
-          "swellHeight": 0.6,
-          "swellPeriod": 4,
-          "swellDirection": "SE",
-          "windWaveHeight": 0.1
-        }
-      }
-    },
-    "seagrove-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "ESE",
-        "description": "ESE 5 to 10 mph"
-      },
-      "weather": "Partly Sunny then Chance Showers And Thunderstorms · High 88°F · Heat index up to 100°F",
-      "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
-      "sunrise": "6:21 AM",
-      "sunset": "7:06 PM",
-      "stormWindow": "after 1PM",
-      "stormChance": 42,
-      "sky": "Cloudy",
-      "waterTemp": 87,
-      "wave": {
-        "height": 0.7,
-        "period": 5,
-        "direction": "S",
-        "swellHeight": 0.5,
-        "swellPeriod": 5.9,
-        "swellDirection": "S",
-        "windWaveHeight": 0.1
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-09-03T12:45",
-        "fetchedAt": "2026-09-03T12:48:03.636Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.12499
-      },
-      "forecast": [
-        {
-          "day": "Thu, Sep 3",
-          "label": "Today",
-          "high": 88,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 42,
-          "headline": "Partly Sunny then Chance Showers And Thunderstorms · Heat index 100",
-          "fishingScore": 6.8,
-          "aiCall": "A chance of showers and thunderstorms after 1pm. Partly sunny, with a high near 88. Heat index values as high as 100. East southeast wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Fri, Sep 4",
-          "label": "Tomorrow",
-          "high": 84,
-          "low": null,
-          "wind": "ESE 5 to 10 mph",
-          "storms": 71,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 5.7,
-          "aiCall": "A chance of showers and thunderstorms before 11am, then showers and thunderstorms likely between 11am and 1pm, then showers and thunderstorms likely. Mostly sunny, with a high near 84. East southeast wind 5 to 10 mph. Chance of precipitation is 70%. New rainfall amounts between a tenth and quarter of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Sat, Sep 5",
-          "label": "Saturday",
-          "high": 85,
-          "low": null,
-          "wind": "WSW 0 to 10 mph",
-          "storms": 57,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 6.2,
-          "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms likely between 7am and 1pm, then a chance of showers and thunderstorms. Sunny, with a high near 85. West southwest wind 0 to 10 mph. Chance of precipitation is 60%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 92,
-          "low": 77,
-          "stormChance": 16,
-          "windSpeed": 9,
-          "windDir": "SE",
-          "summary": "Light drizzle"
-        },
-        {
-          "high": 86,
-          "low": 77,
-          "stormChance": 49,
-          "windSpeed": 11,
-          "windDir": "E",
-          "summary": "Overcast"
-        },
-        {
-          "high": 90,
-          "low": 75,
-          "stormChance": 48,
-          "windSpeed": 8,
-          "windDir": "NW",
-          "summary": "Rain showers"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 5
-        },
-        "high": 88,
-        "stormChance": 20,
-        "tide": "High tide ~9:11 PM · Low tide ~8:17 AM · Sunrise 6:20 AM",
-        "wave": {
-          "height": 0.7,
-          "period": 5.4,
-          "direction": "S",
-          "swellHeight": 0.6,
-          "swellPeriod": 4,
-          "swellDirection": "SE",
-          "windWaveHeight": 0.1
-        }
-      }
-    },
-    "inlet-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "E",
-        "description": "E 5 to 10 mph"
-      },
-      "weather": "Partly Sunny then Chance Showers And Thunderstorms · High 89°F",
-      "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:20 AM",
-      "sunrise": "6:20 AM",
+      "weather": "Chance Showers And Thunderstorms · High 85°F",
+      "tide": "High tide ~11:10 PM · Low tide ~11:23 AM · Sunrise 6:22 AM",
+      "sunrise": "6:22 AM",
       "sunset": "7:05 PM",
-      "stormWindow": "after 3PM",
-      "stormChance": 47,
+      "stormWindow": "after 1PM",
+      "stormChance": 53,
       "sky": "Cloudy",
       "waterTemp": 87,
       "wave": {
         "height": 0.7,
-        "period": 5.5,
-        "direction": "S",
-        "swellHeight": 0.5,
-        "swellPeriod": 4.1,
+        "period": 3.7,
+        "direction": "SE",
+        "swellHeight": 0.7,
+        "swellPeriod": 2.7,
         "swellDirection": "SE",
         "windWaveHeight": 0.1
       },
@@ -523,83 +63,543 @@
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-09-02T12:30",
-        "fetchedAt": "2026-09-02T12:44:54.917Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.04166
+        "validTime": "2026-09-04T12:30",
+        "fetchedAt": "2026-09-04T12:41:45.840Z",
+        "gridLatitude": 30.375,
+        "gridLongitude": -86.29166
       },
       "forecast": [
         {
-          "day": "Thu, Sep 3",
-          "label": "Today",
-          "high": 89,
-          "low": null,
-          "wind": "E 5 to 10 mph",
-          "storms": 47,
-          "headline": "Partly Sunny then Chance Showers And Thunderstorms",
-          "fishingScore": 6.6,
-          "aiCall": "A chance of showers and thunderstorms after noon. Partly sunny, with a high near 89. East wind 5 to 10 mph. Chance of precipitation is 50%. New rainfall amounts less than a tenth of an inch possible.",
-          "emoji": "⛈️"
-        },
-        {
           "day": "Fri, Sep 4",
-          "label": "Tomorrow",
-          "high": 86,
+          "label": "Today",
+          "high": 85,
           "low": null,
-          "wind": "ESE 5 mph",
-          "storms": 74,
-          "headline": "Showers And Thunderstorms Likely",
-          "fishingScore": 5.5,
-          "aiCall": "A chance of showers and thunderstorms before 11am, then showers and thunderstorms likely between 11am and noon, then showers and thunderstorms likely. Partly sunny, with a high near 86. East southeast wind around 5 mph. Chance of precipitation is 70%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "wind": "SE 5 to 10 mph",
+          "storms": 53,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.4,
+          "aiCall": "A chance of showers and thunderstorms. Mostly sunny, with a high near 85. Southeast wind 5 to 10 mph. Chance of precipitation is 50%. New rainfall amounts less than a tenth of an inch possible.",
           "emoji": "⛈️"
         },
         {
           "day": "Sat, Sep 5",
-          "label": "Saturday",
-          "high": 87,
+          "label": "Tomorrow",
+          "high": 85,
           "low": null,
-          "wind": "SW 0 to 10 mph",
-          "storms": 59,
-          "headline": "Chance Showers And Thunderstorms then Showers And Thunderstorms Likely",
-          "fishingScore": 6.1,
-          "aiCall": "A chance of showers and thunderstorms before 7am, then showers and thunderstorms likely between 7am and 1pm, then a chance of showers and thunderstorms. Sunny, with a high near 87. Southwest wind 0 to 10 mph. Chance of precipitation is 60%.",
+          "wind": "WSW 5 to 10 mph",
+          "storms": 43,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.8,
+          "aiCall": "A chance of showers and thunderstorms before 8am, then a slight chance of showers and thunderstorms between 8am and 9am, then a chance of showers and thunderstorms between 9am and 10am, then a chance of showers and thunderstorms between 10am and 2pm. Mostly sunny, with a high near 85. West southwest wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sun, Sep 6",
+          "label": "Sunday",
+          "high": 86,
+          "low": null,
+          "wind": "WSW 5 to 10 mph",
+          "storms": 32,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.2,
+          "aiCall": "A slight chance of showers and thunderstorms before 7am, then a chance of showers and thunderstorms between 7am and 10am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. West southwest wind 5 to 10 mph. Chance of precipitation is 30%.",
           "emoji": "⛈️"
         }
       ],
       "openMeteo": [
         {
-          "high": 94,
+          "high": 88,
+          "low": 78,
+          "stormChance": 24,
+          "windSpeed": 9,
+          "windDir": "SE",
+          "summary": "Overcast"
+        },
+        {
+          "high": 87,
           "low": 79,
-          "stormChance": 20,
-          "windSpeed": 8,
-          "windDir": "E",
+          "stormChance": 24,
+          "windSpeed": 9,
+          "windDir": "SW",
+          "summary": "Rain showers"
+        },
+        {
+          "high": 94,
+          "low": 77,
+          "stormChance": 33,
+          "windSpeed": 10,
+          "windDir": "W",
+          "summary": "Thunderstorm"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "ESE",
+          "speed": 10
+        },
+        "high": 88,
+        "stormChance": 39,
+        "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
+        "wave": {
+          "height": 0.7,
+          "period": 4.8,
+          "direction": "S",
+          "swellHeight": 0.4,
+          "swellPeriod": 6,
+          "swellDirection": "S",
+          "windWaveHeight": 0.2
+        }
+      }
+    },
+    "blue-mountain-beach": {
+      "wind": {
+        "speed": 5,
+        "dir": "SE",
+        "description": "SE 5 mph"
+      },
+      "weather": "Chance Showers And Thunderstorms · High 86°F",
+      "tide": "High tide ~11:10 PM · Low tide ~11:23 AM · Sunrise 6:22 AM",
+      "sunrise": "6:22 AM",
+      "sunset": "7:05 PM",
+      "stormWindow": "before 2PM",
+      "stormChance": 55,
+      "sky": "Cloudy",
+      "waterTemp": 87,
+      "wave": {
+        "height": 0.7,
+        "period": 3.7,
+        "direction": "SE",
+        "swellHeight": 0.6,
+        "swellPeriod": 2.5,
+        "swellDirection": "SE",
+        "windWaveHeight": 0.1
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-09-04T12:30",
+        "fetchedAt": "2026-09-04T12:41:46.801Z",
+        "gridLatitude": 30.375,
+        "gridLongitude": -86.20833
+      },
+      "forecast": [
+        {
+          "day": "Fri, Sep 4",
+          "label": "Today",
+          "high": 86,
+          "low": null,
+          "wind": "SE 5 mph",
+          "storms": 55,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.3,
+          "aiCall": "A chance of showers and thunderstorms before 2pm, then showers and thunderstorms likely between 2pm and 3pm, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. Southeast wind around 5 mph. Chance of precipitation is 60%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sat, Sep 5",
+          "label": "Tomorrow",
+          "high": 87,
+          "low": null,
+          "wind": "WSW 0 to 10 mph",
+          "storms": 43,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.8,
+          "aiCall": "A chance of showers and thunderstorms before 8am, then a slight chance of showers and thunderstorms between 8am and 9am, then a chance of showers and thunderstorms between 9am and 10am, then a chance of showers and thunderstorms between 10am and 2pm. Mostly sunny, with a high near 87. West southwest wind 0 to 10 mph. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sun, Sep 6",
+          "label": "Sunday",
+          "high": 88,
+          "low": null,
+          "wind": "W 5 to 10 mph",
+          "storms": 33,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.2,
+          "aiCall": "A slight chance of showers and thunderstorms before 7am, then a chance of showers and thunderstorms between 7am and 10am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 88. West wind 5 to 10 mph. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 87,
+          "low": 77,
+          "stormChance": 24,
+          "windSpeed": 11,
+          "windDir": "SE",
+          "summary": "Overcast"
+        },
+        {
+          "high": 85,
+          "low": 78,
+          "stormChance": 24,
+          "windSpeed": 11,
+          "windDir": "SW",
+          "summary": "Rain showers"
+        },
+        {
+          "high": 85,
+          "low": 82,
+          "stormChance": 34,
+          "windSpeed": 21,
+          "windDir": "W",
+          "summary": "Thunderstorm"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "ESE",
+          "speed": 5
+        },
+        "high": 91,
+        "stormChance": 41,
+        "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
+        "wave": {
+          "height": 0.6,
+          "period": 4.9,
+          "direction": "S",
+          "swellHeight": 0.4,
+          "swellPeriod": 5.9,
+          "swellDirection": "S",
+          "windWaveHeight": 0.1
+        }
+      }
+    },
+    "grayton-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SE",
+        "description": "SE 5 to 10 mph"
+      },
+      "weather": "Chance Showers And Thunderstorms · High 85°F",
+      "tide": "High tide ~11:10 PM · Low tide ~11:23 AM · Sunrise 6:22 AM",
+      "sunrise": "6:22 AM",
+      "sunset": "7:05 PM",
+      "stormWindow": "after 1PM",
+      "stormChance": 54,
+      "sky": "Cloudy",
+      "waterTemp": 87,
+      "wave": {
+        "height": 0.9,
+        "period": 3.7,
+        "direction": "SE",
+        "swellHeight": 0.6,
+        "swellPeriod": 2.7,
+        "swellDirection": "SE",
+        "windWaveHeight": 0.2
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-09-04T12:30",
+        "fetchedAt": "2026-09-04T12:41:47.865Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.12499
+      },
+      "forecast": [
+        {
+          "day": "Fri, Sep 4",
+          "label": "Today",
+          "high": 85,
+          "low": null,
+          "wind": "SE 5 to 10 mph",
+          "storms": 54,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.3,
+          "aiCall": "A chance of showers and thunderstorms. Mostly sunny, with a high near 85. Southeast wind 5 to 10 mph. Chance of precipitation is 50%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sat, Sep 5",
+          "label": "Tomorrow",
+          "high": 86,
+          "low": null,
+          "wind": "WSW 5 to 10 mph",
+          "storms": 42,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.8,
+          "aiCall": "A chance of showers and thunderstorms before 8am, then a slight chance of showers and thunderstorms between 8am and 9am, then a chance of showers and thunderstorms between 9am and 10am, then a chance of showers and thunderstorms between 10am and 2pm. Mostly sunny, with a high near 86. West southwest wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sun, Sep 6",
+          "label": "Sunday",
+          "high": 86,
+          "low": null,
+          "wind": "W 5 to 10 mph",
+          "storms": 31,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.3,
+          "aiCall": "A slight chance of showers and thunderstorms before 7am, then a chance of showers and thunderstorms between 7am and 10am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. West wind 5 to 10 mph. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 87,
+          "low": 76,
+          "stormChance": 24,
+          "windSpeed": 12,
+          "windDir": "SE",
           "summary": "Overcast"
         },
         {
           "high": 86,
           "low": 77,
-          "stormChance": 44,
-          "windSpeed": 8,
-          "windDir": "E",
+          "stormChance": 25,
+          "windSpeed": 9,
+          "windDir": "SW",
+          "summary": "Rain showers"
+        },
+        {
+          "high": 92,
+          "low": 78,
+          "stormChance": 35,
+          "windSpeed": 12,
+          "windDir": "W",
+          "summary": "Thunderstorm"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "ESE",
+          "speed": 10
+        },
+        "high": 88,
+        "stormChance": 41,
+        "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
+        "wave": {
+          "height": 0.7,
+          "period": 5,
+          "direction": "S",
+          "swellHeight": 0.5,
+          "swellPeriod": 5.9,
+          "swellDirection": "S",
+          "windWaveHeight": 0.1
+        }
+      }
+    },
+    "seagrove-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "SE",
+        "description": "SE 5 to 10 mph"
+      },
+      "weather": "Chance Showers And Thunderstorms · High 84°F",
+      "tide": "High tide ~11:10 PM · Low tide ~11:23 AM · Sunrise 6:21 AM",
+      "sunrise": "6:21 AM",
+      "sunset": "7:05 PM",
+      "stormWindow": "before 2PM",
+      "stormChance": 55,
+      "sky": "Cloudy",
+      "waterTemp": 87,
+      "wave": {
+        "height": 0.9,
+        "period": 3.7,
+        "direction": "SE",
+        "swellHeight": 0.6,
+        "swellPeriod": 2.7,
+        "swellDirection": "SE",
+        "windWaveHeight": 0.2
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-09-04T12:30",
+        "fetchedAt": "2026-09-04T12:41:48.693Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.12499
+      },
+      "forecast": [
+        {
+          "day": "Fri, Sep 4",
+          "label": "Today",
+          "high": 84,
+          "low": null,
+          "wind": "SE 5 to 10 mph",
+          "storms": 55,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.3,
+          "aiCall": "A chance of showers and thunderstorms before 2pm, then showers and thunderstorms likely between 2pm and 3pm, then a chance of showers and thunderstorms. Mostly sunny, with a high near 84. Southeast wind 5 to 10 mph. Chance of precipitation is 60%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sat, Sep 5",
+          "label": "Tomorrow",
+          "high": 85,
+          "low": null,
+          "wind": "WSW 5 to 10 mph",
+          "storms": 42,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.8,
+          "aiCall": "A chance of showers and thunderstorms before 8am, then a slight chance of showers and thunderstorms between 8am and 9am, then a chance of showers and thunderstorms between 9am and 10am, then a chance of showers and thunderstorms between 10am and 2pm. Mostly sunny, with a high near 85. West southwest wind 5 to 10 mph. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sun, Sep 6",
+          "label": "Sunday",
+          "high": 86,
+          "low": null,
+          "wind": "W 5 to 10 mph",
+          "storms": 31,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.3,
+          "aiCall": "A slight chance of showers and thunderstorms before 7am, then a chance of showers and thunderstorms between 7am and 10am, then a chance of showers and thunderstorms. Sunny, with a high near 86. West wind 5 to 10 mph. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 87,
+          "low": 76,
+          "stormChance": 22,
+          "windSpeed": 11,
+          "windDir": "SE",
           "summary": "Overcast"
         },
         {
-          "high": 90,
-          "low": 77,
-          "stormChance": 50,
-          "windSpeed": 9,
-          "windDir": "W",
+          "high": 86,
+          "low": 76,
+          "stormChance": 30,
+          "windSpeed": 10,
+          "windDir": "SW",
           "summary": "Rain showers"
+        },
+        {
+          "high": 92,
+          "low": 78,
+          "stormChance": 35,
+          "windSpeed": 12,
+          "windDir": "W",
+          "summary": "Thunderstorm"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "ESE",
+          "speed": 10
+        },
+        "high": 88,
+        "stormChance": 42,
+        "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:21 AM",
+        "wave": {
+          "height": 0.7,
+          "period": 5,
+          "direction": "S",
+          "swellHeight": 0.5,
+          "swellPeriod": 5.9,
+          "swellDirection": "S",
+          "windWaveHeight": 0.1
+        }
+      }
+    },
+    "inlet-beach": {
+      "wind": {
+        "speed": 5,
+        "dir": "SE",
+        "description": "SE 5 mph"
+      },
+      "weather": "Chance Showers And Thunderstorms · High 86°F",
+      "tide": "High tide ~11:10 PM · Low tide ~11:23 AM · Sunrise 6:21 AM",
+      "sunrise": "6:21 AM",
+      "sunset": "7:04 PM",
+      "stormWindow": "before 2PM",
+      "stormChance": 58,
+      "sky": "Cloudy",
+      "waterTemp": 87,
+      "wave": {
+        "height": 0.7,
+        "period": 3.8,
+        "direction": "SE",
+        "swellHeight": 0.5,
+        "swellPeriod": 2.6,
+        "swellDirection": "SE",
+        "windWaveHeight": 0.1
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-09-04T12:30",
+        "fetchedAt": "2026-09-04T12:41:49.407Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.04166
+      },
+      "forecast": [
+        {
+          "day": "Fri, Sep 4",
+          "label": "Today",
+          "high": 86,
+          "low": null,
+          "wind": "SE 5 mph",
+          "storms": 58,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.2,
+          "aiCall": "A chance of showers and thunderstorms before 2pm, then showers and thunderstorms likely between 2pm and 4pm, then a chance of showers and thunderstorms. Mostly sunny, with a high near 86. Southeast wind around 5 mph. Chance of precipitation is 60%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sat, Sep 5",
+          "label": "Tomorrow",
+          "high": 87,
+          "low": null,
+          "wind": "WSW 0 to 10 mph",
+          "storms": 45,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.7,
+          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms between 10am and 3pm. Mostly sunny, with a high near 87. West southwest wind 0 to 10 mph. Chance of precipitation is 50%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Sun, Sep 6",
+          "label": "Sunday",
+          "high": 87,
+          "low": null,
+          "wind": "W 5 to 10 mph",
+          "storms": 31,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 7.3,
+          "aiCall": "A slight chance of showers and thunderstorms before 7am, then a chance of showers and thunderstorms between 7am and 10am, then a chance of showers and thunderstorms. Mostly sunny, with a high near 87. West wind 5 to 10 mph. Chance of precipitation is 30%.",
+          "emoji": "⛈️"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 88,
+          "low": 77,
+          "stormChance": 25,
+          "windSpeed": 10,
+          "windDir": "SE",
+          "summary": "Overcast"
+        },
+        {
+          "high": 87,
+          "low": 77,
+          "stormChance": 31,
+          "windSpeed": 8,
+          "windDir": "SW",
+          "summary": "Overcast"
+        },
+        {
+          "high": 89,
+          "low": 80,
+          "stormChance": 35,
+          "windSpeed": 13,
+          "windDir": "W",
+          "summary": "Thunderstorm"
         }
       ],
       "previousDay": {
         "wind": {
           "dir": "E",
-          "speed": 5
+          "speed": 10
         },
-        "high": 90,
-        "stormChance": 20,
-        "tide": "High tide ~9:11 PM · Low tide ~8:17 AM · Sunrise 6:20 AM",
+        "high": 89,
+        "stormChance": 47,
+        "tide": "High tide ~10:02 PM · Low tide ~10:03 AM · Sunrise 6:20 AM",
         "wave": {
           "height": 0.7,
           "period": 5.5,
