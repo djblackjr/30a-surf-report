@@ -1,19 +1,19 @@
 {
   "shared": {
-    "date": "Sunday, October 4, 2026",
-    "dateISO": "2026-10-04",
+    "date": "Monday, October 5, 2026",
+    "dateISO": "2026-10-05",
     "beachFlag": {
       "color": "red",
       "ripCurrentRisk": "high",
-      "surfHeight": "Around 3 ft",
+      "surfHeight": "Around 2 ft",
       "purpleFlag": true,
       "notes": "Purple flag: potentially hazardous marine life is reported.",
       "source": "Visit South Walton official flag widget + NWS Tallahassee Surf Zone Forecast (FLZ108)",
-      "updated": "October 4, 2026",
+      "updated": "October 5, 2026",
       "sourceUrl": "https://www.visitsouthwalton.com/beach-safety/",
-      "nwsProductUrl": "https://api.weather.gov/products/90a9a3ed-49df-4e78-94cc-761f5f0d8dc3",
-      "nwsIssuedAt": "2026-10-04T07:05:00+00:00",
-      "updatedAt": "2026-10-04T13:54:16.519Z"
+      "nwsProductUrl": "https://api.weather.gov/products/74c7dc31-5f75-4490-99b7-b86e7c4e3629",
+      "nwsIssuedAt": "2026-10-05T07:02:00+00:00",
+      "updatedAt": "2026-10-05T17:06:28.424Z"
     },
     "surfBiteStatus": "unavailable",
     "surfBiteReport": "No current local 30A surf-fishing report is available from the monitored firsthand sources.",
@@ -24,572 +24,227 @@
     "tideEvents": [
       {
         "type": "H",
-        "time": "12:14 AM"
+        "time": "1:29 AM"
       },
       {
         "type": "L",
-        "time": "11:53 AM"
+        "time": "12:32 PM"
       }
     ],
-    "moonPhase": "Last Quarter (~35% illuminated) — moderate tidal push",
-    "lastUpdated": "10/4/2026, 8:54:15 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+    "moonPhase": "Waning Crescent (~25% illuminated) — moderate tidal push",
+    "lastUpdated": "10/5/2026, 12:06:27 PM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
     "surfBiteSourceKind": null
   },
   "locations": {
     "dune-allen-beach": {
       "wind": {
-        "speed": 10,
-        "dir": "SSE",
-        "description": "SSE 10 mph"
+        "speed": 15,
+        "dir": "NE",
+        "description": "NE 10 to 15 mph"
       },
-      "weather": "Showers And Thunderstorms · High 80°F",
-      "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:39 AM",
+      "weather": "Showers And Thunderstorms Likely · High 79°F",
+      "tide": "High tide ~1:29 AM · Low tide ~12:32 PM · Sunrise 6:39 AM",
       "sunrise": "6:39 AM",
-      "sunset": "6:28 PM",
+      "sunset": "6:26 PM",
       "stormWindow": "before 10AM",
-      "stormChance": 100,
+      "stormChance": 72,
       "sky": "Cloudy",
-      "waterTemp": 84,
+      "waterTemp": 83,
       "wave": {
-        "height": 2.6,
-        "period": 4.9,
+        "height": 2.4,
+        "period": 4.5,
         "direction": "S",
-        "swellHeight": 2.5,
-        "swellPeriod": 4.3,
-        "swellDirection": "S",
-        "windWaveHeight": 0.7
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-10-04T13:45",
-        "fetchedAt": "2026-10-04T13:54:12.054Z",
-        "gridLatitude": 30.375,
-        "gridLongitude": -86.29166
-      },
-      "forecast": [
-        {
-          "day": "Sun, Oct 4",
-          "label": "Today",
-          "high": 80,
-          "low": null,
-          "wind": "SSE 10 mph",
-          "storms": 100,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 4.5,
-          "aiCall": "Showers and thunderstorms. Some of the storms could produce heavy rain. Cloudy, with a high near 80. South southeast wind around 10 mph. Chance of precipitation is 100%. New rainfall amounts between 2 and 3 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Mon, Oct 5",
-          "label": "Tomorrow",
-          "high": 80,
-          "low": null,
-          "wind": "NNE 5 to 10 mph",
-          "storms": 76,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 5.5,
-          "aiCall": "Showers and thunderstorms likely before 9am, then a chance of showers and thunderstorms between 9am and 10am, then showers and thunderstorms between 10am and 4pm, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 80. North northeast wind 5 to 10 mph. Chance of precipitation is 80%. New rainfall amounts between 1 and 2 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Tue, Oct 6",
-          "label": "Tuesday",
-          "high": 80,
-          "low": null,
-          "wind": "NE 15 to 20 mph",
-          "storms": 35,
-          "headline": "Chance Showers And Thunderstorms",
-          "fishingScore": 5.6,
-          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 80. Northeast wind 15 to 20 mph. Chance of precipitation is 40%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 79,
-          "low": 75,
-          "stormChance": 82,
-          "windSpeed": 8,
-          "windDir": "E",
-          "summary": "Heavy rain"
-        },
-        {
-          "high": 79,
-          "low": 74,
-          "stormChance": 66,
-          "windSpeed": 10,
-          "windDir": "NE",
-          "summary": "Heavy drizzle"
-        },
-        {
-          "high": 78,
-          "low": 71,
-          "stormChance": 34,
-          "windSpeed": 12,
-          "windDir": "E",
-          "summary": "Light drizzle"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "ESE",
-          "speed": 15
-        },
-        "high": 83,
-        "stormChance": 81,
-        "tide": "High tide ~10:56 PM · Low tide ~11:02 AM · Sunrise 6:38 AM",
-        "wave": {
-          "height": 3.1,
-          "period": 5.5,
-          "direction": "S",
-          "swellHeight": 2.8,
-          "swellPeriod": 4.7,
-          "swellDirection": "S",
-          "windWaveHeight": 0.9
-        }
-      }
-    },
-    "blue-mountain-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "SE",
-        "description": "SE 5 to 10 mph"
-      },
-      "weather": "Showers And Thunderstorms · High 81°F",
-      "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
-      "sunrise": "6:38 AM",
-      "sunset": "6:27 PM",
-      "stormWindow": "before 1PM",
-      "stormChance": 100,
-      "sky": "Cloudy",
-      "waterTemp": 84,
-      "wave": {
-        "height": 2.5,
-        "period": 4.9,
-        "direction": "S",
-        "swellHeight": 2.3,
-        "swellPeriod": 4.4,
-        "swellDirection": "S",
-        "windWaveHeight": 0.5
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-10-04T13:45",
-        "fetchedAt": "2026-10-04T13:54:12.934Z",
-        "gridLatitude": 30.375,
-        "gridLongitude": -86.20833
-      },
-      "forecast": [
-        {
-          "day": "Sun, Oct 4",
-          "label": "Today",
-          "high": 81,
-          "low": null,
-          "wind": "SE 5 to 10 mph",
-          "storms": 100,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 4.5,
-          "aiCall": "Showers and thunderstorms. Some of the storms could produce heavy rain. Cloudy, with a high near 81. Southeast wind 5 to 10 mph. Chance of precipitation is 100%. New rainfall amounts between 2 and 3 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Mon, Oct 5",
-          "label": "Tomorrow",
-          "high": 81,
-          "low": null,
-          "wind": "NE 5 to 10 mph",
-          "storms": 78,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 5.4,
-          "aiCall": "Showers and thunderstorms before 4pm, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 81. Northeast wind 5 to 10 mph. Chance of precipitation is 80%. New rainfall amounts between 1 and 2 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Tue, Oct 6",
-          "label": "Tuesday",
-          "high": 81,
-          "low": null,
-          "wind": "NE 10 to 15 mph",
-          "storms": 35,
-          "headline": "Chance Showers And Thunderstorms",
-          "fishingScore": 6.6,
-          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 81. Northeast wind 10 to 15 mph, with gusts as high as 25 mph. Chance of precipitation is 40%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 79,
-          "low": 75,
-          "stormChance": 84,
-          "windSpeed": 12,
-          "windDir": "E",
-          "summary": "Rain showers"
-        },
-        {
-          "high": 79,
-          "low": 73,
-          "stormChance": 63,
-          "windSpeed": 10,
-          "windDir": "NE",
-          "summary": "Light rain"
-        },
-        {
-          "high": 80,
-          "low": 71,
-          "stormChance": 37,
-          "windSpeed": 23,
-          "windDir": "E",
-          "summary": "Light drizzle"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 10
-        },
-        "high": 84,
-        "stormChance": 80,
-        "tide": "High tide ~10:56 PM · Low tide ~11:02 AM · Sunrise 6:38 AM",
-        "wave": {
-          "height": 2.9,
-          "period": 5.6,
-          "direction": "S",
-          "swellHeight": 2.7,
-          "swellPeriod": 4.7,
-          "swellDirection": "S",
-          "windWaveHeight": 0.6
-        }
-      }
-    },
-    "grayton-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "SE",
-        "description": "SE 5 to 10 mph"
-      },
-      "weather": "Showers And Thunderstorms · High 79°F",
-      "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
-      "sunrise": "6:38 AM",
-      "sunset": "6:27 PM",
-      "stormWindow": "before 10AM",
-      "stormChance": 99,
-      "sky": "Cloudy",
-      "waterTemp": 84,
-      "wave": {
-        "height": 2.8,
-        "period": 5,
-        "direction": "S",
-        "swellHeight": 2.5,
-        "swellPeriod": 4.5,
-        "swellDirection": "S",
-        "windWaveHeight": 0.6
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-10-04T13:45",
-        "fetchedAt": "2026-10-04T13:54:13.909Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.12499
-      },
-      "forecast": [
-        {
-          "day": "Sun, Oct 4",
-          "label": "Today",
-          "high": 79,
-          "low": null,
-          "wind": "SE 5 to 10 mph",
-          "storms": 99,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 4.5,
-          "aiCall": "Showers and thunderstorms. Some of the storms could produce heavy rain. Cloudy, with a high near 79. Southeast wind 5 to 10 mph. Chance of precipitation is 100%. New rainfall amounts between 2 and 3 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Mon, Oct 5",
-          "label": "Tomorrow",
-          "high": 79,
-          "low": null,
-          "wind": "NNE 5 to 10 mph",
-          "storms": 79,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 5.3,
-          "aiCall": "Showers and thunderstorms before 4pm, then a chance of showers and thunderstorms. Some of the storms could produce heavy rain. Mostly cloudy, with a high near 79. North northeast wind 5 to 10 mph. Chance of precipitation is 80%. New rainfall amounts between 1 and 2 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Tue, Oct 6",
-          "label": "Tuesday",
-          "high": 79,
-          "low": null,
-          "wind": "NE 15 to 20 mph",
-          "storms": 35,
-          "headline": "Chance Showers And Thunderstorms",
-          "fishingScore": 5.6,
-          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 79. Northeast wind 15 to 20 mph. Chance of precipitation is 40%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 79,
-          "low": 75,
-          "stormChance": 84,
-          "windSpeed": 11,
-          "windDir": "E",
-          "summary": "Violent rain showers"
-        },
-        {
-          "high": 80,
-          "low": 73,
-          "stormChance": 63,
-          "windSpeed": 10,
-          "windDir": "NE",
-          "summary": "Rain"
-        },
-        {
-          "high": 77,
-          "low": 71,
-          "stormChance": 38,
-          "windSpeed": 12,
-          "windDir": "E",
-          "summary": "Light drizzle"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 15
-        },
-        "high": 82,
-        "stormChance": 79,
-        "tide": "High tide ~10:56 PM · Low tide ~11:02 AM · Sunrise 6:38 AM",
-        "wave": {
-          "height": 3.3,
-          "period": 5.6,
-          "direction": "S",
-          "swellHeight": 3.1,
-          "swellPeriod": 4.8,
-          "swellDirection": "S",
-          "windWaveHeight": 0.9
-        }
-      }
-    },
-    "seagrove-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "SE",
-        "description": "SE 5 to 10 mph"
-      },
-      "weather": "Showers And Thunderstorms · High 79°F",
-      "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
-      "sunrise": "6:38 AM",
-      "sunset": "6:27 PM",
-      "stormWindow": "before 10AM",
-      "stormChance": 99,
-      "sky": "Cloudy",
-      "waterTemp": 84,
-      "wave": {
-        "height": 2.8,
-        "period": 5,
-        "direction": "S",
-        "swellHeight": 2.5,
-        "swellPeriod": 4.5,
-        "swellDirection": "S",
-        "windWaveHeight": 0.6
-      },
-      "marineSource": {
-        "provider": "Open-Meteo Marine API",
-        "type": "model",
-        "observed": false,
-        "validTime": "2026-10-04T13:45",
-        "fetchedAt": "2026-10-04T13:54:14.820Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.12499
-      },
-      "forecast": [
-        {
-          "day": "Sun, Oct 4",
-          "label": "Today",
-          "high": 79,
-          "low": null,
-          "wind": "SE 5 to 10 mph",
-          "storms": 99,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 4.5,
-          "aiCall": "Showers and thunderstorms. Some of the storms could produce heavy rain. Cloudy, with a high near 79. Southeast wind 5 to 10 mph. Chance of precipitation is 100%. New rainfall amounts between 2 and 3 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Mon, Oct 5",
-          "label": "Tomorrow",
-          "high": 79,
-          "low": null,
-          "wind": "NNE 5 to 10 mph",
-          "storms": 80,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 5.3,
-          "aiCall": "Showers and thunderstorms before 4pm, then a chance of showers and thunderstorms. Some of the storms could produce heavy rain. Mostly cloudy, with a high near 79. North northeast wind 5 to 10 mph. Chance of precipitation is 80%. New rainfall amounts between 1 and 2 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Tue, Oct 6",
-          "label": "Tuesday",
-          "high": 79,
-          "low": null,
-          "wind": "NE 15 to 20 mph",
-          "storms": 36,
-          "headline": "Chance Showers And Thunderstorms",
-          "fishingScore": 5.6,
-          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 79. Northeast wind 15 to 20 mph. Chance of precipitation is 40%.",
-          "emoji": "⛈️"
-        }
-      ],
-      "openMeteo": [
-        {
-          "high": 79,
-          "low": 75,
-          "stormChance": 84,
-          "windSpeed": 13,
-          "windDir": "E",
-          "summary": "Heavy rain"
-        },
-        {
-          "high": 79,
-          "low": 73,
-          "stormChance": 66,
-          "windSpeed": 11,
-          "windDir": "NE",
-          "summary": "Rain"
-        },
-        {
-          "high": 77,
-          "low": 70,
-          "stormChance": 39,
-          "windSpeed": 12,
-          "windDir": "E",
-          "summary": "Light drizzle"
-        }
-      ],
-      "previousDay": {
-        "wind": {
-          "dir": "SE",
-          "speed": 15
-        },
-        "high": 82,
-        "stormChance": 78,
-        "tide": "High tide ~10:56 PM · Low tide ~11:02 AM · Sunrise 6:38 AM",
-        "wave": {
-          "height": 3.3,
-          "period": 5.6,
-          "direction": "S",
-          "swellHeight": 3.1,
-          "swellPeriod": 4.8,
-          "swellDirection": "S",
-          "windWaveHeight": 0.9
-        }
-      }
-    },
-    "inlet-beach": {
-      "wind": {
-        "speed": 10,
-        "dir": "SE",
-        "description": "SE 5 to 10 mph"
-      },
-      "weather": "Showers And Thunderstorms · High 79°F",
-      "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
-      "sunrise": "6:38 AM",
-      "sunset": "6:27 PM",
-      "stormWindow": "before 10AM",
-      "stormChance": 99,
-      "sky": "Cloudy",
-      "waterTemp": 84,
-      "wave": {
-        "height": 2.7,
-        "period": 5,
-        "direction": "S",
-        "swellHeight": 2.4,
-        "swellPeriod": 4.3,
-        "swellDirection": "S",
+        "swellHeight": 1.8,
+        "swellPeriod": 3.6,
+        "swellDirection": "SW",
         "windWaveHeight": 0.4
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-10-04T13:45",
-        "fetchedAt": "2026-10-04T13:54:15.940Z",
-        "gridLatitude": 30.291664,
-        "gridLongitude": -86.04166
+        "validTime": "2026-10-05T17:00",
+        "fetchedAt": "2026-10-05T17:06:21.603Z",
+        "gridLatitude": 30.375,
+        "gridLongitude": -86.29166
       },
       "forecast": [
         {
-          "day": "Sun, Oct 4",
+          "day": "Mon, Oct 5",
           "label": "Today",
           "high": 79,
           "low": null,
-          "wind": "SE 5 to 10 mph",
-          "storms": 99,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 4.5,
-          "aiCall": "Showers and thunderstorms. Some of the storms could produce heavy rain. Mostly cloudy, with a high near 79. Southeast wind 5 to 10 mph. Chance of precipitation is 100%. New rainfall amounts between 2 and 3 inches possible.",
-          "emoji": "⛈️"
-        },
-        {
-          "day": "Mon, Oct 5",
-          "label": "Tomorrow",
-          "high": 79,
-          "low": null,
-          "wind": "NNE 5 to 10 mph",
-          "storms": 81,
-          "headline": "Showers And Thunderstorms",
-          "fishingScore": 5.3,
-          "aiCall": "Showers and thunderstorms before 3pm, then a chance of showers and thunderstorms. Some of the storms could produce heavy rain. Mostly cloudy, with a high near 79. North northeast wind 5 to 10 mph. Chance of precipitation is 80%. New rainfall amounts between 2 and 3 inches possible.",
+          "wind": "NE 10 to 15 mph",
+          "storms": 72,
+          "headline": "Showers And Thunderstorms Likely",
+          "fishingScore": 5.1,
+          "aiCall": "Showers and thunderstorms likely. Mostly cloudy, with a high near 79. Northeast wind 10 to 15 mph. Chance of precipitation is 70%. New rainfall amounts between a half and three quarters of an inch possible.",
           "emoji": "⛈️"
         },
         {
           "day": "Tue, Oct 6",
-          "label": "Tuesday",
-          "high": 79,
+          "label": "Tomorrow",
+          "high": 78,
           "low": null,
-          "wind": "NE 10 to 15 mph",
-          "storms": 40,
+          "wind": "NE 20 mph",
+          "storms": 42,
           "headline": "Chance Showers And Thunderstorms",
-          "fishingScore": 6.4,
-          "aiCall": "A chance of showers and thunderstorms before 10am, then a chance of showers and thunderstorms. Mostly cloudy, with a high near 79. Northeast wind 10 to 15 mph, with gusts as high as 25 mph. Chance of precipitation is 40%.",
+          "fishingScore": 5.3,
+          "aiCall": "A chance of showers and thunderstorms before 4pm. Mostly cloudy, with a high near 78. Northeast wind around 20 mph. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible.",
           "emoji": "⛈️"
+        },
+        {
+          "day": "Wed, Oct 7",
+          "label": "Wednesday",
+          "high": 82,
+          "low": null,
+          "wind": "NE 15 to 20 mph",
+          "storms": 7,
+          "headline": "Mostly Cloudy",
+          "fishingScore": 7.2,
+          "aiCall": "Mostly cloudy, with a high near 82. Northeast wind 15 to 20 mph.",
+          "emoji": "⛅"
         }
       ],
       "openMeteo": [
         {
           "high": 79,
-          "low": 75,
-          "stormChance": 85,
-          "windSpeed": 18,
-          "windDir": "E",
-          "summary": "Heavy rain"
+          "low": 74,
+          "stormChance": 89,
+          "windSpeed": 12,
+          "windDir": "NE",
+          "summary": "Violent rain showers"
         },
+        {
+          "high": 76,
+          "low": 72,
+          "stormChance": 28,
+          "windSpeed": 14,
+          "windDir": "NE",
+          "summary": "Light rain"
+        },
+        {
+          "high": 81,
+          "low": 70,
+          "stormChance": 9,
+          "windSpeed": 13,
+          "windDir": "NE",
+          "summary": "Light drizzle"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "SSE",
+          "speed": 10
+        },
+        "high": 80,
+        "stormChance": 100,
+        "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:39 AM",
+        "wave": {
+          "height": 2.6,
+          "period": 4.9,
+          "direction": "S",
+          "swellHeight": 2.5,
+          "swellPeriod": 4.3,
+          "swellDirection": "S",
+          "windWaveHeight": 0.7
+        }
+      }
+    },
+    "blue-mountain-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "NE",
+        "description": "NE 10 mph"
+      },
+      "weather": "Showers And Thunderstorms Likely · High 80°F",
+      "tide": "High tide ~1:29 AM · Low tide ~12:32 PM · Sunrise 6:39 AM",
+      "sunrise": "6:39 AM",
+      "sunset": "6:26 PM",
+      "stormWindow": "before 1PM",
+      "stormChance": 72,
+      "sky": "Cloudy",
+      "waterTemp": 83,
+      "wave": {
+        "height": 2.4,
+        "period": 4.4,
+        "direction": "S",
+        "swellHeight": 1.7,
+        "swellPeriod": 3.6,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.3
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-10-05T17:00",
+        "fetchedAt": "2026-10-05T17:06:22.914Z",
+        "gridLatitude": 30.375,
+        "gridLongitude": -86.20833
+      },
+      "forecast": [
+        {
+          "day": "Mon, Oct 5",
+          "label": "Today",
+          "high": 80,
+          "low": null,
+          "wind": "NE 10 mph",
+          "storms": 72,
+          "headline": "Showers And Thunderstorms Likely",
+          "fishingScore": 5.6,
+          "aiCall": "Showers and thunderstorms likely. Mostly cloudy, with a high near 80. Northeast wind around 10 mph. Chance of precipitation is 70%. New rainfall amounts between a half and three quarters of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Tue, Oct 6",
+          "label": "Tomorrow",
+          "high": 79,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 43,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 6.3,
+          "aiCall": "A chance of showers and thunderstorms before 4pm. Mostly cloudy, with a high near 79. Northeast wind around 15 mph, with gusts as high as 25 mph. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Wed, Oct 7",
+          "label": "Wednesday",
+          "high": 83,
+          "low": null,
+          "wind": "NE 10 to 15 mph",
+          "storms": 7,
+          "headline": "Mostly Cloudy",
+          "fishingScore": 8.2,
+          "aiCall": "Mostly cloudy, with a high near 83. Northeast wind 10 to 15 mph, with gusts as high as 25 mph.",
+          "emoji": "⛅"
+        }
+      ],
+      "openMeteo": [
         {
           "high": 79,
           "low": 73,
-          "stormChance": 70,
-          "windSpeed": 9,
+          "stormChance": 89,
+          "windSpeed": 14,
+          "windDir": "E",
+          "summary": "Violent rain showers"
+        },
+        {
+          "high": 75,
+          "low": 72,
+          "stormChance": 29,
+          "windSpeed": 13,
           "windDir": "NE",
-          "summary": "Heavy drizzle"
+          "summary": "Rain"
         },
         {
           "high": 80,
-          "low": 71,
-          "stormChance": 41,
-          "windSpeed": 14,
-          "windDir": "E",
-          "summary": "Light drizzle"
+          "low": 70,
+          "stormChance": 9,
+          "windSpeed": 22,
+          "windDir": "NE",
+          "summary": "Heavy drizzle"
         }
       ],
       "previousDay": {
@@ -597,17 +252,362 @@
           "dir": "SE",
           "speed": 10
         },
-        "high": 82,
-        "stormChance": 77,
-        "tide": "High tide ~10:56 PM · Low tide ~11:02 AM · Sunrise 6:37 AM",
+        "high": 81,
+        "stormChance": 100,
+        "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
         "wave": {
-          "height": 3.1,
-          "period": 5.6,
+          "height": 2.5,
+          "period": 4.9,
           "direction": "S",
-          "swellHeight": 3,
-          "swellPeriod": 4.8,
+          "swellHeight": 2.3,
+          "swellPeriod": 4.4,
+          "swellDirection": "S",
+          "windWaveHeight": 0.5
+        }
+      }
+    },
+    "grayton-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "NE",
+        "description": "NE 10 mph"
+      },
+      "weather": "Showers And Thunderstorms Likely · High 78°F",
+      "tide": "High tide ~1:29 AM · Low tide ~12:32 PM · Sunrise 6:39 AM",
+      "sunrise": "6:39 AM",
+      "sunset": "6:26 PM",
+      "stormWindow": "before 10AM",
+      "stormChance": 73,
+      "sky": "Cloudy",
+      "waterTemp": 83,
+      "wave": {
+        "height": 2.7,
+        "period": 4.5,
+        "direction": "S",
+        "swellHeight": 2,
+        "swellPeriod": 3.7,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.5
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-10-05T17:00",
+        "fetchedAt": "2026-10-05T17:06:24.546Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.12499
+      },
+      "forecast": [
+        {
+          "day": "Mon, Oct 5",
+          "label": "Today",
+          "high": 78,
+          "low": null,
+          "wind": "NE 10 mph",
+          "storms": 73,
+          "headline": "Showers And Thunderstorms Likely",
+          "fishingScore": 5.6,
+          "aiCall": "Showers and thunderstorms likely. Mostly cloudy, with a high near 78. Northeast wind around 10 mph, with gusts as high as 20 mph. Chance of precipitation is 70%. New rainfall amounts between three quarters and one inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Tue, Oct 6",
+          "label": "Tomorrow",
+          "high": 77,
+          "low": null,
+          "wind": "NE 15 to 20 mph",
+          "storms": 45,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 5.2,
+          "aiCall": "A chance of showers and thunderstorms before 4pm. Mostly cloudy, with a high near 77. Northeast wind 15 to 20 mph. Chance of precipitation is 50%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Wed, Oct 7",
+          "label": "Wednesday",
+          "high": 81,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 7,
+          "headline": "Mostly Cloudy",
+          "fishingScore": 8.2,
+          "aiCall": "Mostly cloudy, with a high near 81. Northeast wind around 15 mph, with gusts as high as 25 mph.",
+          "emoji": "⛅"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 80,
+          "low": 73,
+          "stormChance": 87,
+          "windSpeed": 13,
+          "windDir": "E",
+          "summary": "Violent rain showers"
+        },
+        {
+          "high": 75,
+          "low": 72,
+          "stormChance": 29,
+          "windSpeed": 13,
+          "windDir": "NE",
+          "summary": "Light rain"
+        },
+        {
+          "high": 80,
+          "low": 70,
+          "stormChance": 10,
+          "windSpeed": 13,
+          "windDir": "NE",
+          "summary": "Rain showers"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "SE",
+          "speed": 10
+        },
+        "high": 79,
+        "stormChance": 99,
+        "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
+        "wave": {
+          "height": 2.8,
+          "period": 5,
+          "direction": "S",
+          "swellHeight": 2.5,
+          "swellPeriod": 4.5,
           "swellDirection": "S",
           "windWaveHeight": 0.6
+        }
+      }
+    },
+    "seagrove-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "NE",
+        "description": "NE 10 mph"
+      },
+      "weather": "Showers And Thunderstorms Likely · High 78°F",
+      "tide": "High tide ~1:29 AM · Low tide ~12:32 PM · Sunrise 6:39 AM",
+      "sunrise": "6:39 AM",
+      "sunset": "6:26 PM",
+      "stormWindow": "before 10AM",
+      "stormChance": 74,
+      "sky": "Cloudy",
+      "waterTemp": 83,
+      "wave": {
+        "height": 2.7,
+        "period": 4.5,
+        "direction": "S",
+        "swellHeight": 2,
+        "swellPeriod": 3.7,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.5
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-10-05T17:00",
+        "fetchedAt": "2026-10-05T17:06:26.334Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.12499
+      },
+      "forecast": [
+        {
+          "day": "Mon, Oct 5",
+          "label": "Today",
+          "high": 78,
+          "low": null,
+          "wind": "NE 10 mph",
+          "storms": 74,
+          "headline": "Showers And Thunderstorms Likely",
+          "fishingScore": 5.5,
+          "aiCall": "Showers and thunderstorms likely. Mostly cloudy, with a high near 78. Northeast wind around 10 mph, with gusts as high as 20 mph. Chance of precipitation is 70%. New rainfall amounts between three quarters and one inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Tue, Oct 6",
+          "label": "Tomorrow",
+          "high": 77,
+          "low": null,
+          "wind": "NE 15 to 20 mph",
+          "storms": 45,
+          "headline": "Chance Showers And Thunderstorms",
+          "fishingScore": 5.2,
+          "aiCall": "A chance of showers and thunderstorms before 4pm. Mostly cloudy, with a high near 77. Northeast wind 15 to 20 mph. Chance of precipitation is 50%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Wed, Oct 7",
+          "label": "Wednesday",
+          "high": 81,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 7,
+          "headline": "Mostly Cloudy",
+          "fishingScore": 8.2,
+          "aiCall": "Mostly cloudy, with a high near 81. Northeast wind around 15 mph, with gusts as high as 25 mph.",
+          "emoji": "⛅"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 79,
+          "low": 73,
+          "stormChance": 86,
+          "windSpeed": 11,
+          "windDir": "E",
+          "summary": "Violent rain showers"
+        },
+        {
+          "high": 75,
+          "low": 72,
+          "stormChance": 31,
+          "windSpeed": 13,
+          "windDir": "NE",
+          "summary": "Heavy drizzle"
+        },
+        {
+          "high": 80,
+          "low": 70,
+          "stormChance": 11,
+          "windSpeed": 13,
+          "windDir": "NE",
+          "summary": "Rain showers"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "SE",
+          "speed": 10
+        },
+        "high": 79,
+        "stormChance": 99,
+        "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
+        "wave": {
+          "height": 2.8,
+          "period": 5,
+          "direction": "S",
+          "swellHeight": 2.5,
+          "swellPeriod": 4.5,
+          "swellDirection": "S",
+          "windWaveHeight": 0.6
+        }
+      }
+    },
+    "inlet-beach": {
+      "wind": {
+        "speed": 10,
+        "dir": "NE",
+        "description": "NE 10 mph"
+      },
+      "weather": "Showers And Thunderstorms · High 78°F",
+      "tide": "High tide ~1:29 AM · Low tide ~12:32 PM · Sunrise 6:38 AM",
+      "sunrise": "6:38 AM",
+      "sunset": "6:25 PM",
+      "stormWindow": "before 10AM",
+      "stormChance": 75,
+      "sky": "Cloudy",
+      "waterTemp": 82,
+      "wave": {
+        "height": 2.6,
+        "period": 4.4,
+        "direction": "S",
+        "swellHeight": 2,
+        "swellPeriod": 3.5,
+        "swellDirection": "SW",
+        "windWaveHeight": 0.5
+      },
+      "marineSource": {
+        "provider": "Open-Meteo Marine API",
+        "type": "model",
+        "observed": false,
+        "validTime": "2026-10-05T17:00",
+        "fetchedAt": "2026-10-05T17:06:27.767Z",
+        "gridLatitude": 30.291664,
+        "gridLongitude": -86.04166
+      },
+      "forecast": [
+        {
+          "day": "Mon, Oct 5",
+          "label": "Today",
+          "high": 78,
+          "low": null,
+          "wind": "NE 10 mph",
+          "storms": 75,
+          "headline": "Showers And Thunderstorms",
+          "fishingScore": 5.5,
+          "aiCall": "Showers and thunderstorms. Mostly cloudy, with a high near 78. Northeast wind around 10 mph. Chance of precipitation is 80%. New rainfall amounts between three quarters and one inch possible.",
+          "emoji": "⛈️"
+        },
+        {
+          "day": "Tue, Oct 6",
+          "label": "Tomorrow",
+          "high": 77,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 48,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 6.6,
+          "aiCall": "A chance of rain showers before 4pm. Mostly cloudy, with a high near 77. Northeast wind around 15 mph, with gusts as high as 25 mph. Chance of precipitation is 50%. New rainfall amounts between a tenth and quarter of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Wed, Oct 7",
+          "label": "Wednesday",
+          "high": 81,
+          "low": null,
+          "wind": "NE 10 to 15 mph",
+          "storms": 7,
+          "headline": "Mostly Cloudy",
+          "fishingScore": 8.2,
+          "aiCall": "Mostly cloudy, with a high near 81. Northeast wind 10 to 15 mph.",
+          "emoji": "⛅"
+        }
+      ],
+      "openMeteo": [
+        {
+          "high": 79,
+          "low": 74,
+          "stormChance": 78,
+          "windSpeed": 10,
+          "windDir": "E",
+          "summary": "Violent rain showers"
+        },
+        {
+          "high": 75,
+          "low": 72,
+          "stormChance": 32,
+          "windSpeed": 12,
+          "windDir": "NE",
+          "summary": "Rain"
+        },
+        {
+          "high": 81,
+          "low": 70,
+          "stormChance": 11,
+          "windSpeed": 15,
+          "windDir": "NE",
+          "summary": "Drizzle"
+        }
+      ],
+      "previousDay": {
+        "wind": {
+          "dir": "SE",
+          "speed": 10
+        },
+        "high": 79,
+        "stormChance": 99,
+        "tide": "High tide ~12:14 AM · Low tide ~11:53 AM · Sunrise 6:38 AM",
+        "wave": {
+          "height": 2.7,
+          "period": 5,
+          "direction": "S",
+          "swellHeight": 2.4,
+          "swellPeriod": 4.3,
+          "swellDirection": "S",
+          "windWaveHeight": 0.4
         }
       }
     }
