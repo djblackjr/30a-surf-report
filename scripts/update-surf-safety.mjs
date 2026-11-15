@@ -7,13 +7,8 @@ import { readFile, writeFile } from "fs/promises";
 const OUT_PATH = new URL("../src/data/conditions.json", import.meta.url);
 const USER_AGENT = "30a-surf-report (github.com/djblackjr/30a-surf-report)";
 const FLAG_URL = "https://www.visitsouthwalton.com/beach-safety/";
+const FLAG_API_URL = "https://www.visitsouthwalton.com/api/flag/";
 const NWS_PRODUCTS_URL = "https://api.weather.gov/products/types/SRF/locations/TAE";
-
-async function getText(url) {
-  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT, Accept: "text/html,text/plain" } });
-  if (!res.ok) throw new Error(`${url} -> ${res.status}`);
-  return res.text();
-}
 
 async function getJson(url) {
   const res = await fetch(url, {
@@ -23,17 +18,44 @@ async function getJson(url) {
   return res.json();
 }
 
+// Maps a flag color/label/image name to one of our colors. Checked against
+// <flagcolor>, then <condition> ("Medium Hazard"), then the image URL.
+// Order matters: "double red" / "water closed" must win over plain "red".
+const FLAG_PATTERNS = [
+  ["double red", /double[\s_-]*red|water[\s_-]*closed|closed[\s_-]*to[\s_-]*public/i],
+  ["red", /\bred\b|high[\s_-]*hazard/i],
+  ["yellow", /yellow|medium[\s_-]*hazard/i],
+  ["green", /green|low[\s_-]*hazard/i],
+];
+
+function flagColorFrom(...labels) {
+  for (const label of labels.filter(Boolean)) {
+    const hit = FLAG_PATTERNS.find(([, re]) => re.test(label));
+    if (hit) return hit[0];
+  }
+  return null;
+}
+
+function xmlText(xml, tag) {
+  return xml.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, "i"))?.[1]?.trim() || "";
+}
+
+// Since ~Oct 2026 visitsouthwalton.com renders the flag client-side from this
+// endpoint (fed by SWFD) instead of server HTML. It returns XML like:
+//   <beach><flagcolor>yellow</flagcolor><condition>Medium Hazard</condition>
+//     <flag>//www.swfd.org/.../yellow.png</flag><date>2026-11-14 03:19:26</date>
+//     <marinepests><status>1</status>...</marinepests></beach>
 async function fetchOfficialFlag() {
-  const html = await getText(FLAG_URL);
-  const idx = html.indexOf('class="flagWrapper"');
-  if (idx === -1) throw new Error("flagWrapper widget not found — site layout may have changed");
-  const block = html.slice(idx, idx + 1200);
-  const altMatch = block.match(/<img alt="((?:Double Red|Green|Yellow|Red)[^"]*)"/i);
-  const colorMatch = altMatch?.[1]?.match(/double red|green|yellow|red/i);
-  if (!colorMatch) throw new Error("Could not parse the official flag color");
+  const res = await fetch(FLAG_API_URL, { headers: { "User-Agent": USER_AGENT, Accept: "application/xml,text/xml" } });
+  if (!res.ok) throw new Error(`${FLAG_API_URL} -> ${res.status}`);
+  const xml = await res.text();
+  const [main, pests = ""] = xml.split(/<marinepests>/i);
+  const color = flagColorFrom(xmlText(main, "flagcolor"), xmlText(main, "condition"), xmlText(main, "flag"));
+  if (!color) throw new Error(`Could not parse the official flag color from: ${xml.slice(0, 200)}`);
   return {
-    color: colorMatch[0].toLowerCase(),
-    purpleFlag: /Marine Pests Flag/i.test(block),
+    color,
+    purpleFlag: xmlText(pests, "status") === "1",
+    postedAt: xmlText(main, "date") || null, // SWFD local time (Central), as published
   };
 }
 
@@ -102,6 +124,7 @@ async function main() {
 
   const notes = [
     color === "unknown" ? "Today's official flag could not be verified; check the posted flag before entering the Gulf." : null,
+    !officialFlag && color !== "unknown" ? "Flag color is from the NWS surf-zone forecast; the official SWFD flag could not be read." : null,
     !nwsFresh ? "A current NWS South Walton surf-zone forecast could not be verified." : null,
     purpleFlag ? "Purple flag: potentially hazardous marine life is reported." : null,
   ].filter(Boolean).join(" ") || "Official flag and current NWS South Walton surf-zone forecast verified.";
@@ -124,6 +147,7 @@ async function main() {
         notes,
         source: sourceParts.join(" + ") || "No current source available",
         sourceUrl: officialFlag ? FLAG_URL : null,
+        officialPostedAt: officialFlag?.postedAt || null,
         nwsProductUrl: nws?.productId ? `https://api.weather.gov/products/${nws.productId}` : null,
         nwsIssuedAt: nws?.issuedAt || null,
         updatedAt: new Date().toISOString(),

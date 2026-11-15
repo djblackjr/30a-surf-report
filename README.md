@@ -17,18 +17,17 @@ A daily surf fishing conditions app for Grayton Beach, FL (30A) — the flagship
 Three scripts, run in order by `.github/workflows/daily-refresh.yml`:
 1. `scripts/update-conditions.mjs` — NWS forecast, NOAA tides, Open-Meteo (2nd forecast source + wave/swell), moon phase. Free, no API key. (Yr.no was tried as a 3rd source and dropped — see the bay app's README for why.)
 2. `scripts/update-surf-safety.mjs` — official beach flag plus the latest NWS rip-current risk and surf height. Free, deterministic, no API key.
-3. `scripts/update-surf-report.mjs` — local surf bite report via Claude reading vetted firsthand sources. It first checks public posts from Reel30A's exact Facebook and Instagram accounts (maximum age 7 days), then Northwest Florida Fishing Report/Reel30A reports (14 days), then Half Hitch PCB reports (7 days). Social content must have a direct public permalink, explicit date, readable fishing-condition caption, and exact account match; login-blocked or ambiguous posts are rejected. Source host, permalink shape, account, and publication age are validated in code; otherwise the app explicitly reports that no current local report is available. Needs `ANTHROPIC_API_KEY`.
+3. `scripts/update-surf-report.mjs` — latest Northwest Florida Fishing Report podcast episode (title, date, link, and the publisher's own episode notes) from its public RSS feed, if published within 14 days; otherwise the app says no current report is available. Free, no API key. Reel30A's Facebook/Instagram (login-walled) and Half Hitch's blog (Cloudflare bot protection) can't be read by a script, so the app links to them instead. This step used Claude + web search until Nov 2026; it was replaced to eliminate API charges.
 
 Run any of them manually:
 ```bash
 node scripts/update-conditions.mjs
 node scripts/update-surf-safety.mjs
-node --env-file=.env scripts/update-surf-report.mjs
+node scripts/update-surf-report.mjs
 ```
 
 ## Setup
 ```bash
-cp .env.example .env   # then fill in ANTHROPIC_API_KEY
 npm install
 npm run dev             # local preview
 npm run build            # production build
@@ -38,11 +37,11 @@ npm run build            # production build
 - Open-Meteo Marine values are model output for the model grid cell nearest each coordinate. Nearby beaches may resolve to the same grid cell, and local sandbars/shorebreak can differ from the model.
 - NWS `FLZ108` is a South Walton zone forecast, not a separate forecast for every access point.
 - The official Walton County flag is countywide. Always follow the physical flag and lifeguards at the beach; the app is not a substitute for an on-site safety decision.
-- The Claude API is used only for the unstructured fishing-chatter summary.
+- No paid APIs are used. The fishing-report card shows the podcast publisher's own notes verbatim (excerpted, attributed), and they cover the whole Emerald Coast, not just 30A.
 
 ## Not done yet
 This is a narrow first slice, deliberately — see the "how should I start this" conversation that produced it:
-- **No GitHub repo created yet.** This only exists locally. Once it looks right, create `djblackjr/30a-surf-report` on GitHub, push, then set the `ANTHROPIC_API_KEY` and `DEPLOY_TOKEN` repo secrets (same PAT-dispatch pattern as the bay app — see `daily-refresh.yml`'s comments for why `DEPLOY_TOKEN` is needed instead of the default token).
+- **External cron trigger.** The repo is live on GitHub with the `DEPLOY_TOKEN` secret (same PAT-dispatch pattern as the bay app — see `daily-refresh.yml`'s comments). It still relies on GitHub's native schedule; the cron-job.org fallback the bay app uses isn't set up yet.
 - **No PWA/offline support** — intentionally skipped for this first pass to keep scope tight. Port it from the bay app if/when wanted (and note: the bay app's own `public/sw.js` currently has a real bug — some stray pasted text above the actual code — worth fixing there before copying the pattern here).
 - **Only one location.** Destin and Panama City Beach were deliberately deferred — adding them means handling two NWS offices and two separate beach-flag systems (South Walton vs. Bay County) instead of one.
 - **No visual/brand redesign** — reuses the bay app's card language with a blue/navy palette swap, nothing more considered than that yet.

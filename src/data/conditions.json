@@ -3,24 +3,25 @@
     "date": "Sunday, November 15, 2026",
     "dateISO": "2026-11-15",
     "beachFlag": {
-      "color": "unknown",
+      "color": "yellow",
       "ripCurrentRisk": "moderate",
       "surfHeight": "1 foot or less",
-      "purpleFlag": false,
-      "notes": "Today's official flag could not be verified; check the posted flag before entering the Gulf.",
-      "source": "NWS Tallahassee Surf Zone Forecast (FLZ108)",
+      "purpleFlag": true,
+      "notes": "Purple flag: potentially hazardous marine life is reported.",
+      "source": "Visit South Walton official flag widget + NWS Tallahassee Surf Zone Forecast (FLZ108)",
       "updated": "November 15, 2026",
-      "sourceUrl": null,
-      "nwsProductUrl": "https://api.weather.gov/products/fd910470-5591-417f-bead-9a5996f06902",
-      "nwsIssuedAt": "2026-11-15T08:06:00+00:00",
-      "updatedAt": "2026-11-15T15:37:12.203Z"
+      "sourceUrl": "https://www.visitsouthwalton.com/beach-safety/",
+      "nwsProductUrl": "https://api.weather.gov/products/7544b336-ec77-4d26-8586-53c5630e499e",
+      "nwsIssuedAt": "2026-11-15T16:12:00+00:00",
+      "updatedAt": "2026-11-15T18:18:23.475Z",
+      "officialPostedAt": "2026-11-14 03:19:26"
     },
-    "surfBiteStatus": "unavailable",
-    "surfBiteReport": "No current local 30A surf-fishing report is available from the monitored firsthand sources.",
-    "surfBiteSource": null,
-    "surfBiteSourceUrl": null,
-    "surfBiteSourceDate": null,
-    "surfBiteRefreshedAt": "2026-08-14T09:18:30.765Z",
+    "surfBiteStatus": "current",
+    "surfBiteReport": "In this week's Northwest Florida Fishing Report, host Joe Baya covers nearshore tuna, surf fishing, and strong fall opportunities around Pensacola. This episode features Chris Vecsey of J&M Tackle, Justin Reed of Justin Reed Surf Fishing Charters, and Capt. Tyler Massey of Hot Spots Charters.",
+    "surfBiteSource": "Northwest Florida Fishing Report",
+    "surfBiteSourceUrl": "https://northwestfloridafishingreport.libsyn.com/tuna-near-the-beach-bull-reds-in-the-bay",
+    "surfBiteSourceDate": "2026-11-12",
+    "surfBiteRefreshedAt": "2026-11-15T18:02:20.354Z",
     "tideEvents": [
       {
         "type": "H",
@@ -33,7 +34,9 @@
     ],
     "moonPhase": "First Quarter (~37% illuminated) — moderate tidal push",
     "lastUpdated": "11/15/2026, 9:37:11 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
-    "surfBiteSourceKind": null
+    "surfBiteSourceKind": "podcast",
+    "surfBiteHeadline": "Tuna Near the Beach, Bull Reds in the Bay",
+    "surfBiteMentionsSurf": true
   },
   "locations": {
     "dune-allen-beach": {

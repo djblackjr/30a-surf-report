@@ -6,6 +6,13 @@ import LOCATIONS from "./data/locations.json";
 
 const DEFAULT_LOCATION_ID = "grayton-beach";
 const LOCATION_STORAGE_KEY = "30a-location";
+// Sources a script can't read (login walls / bot protection), shown as links.
+const SURF_REPORT_LINKS = [
+  { label: "Reel30A Facebook", url: "https://www.facebook.com/reel30a" },
+  { label: "Reel30A Instagram", url: "https://www.instagram.com/thereel30a/" },
+  { label: "Half Hitch PCB reports", url: "https://www.halfhitch.com/blog" },
+  { label: "All podcast episodes", url: "https://northwestfloridafishingreport.libsyn.com/" },
+];
 
 // ── SHARED CONDITIONS ─────────────────────────────────────────────────────────
 // Same split as the sibling 331 Bridge app: only evergreen config lives here.
@@ -854,20 +861,35 @@ export default function App() {
         {/* Surf bite report */}
         <div style={{ background: "#0e2439", border: "1px solid #12314a", borderRadius: 10, padding: "13px 16px", marginBottom: 4 }}>
           <div style={{ fontSize: 16, color: "#7fb3d9", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8, fontWeight: 600 }}>🎣 What's Being Caught — Local Reports</div>
-          <p style={{ margin: "0 0 6px 0", fontSize: 16, color: "#eaf5ff", lineHeight: 1.7 }}>{C.surfBiteReport}</p>
+          {C.surfBiteHeadline && (
+            <div style={{ fontSize: 17, fontWeight: 600, color: "#eaf5ff", marginBottom: 4 }}>
+              {C.surfBiteSourceUrl ? <a href={C.surfBiteSourceUrl} target="_blank" rel="noreferrer" style={{ color: "#eaf5ff" }}>{C.surfBiteHeadline}</a> : C.surfBiteHeadline}
+            </div>
+          )}
           {C.surfBiteSource && (
-            <div style={{ fontSize: 15, color: "#7fb3d9", fontStyle: "italic" }}>
-              {C.surfBiteSourceUrl ? <a href={C.surfBiteSourceUrl} target="_blank" rel="noreferrer" style={{ color: "#7fb3d9" }}>{C.surfBiteSource}</a> : C.surfBiteSource}
+            <div style={{ fontSize: 14, color: "#7fb3d9", marginBottom: 6 }}>
+              {C.surfBiteSource}{C.surfBiteSourceKind === "podcast" ? " · weekly Emerald Coast podcast" : ""}
+              {surfBiteAge != null && (
+                <span style={{ fontWeight: 600, color: surfBiteAge > 14 ? "#f87171" : surfBiteAge > 7 ? "#facc15" : "#7fb3d9" }}>
+                  {" · "}{surfBiteAge === 0 ? "published today" : `published ${surfBiteAge} day${surfBiteAge === 1 ? "" : "s"} ago`}
+                </span>
+              )}
             </div>
           )}
-          {C.surfBiteSourceKind === "social" && (
-            <div style={{ fontSize: 13, color: "#8fb8d5", marginTop: 4 }}>Public Reel30A social post · direct link and publication date required</div>
+          {C.surfBiteReport && (
+            <p style={{ margin: "0 0 6px 0", fontSize: 16, color: "#eaf5ff", lineHeight: 1.7 }}>
+              {C.surfBiteStatus === "current" ? <>Episode notes: <span style={{ fontStyle: "italic" }}>“{C.surfBiteReport}”</span></> : C.surfBiteReport}
+            </p>
           )}
-          {surfBiteAge != null && (
-            <div style={{ fontSize: 14, fontWeight: 600, marginTop: 6, color: surfBiteAge > 14 ? "#f87171" : surfBiteAge > 7 ? "#facc15" : "#7fb3d9" }}>
-              {surfBiteAge === 0 ? "Source published today" : `Source published ${surfBiteAge} day${surfBiteAge === 1 ? "" : "s"} ago`}
-            </div>
+          {C.surfBiteStatus === "current" && C.surfBiteMentionsSurf === false && (
+            <div style={{ fontSize: 13, color: "#8fb8d5", marginBottom: 4 }}>This episode's notes don't mention surf fishing — it may focus on offshore or bay fishing.</div>
           )}
+          <div style={{ fontSize: 14, color: "#7fb3d9", marginTop: 8, borderTop: "1px solid #12314a", paddingTop: 8 }}>
+            More local reports:{" "}
+            {SURF_REPORT_LINKS.map((l, i) => (
+              <span key={l.url}>{i > 0 && " · "}<a href={l.url} target="_blank" rel="noreferrer" style={{ color: "#7fb3d9" }}>{l.label}</a></span>
+            ))}
+          </div>
         </div>
 
         <div style={{ height: 14 }} />
