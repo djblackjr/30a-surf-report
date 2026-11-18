@@ -1,39 +1,43 @@
 {
   "shared": {
-    "date": "Tuesday, November 17, 2026",
-    "dateISO": "2026-11-17",
+    "date": "Wednesday, November 18, 2026",
+    "dateISO": "2026-11-18",
     "beachFlag": {
-      "color": "yellow",
+      "color": "red",
       "ripCurrentRisk": "high",
       "surfHeight": "Around 3 ft",
       "purpleFlag": true,
       "notes": "Purple flag: potentially hazardous marine life is reported.",
       "source": "Visit South Walton official flag widget + NWS Tallahassee Surf Zone Forecast (FLZ108)",
-      "updated": "November 17, 2026",
+      "updated": "November 18, 2026",
       "sourceUrl": "https://www.visitsouthwalton.com/beach-safety/",
-      "nwsProductUrl": "https://api.weather.gov/products/82f24a68-8fe0-4270-8e63-cd5fbcfdf17a",
-      "nwsIssuedAt": "2026-11-17T17:31:00+00:00",
-      "updatedAt": "2026-11-17T17:35:11.563Z",
-      "officialPostedAt": "2026-11-14 03:19:26"
+      "nwsProductUrl": "https://api.weather.gov/products/c9bb35a2-509c-493f-b886-c69a626d9634",
+      "nwsIssuedAt": "2026-11-18T16:17:00+00:00",
+      "updatedAt": "2026-11-18T17:12:02.794Z",
+      "officialPostedAt": "2026-11-17 05:43:19"
     },
     "surfBiteStatus": "current",
     "surfBiteReport": "In this week's Northwest Florida Fishing Report, host Joe Baya covers nearshore tuna, surf fishing, and strong fall opportunities around Pensacola. This episode features Chris Vecsey of J&M Tackle, Justin Reed of Justin Reed Surf Fishing Charters, and Capt. Tyler Massey of Hot Spots Charters.",
     "surfBiteSource": "Northwest Florida Fishing Report",
     "surfBiteSourceUrl": "https://northwestfloridafishingreport.libsyn.com/tuna-near-the-beach-bull-reds-in-the-bay",
     "surfBiteSourceDate": "2026-11-12",
-    "surfBiteRefreshedAt": "2026-11-17T17:35:11.616Z",
+    "surfBiteRefreshedAt": "2026-11-18T17:12:02.858Z",
     "tideEvents": [
       {
         "type": "H",
-        "time": "8:01 PM"
+        "time": "8:08 PM"
       },
       {
         "type": "L",
-        "time": "7:16 AM"
+        "time": "6:57 AM"
+      },
+      {
+        "type": "H",
+        "time": "3:58 PM"
       }
     ],
-    "moonPhase": "First Quarter (~58% illuminated) — moderate tidal push",
-    "lastUpdated": "11/17/2026, 11:35:11 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
+    "moonPhase": "First Quarter (~68% illuminated) — moderate tidal push",
+    "lastUpdated": "11/18/2026, 11:12:02 AM CT · Source: National Weather Service + NOAA Tides (station 8729511) + Open-Meteo Marine · Auto-refreshed",
     "surfBiteSourceKind": "podcast",
     "surfBiteHeadline": "Tuna Near the Beach, Bull Reds in the Bay",
     "surfBiteMentionsSurf": true
@@ -45,112 +49,112 @@
         "dir": "ENE",
         "description": "ENE 20 mph"
       },
-      "weather": "Partly Sunny · High 66°F",
-      "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
-      "sunrise": "6:12 AM",
+      "weather": "Mostly Sunny · High 71°F",
+      "tide": "High tide ~8:08 PM · Low tide ~6:57 AM · Sunrise 6:13 AM",
+      "sunrise": "6:13 AM",
       "sunset": "4:47 PM",
       "stormWindow": "before 1PM",
-      "stormChance": 12,
+      "stormChance": 3,
       "sky": "Bright sun",
       "waterTemp": 71,
       "wave": {
-        "height": 3.4,
-        "period": 5.1,
+        "height": 3,
+        "period": 5,
         "direction": "E",
-        "swellHeight": 2.3,
-        "swellPeriod": 5.7,
+        "swellHeight": 1.7,
+        "swellPeriod": 6.3,
         "swellDirection": "SE",
-        "windWaveHeight": 2.3
+        "windWaveHeight": 2
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-11-17T17:30",
-        "fetchedAt": "2026-11-17T17:35:07.606Z",
+        "validTime": "2026-11-18T17:00",
+        "fetchedAt": "2026-11-18T17:11:58.884Z",
         "gridLatitude": 30.375,
         "gridLongitude": -86.29166
       },
       "forecast": [
         {
-          "day": "Tue, Nov 17",
-          "label": "Today",
-          "high": 66,
-          "low": null,
-          "wind": "ENE 20 mph",
-          "storms": 12,
-          "headline": "Partly Sunny",
-          "fishingScore": 7,
-          "aiCall": "Partly sunny. High near 66, with temperatures falling to around 62 in the afternoon. East northeast wind around 20 mph, with gusts as high as 35 mph.",
-          "emoji": "☀️"
-        },
-        {
           "day": "Wed, Nov 18",
-          "label": "Tomorrow",
-          "high": 70,
+          "label": "Today",
+          "high": 71,
           "low": null,
           "wind": "ENE 20 mph",
-          "storms": 5,
+          "storms": 3,
           "headline": "Mostly Sunny",
-          "fishingScore": 7.3,
-          "aiCall": "Mostly sunny, with a high near 70. East northeast wind around 20 mph, with gusts as high as 35 mph.",
+          "fishingScore": 7.4,
+          "aiCall": "Mostly sunny. High near 71, with temperatures falling to around 68 in the afternoon. East northeast wind around 20 mph, with gusts as high as 30 mph.",
           "emoji": "☀️"
         },
         {
           "day": "Thu, Nov 19",
-          "label": "Thursday",
-          "high": 73,
+          "label": "Tomorrow",
+          "high": 68,
           "low": null,
-          "wind": "ENE 20 mph",
-          "storms": 13,
-          "headline": "Mostly Cloudy",
-          "fishingScore": 7,
-          "aiCall": "Mostly cloudy, with a high near 73. East northeast wind around 20 mph, with gusts as high as 30 mph.",
-          "emoji": "⛅"
+          "wind": "NE 20 mph",
+          "storms": 22,
+          "headline": "Slight Chance Rain Showers",
+          "fishingScore": 6.6,
+          "aiCall": "A slight chance of rain showers between 7am and 4pm. Partly sunny, with a high near 68. Northeast wind around 20 mph, with gusts as high as 35 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Fri, Nov 20",
+          "label": "Friday",
+          "high": 71,
+          "low": null,
+          "wind": "ENE 15 to 20 mph",
+          "storms": 29,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 6.3,
+          "aiCall": "A chance of rain showers. Mostly cloudy, with a high near 71. East northeast wind 15 to 20 mph. Chance of precipitation is 30%.",
+          "emoji": "🌧️"
         }
       ],
       "openMeteo": [
         {
-          "high": 65,
-          "low": 53,
-          "stormChance": 38,
-          "windSpeed": 16,
-          "windDir": "NE",
-          "summary": "Light drizzle"
-        },
-        {
-          "high": 70,
+          "high": 73,
           "low": 58,
-          "stormChance": 21,
+          "stormChance": 17,
           "windSpeed": 16,
           "windDir": "NE",
-          "summary": "Rain"
+          "summary": "Light drizzle"
         },
         {
-          "high": 65,
-          "low": 61,
-          "stormChance": 17,
-          "windSpeed": 13,
+          "high": 71,
+          "low": 62,
+          "stormChance": 24,
+          "windSpeed": 16,
           "windDir": "NE",
-          "summary": "Light drizzle"
+          "summary": "Overcast"
+        },
+        {
+          "high": 68,
+          "low": 62,
+          "stormChance": 26,
+          "windSpeed": 12,
+          "windDir": "NE",
+          "summary": "Drizzle"
         }
       ],
       "previousDay": {
         "wind": {
-          "dir": "NE",
-          "speed": 15
+          "dir": "ENE",
+          "speed": 20
         },
-        "high": 60,
-        "stormChance": 9,
-        "tide": "High tide ~7:36 PM · Low tide ~7:13 AM · Sunrise 6:11 AM",
+        "high": 66,
+        "stormChance": 12,
+        "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
         "wave": {
-          "height": 1.7,
-          "period": 3.5,
+          "height": 3.4,
+          "period": 5.1,
           "direction": "E",
-          "swellHeight": 1,
-          "swellPeriod": 4,
+          "swellHeight": 2.3,
+          "swellPeriod": 5.7,
           "swellDirection": "SE",
-          "windWaveHeight": 1.3
+          "windWaveHeight": 2.3
         }
       }
     },
@@ -160,112 +164,112 @@
         "dir": "ENE",
         "description": "ENE 15 mph"
       },
-      "weather": "Partly Sunny · High 66°F",
-      "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
-      "sunrise": "6:12 AM",
-      "sunset": "4:47 PM",
+      "weather": "Mostly Sunny · High 71°F",
+      "tide": "High tide ~8:08 PM · Low tide ~6:57 AM · Sunrise 6:13 AM",
+      "sunrise": "6:13 AM",
+      "sunset": "4:46 PM",
       "stormWindow": "before 1PM",
-      "stormChance": 13,
+      "stormChance": 3,
       "sky": "Bright sun",
-      "waterTemp": 71,
+      "waterTemp": 70,
       "wave": {
-        "height": 3,
+        "height": 2.6,
         "period": 4.9,
         "direction": "E",
-        "swellHeight": 2,
-        "swellPeriod": 5.4,
+        "swellHeight": 1.6,
+        "swellPeriod": 6.2,
         "swellDirection": "SE",
-        "windWaveHeight": 1.9
+        "windWaveHeight": 1.8
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-11-17T17:30",
-        "fetchedAt": "2026-11-17T17:35:08.554Z",
+        "validTime": "2026-11-18T17:00",
+        "fetchedAt": "2026-11-18T17:11:59.653Z",
         "gridLatitude": 30.375,
         "gridLongitude": -86.20833
       },
       "forecast": [
         {
-          "day": "Tue, Nov 17",
-          "label": "Today",
-          "high": 66,
-          "low": null,
-          "wind": "ENE 15 mph",
-          "storms": 13,
-          "headline": "Partly Sunny",
-          "fishingScore": 8,
-          "aiCall": "Partly sunny. High near 66, with temperatures falling to around 61 in the afternoon. East northeast wind around 15 mph, with gusts as high as 30 mph.",
-          "emoji": "☀️"
-        },
-        {
           "day": "Wed, Nov 18",
-          "label": "Tomorrow",
+          "label": "Today",
           "high": 71,
           "low": null,
           "wind": "ENE 15 mph",
-          "storms": 5,
+          "storms": 3,
           "headline": "Mostly Sunny",
-          "fishingScore": 8.3,
+          "fishingScore": 8.4,
           "aiCall": "Mostly sunny. High near 71, with temperatures falling to around 67 in the afternoon. East northeast wind around 15 mph, with gusts as high as 30 mph.",
           "emoji": "☀️"
         },
         {
           "day": "Thu, Nov 19",
-          "label": "Thursday",
-          "high": 74,
+          "label": "Tomorrow",
+          "high": 68,
           "low": null,
-          "wind": "ENE 15 mph",
-          "storms": 12,
-          "headline": "Mostly Cloudy",
-          "fishingScore": 8,
-          "aiCall": "Mostly cloudy, with a high near 74. East northeast wind around 15 mph, with gusts as high as 30 mph.",
-          "emoji": "⛅"
+          "wind": "NE 15 mph",
+          "storms": 22,
+          "headline": "Slight Chance Rain Showers",
+          "fishingScore": 7.6,
+          "aiCall": "A slight chance of rain showers before 4pm. Partly sunny. High near 68, with temperatures falling to around 65 in the afternoon. Northeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Fri, Nov 20",
+          "label": "Friday",
+          "high": 71,
+          "low": null,
+          "wind": "NE 10 to 15 mph",
+          "storms": 30,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 7.3,
+          "aiCall": "A chance of rain showers. Mostly cloudy, with a high near 71. Northeast wind 10 to 15 mph, with gusts as high as 25 mph. Chance of precipitation is 30%.",
+          "emoji": "🌧️"
         }
       ],
       "openMeteo": [
         {
-          "high": 65,
-          "low": 52,
-          "stormChance": 38,
+          "high": 74,
+          "low": 56,
+          "stormChance": 20,
+          "windSpeed": 15,
+          "windDir": "NE",
+          "summary": "Drizzle"
+        },
+        {
+          "high": 72,
+          "low": 62,
+          "stormChance": 24,
           "windSpeed": 16,
           "windDir": "NE",
           "summary": "Overcast"
         },
         {
-          "high": 70,
-          "low": 57,
-          "stormChance": 23,
-          "windSpeed": 15,
-          "windDir": "NE",
-          "summary": "Light rain"
-        },
-        {
-          "high": 67,
-          "low": 61,
-          "stormChance": 17,
-          "windSpeed": 26,
+          "high": 68,
+          "low": 62,
+          "stormChance": 25,
+          "windSpeed": 24,
           "windDir": "NE",
           "summary": "Light drizzle"
         }
       ],
       "previousDay": {
         "wind": {
-          "dir": "NE",
+          "dir": "ENE",
           "speed": 15
         },
-        "high": 60,
-        "stormChance": 10,
-        "tide": "High tide ~7:36 PM · Low tide ~7:13 AM · Sunrise 6:11 AM",
+        "high": 66,
+        "stormChance": 13,
+        "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
         "wave": {
-          "height": 1.4,
-          "period": 3.4,
+          "height": 3,
+          "period": 4.9,
           "direction": "E",
-          "swellHeight": 0.7,
-          "swellPeriod": 4.1,
+          "swellHeight": 2,
+          "swellPeriod": 5.4,
           "swellDirection": "SE",
-          "windWaveHeight": 1.1
+          "windWaveHeight": 1.9
         }
       }
     },
@@ -275,112 +279,112 @@
         "dir": "ENE",
         "description": "ENE 20 mph"
       },
-      "weather": "Partly Sunny then Slight Chance Light Rain · High 66°F",
-      "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
+      "weather": "Mostly Sunny · High 71°F",
+      "tide": "High tide ~8:08 PM · Low tide ~6:57 AM · Sunrise 6:12 AM",
       "sunrise": "6:12 AM",
-      "sunset": "4:47 PM",
+      "sunset": "4:46 PM",
       "stormWindow": "after 5PM",
-      "stormChance": 15,
-      "sky": "Cloudy",
-      "waterTemp": 72,
+      "stormChance": 3,
+      "sky": "Bright sun",
+      "waterTemp": 71,
       "wave": {
-        "height": 3.4,
-        "period": 5.1,
-        "direction": "SE",
-        "swellHeight": 2.2,
-        "swellPeriod": 5.1,
+        "height": 2.9,
+        "period": 5,
+        "direction": "E",
+        "swellHeight": 1.6,
+        "swellPeriod": 6.5,
         "swellDirection": "SE",
-        "windWaveHeight": 2.2
+        "windWaveHeight": 2
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-11-17T17:30",
-        "fetchedAt": "2026-11-17T17:35:09.443Z",
+        "validTime": "2026-11-18T17:00",
+        "fetchedAt": "2026-11-18T17:12:00.454Z",
         "gridLatitude": 30.291664,
         "gridLongitude": -86.12499
       },
       "forecast": [
         {
-          "day": "Tue, Nov 17",
-          "label": "Today",
-          "high": 66,
-          "low": null,
-          "wind": "ENE 20 mph",
-          "storms": 15,
-          "headline": "Partly Sunny then Slight Chance Light Rain",
-          "fishingScore": 6.9,
-          "aiCall": "A slight chance of rain after 5pm. Partly sunny. High near 66, with temperatures falling to around 62 in the afternoon. East northeast wind around 20 mph, with gusts as high as 30 mph. Chance of precipitation is 20%.",
-          "emoji": "🌧️"
-        },
-        {
           "day": "Wed, Nov 18",
-          "label": "Tomorrow",
-          "high": 70,
+          "label": "Today",
+          "high": 71,
           "low": null,
           "wind": "ENE 20 mph",
-          "storms": 5,
+          "storms": 3,
           "headline": "Mostly Sunny",
-          "fishingScore": 7.3,
-          "aiCall": "Mostly sunny, with a high near 70. East northeast wind around 20 mph, with gusts as high as 35 mph.",
+          "fishingScore": 7.4,
+          "aiCall": "Mostly sunny. High near 71, with temperatures falling to around 68 in the afternoon. East northeast wind around 20 mph, with gusts as high as 30 mph.",
           "emoji": "☀️"
         },
         {
           "day": "Thu, Nov 19",
-          "label": "Thursday",
-          "high": 73,
+          "label": "Tomorrow",
+          "high": 68,
           "low": null,
-          "wind": "ENE 15 to 20 mph",
-          "storms": 13,
-          "headline": "Mostly Cloudy",
-          "fishingScore": 7,
-          "aiCall": "Mostly cloudy, with a high near 73. East northeast wind 15 to 20 mph, with gusts as high as 30 mph.",
-          "emoji": "⛅"
+          "wind": "NE 20 mph",
+          "storms": 23,
+          "headline": "Slight Chance Rain Showers",
+          "fishingScore": 6.6,
+          "aiCall": "A slight chance of rain showers before 4pm. Partly sunny. High near 68, with temperatures falling to around 65 in the afternoon. Northeast wind around 20 mph, with gusts as high as 30 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Fri, Nov 20",
+          "label": "Friday",
+          "high": 71,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 31,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 7.3,
+          "aiCall": "A chance of rain showers. Mostly cloudy, with a high near 71. Northeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 30%.",
+          "emoji": "🌧️"
         }
       ],
       "openMeteo": [
         {
-          "high": 65,
-          "low": 52,
-          "stormChance": 38,
-          "windSpeed": 16,
+          "high": 73,
+          "low": 55,
+          "stormChance": 21,
+          "windSpeed": 15,
           "windDir": "NE",
           "summary": "Light drizzle"
         },
         {
-          "high": 69,
-          "low": 56,
-          "stormChance": 23,
-          "windSpeed": 15,
+          "high": 71,
+          "low": 61,
+          "stormChance": 25,
+          "windSpeed": 16,
           "windDir": "NE",
           "summary": "Overcast"
         },
         {
           "high": 67,
-          "low": 60,
-          "stormChance": 17,
-          "windSpeed": 13,
+          "low": 61,
+          "stormChance": 25,
+          "windSpeed": 12,
           "windDir": "NE",
-          "summary": "Light drizzle"
+          "summary": "Drizzle"
         }
       ],
       "previousDay": {
         "wind": {
-          "dir": "NE",
-          "speed": 15
+          "dir": "ENE",
+          "speed": 20
         },
-        "high": 60,
-        "stormChance": 11,
-        "tide": "High tide ~7:36 PM · Low tide ~7:13 AM · Sunrise 6:11 AM",
+        "high": 66,
+        "stormChance": 15,
+        "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
         "wave": {
-          "height": 1.6,
-          "period": 3.6,
-          "direction": "E",
-          "swellHeight": 0.9,
-          "swellPeriod": 3.9,
+          "height": 3.4,
+          "period": 5.1,
+          "direction": "SE",
+          "swellHeight": 2.2,
+          "swellPeriod": 5.1,
           "swellDirection": "SE",
-          "windWaveHeight": 1.2
+          "windWaveHeight": 2.2
         }
       }
     },
@@ -390,227 +394,227 @@
         "dir": "ENE",
         "description": "ENE 20 mph"
       },
-      "weather": "Partly Sunny then Slight Chance Light Rain · High 66°F",
-      "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
+      "weather": "Mostly Sunny · High 71°F",
+      "tide": "High tide ~8:08 PM · Low tide ~6:57 AM · Sunrise 6:12 AM",
       "sunrise": "6:12 AM",
-      "sunset": "4:47 PM",
+      "sunset": "4:46 PM",
       "stormWindow": "after 5PM",
-      "stormChance": 15,
-      "sky": "Cloudy",
-      "waterTemp": 72,
+      "stormChance": 3,
+      "sky": "Bright sun",
+      "waterTemp": 71,
       "wave": {
-        "height": 3.4,
-        "period": 5.1,
-        "direction": "SE",
-        "swellHeight": 2.2,
-        "swellPeriod": 5.1,
+        "height": 2.9,
+        "period": 5,
+        "direction": "E",
+        "swellHeight": 1.6,
+        "swellPeriod": 6.5,
         "swellDirection": "SE",
-        "windWaveHeight": 2.2
+        "windWaveHeight": 2
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-11-17T17:30",
-        "fetchedAt": "2026-11-17T17:35:10.138Z",
+        "validTime": "2026-11-18T17:00",
+        "fetchedAt": "2026-11-18T17:12:01.391Z",
         "gridLatitude": 30.291664,
         "gridLongitude": -86.12499
       },
       "forecast": [
         {
-          "day": "Tue, Nov 17",
-          "label": "Today",
-          "high": 66,
-          "low": null,
-          "wind": "ENE 20 mph",
-          "storms": 15,
-          "headline": "Partly Sunny then Slight Chance Light Rain",
-          "fishingScore": 6.9,
-          "aiCall": "A slight chance of rain after 5pm. Partly sunny. High near 66, with temperatures falling to around 62 in the afternoon. East northeast wind around 20 mph, with gusts as high as 35 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
-          "emoji": "🌧️"
-        },
-        {
           "day": "Wed, Nov 18",
-          "label": "Tomorrow",
-          "high": 70,
+          "label": "Today",
+          "high": 71,
           "low": null,
           "wind": "ENE 20 mph",
-          "storms": 5,
+          "storms": 3,
           "headline": "Mostly Sunny",
-          "fishingScore": 7.3,
-          "aiCall": "Mostly sunny, with a high near 70. East northeast wind around 20 mph, with gusts as high as 35 mph.",
+          "fishingScore": 7.4,
+          "aiCall": "Mostly sunny. High near 71, with temperatures falling to around 68 in the afternoon. East northeast wind around 20 mph, with gusts as high as 30 mph.",
           "emoji": "☀️"
         },
         {
           "day": "Thu, Nov 19",
-          "label": "Thursday",
-          "high": 73,
+          "label": "Tomorrow",
+          "high": 68,
           "low": null,
-          "wind": "ENE 15 to 20 mph",
-          "storms": 12,
-          "headline": "Mostly Cloudy",
-          "fishingScore": 7,
-          "aiCall": "Mostly cloudy, with a high near 73. East northeast wind 15 to 20 mph, with gusts as high as 30 mph.",
-          "emoji": "⛅"
+          "wind": "NE 15 to 20 mph",
+          "storms": 23,
+          "headline": "Slight Chance Rain Showers",
+          "fishingScore": 6.6,
+          "aiCall": "A slight chance of rain showers before 4pm. Partly sunny, with a high near 68. Northeast wind 15 to 20 mph, with gusts as high as 30 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Fri, Nov 20",
+          "label": "Friday",
+          "high": 71,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 31,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 7.3,
+          "aiCall": "A chance of rain showers. Mostly cloudy, with a high near 71. Northeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 30%.",
+          "emoji": "🌧️"
         }
       ],
       "openMeteo": [
         {
-          "high": 64,
-          "low": 52,
-          "stormChance": 42,
-          "windSpeed": 17,
+          "high": 73,
+          "low": 55,
+          "stormChance": 22,
+          "windSpeed": 16,
           "windDir": "NE",
           "summary": "Light drizzle"
         },
         {
-          "high": 69,
-          "low": 56,
-          "stormChance": 21,
-          "windSpeed": 15,
+          "high": 71,
+          "low": 61,
+          "stormChance": 26,
+          "windSpeed": 16,
           "windDir": "NE",
           "summary": "Overcast"
         },
         {
           "high": 67,
-          "low": 60,
-          "stormChance": 18,
-          "windSpeed": 13,
+          "low": 61,
+          "stormChance": 25,
+          "windSpeed": 12,
           "windDir": "NE",
-          "summary": "Light drizzle"
+          "summary": "Drizzle"
         }
       ],
       "previousDay": {
         "wind": {
-          "dir": "NE",
-          "speed": 15
+          "dir": "ENE",
+          "speed": 20
         },
-        "high": 60,
-        "stormChance": 11,
-        "tide": "High tide ~7:36 PM · Low tide ~7:13 AM · Sunrise 6:11 AM",
+        "high": 66,
+        "stormChance": 15,
+        "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:12 AM",
         "wave": {
-          "height": 1.6,
-          "period": 3.6,
-          "direction": "E",
-          "swellHeight": 0.9,
-          "swellPeriod": 3.9,
+          "height": 3.4,
+          "period": 5.1,
+          "direction": "SE",
+          "swellHeight": 2.2,
+          "swellPeriod": 5.1,
           "swellDirection": "SE",
-          "windWaveHeight": 1.2
+          "windWaveHeight": 2.2
         }
       }
     },
     "inlet-beach": {
       "wind": {
         "speed": 15,
-        "dir": "ENE",
-        "description": "ENE 15 mph"
+        "dir": "NE",
+        "description": "NE 15 mph"
       },
-      "weather": "Partly Sunny then Slight Chance Light Rain · High 66°F",
-      "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:11 AM",
-      "sunrise": "6:11 AM",
+      "weather": "Mostly Sunny · High 71°F",
+      "tide": "High tide ~8:08 PM · Low tide ~6:57 AM · Sunrise 6:12 AM",
+      "sunrise": "6:12 AM",
       "sunset": "4:46 PM",
       "stormWindow": "after 5PM",
-      "stormChance": 19,
-      "sky": "Cloudy",
+      "stormChance": 3,
+      "sky": "Bright sun",
       "waterTemp": 71,
       "wave": {
-        "height": 3,
+        "height": 2.4,
         "period": 5,
-        "direction": "SE",
-        "swellHeight": 2,
-        "swellPeriod": 5.3,
+        "direction": "E",
+        "swellHeight": 1.4,
+        "swellPeriod": 6.4,
         "swellDirection": "SE",
-        "windWaveHeight": 1.9
+        "windWaveHeight": 1.7
       },
       "marineSource": {
         "provider": "Open-Meteo Marine API",
         "type": "model",
         "observed": false,
-        "validTime": "2026-11-17T17:30",
-        "fetchedAt": "2026-11-17T17:35:11.037Z",
+        "validTime": "2026-11-18T17:00",
+        "fetchedAt": "2026-11-18T17:12:02.144Z",
         "gridLatitude": 30.291664,
         "gridLongitude": -86.04166
       },
       "forecast": [
         {
-          "day": "Tue, Nov 17",
-          "label": "Today",
-          "high": 66,
-          "low": null,
-          "wind": "ENE 15 mph",
-          "storms": 19,
-          "headline": "Partly Sunny then Slight Chance Light Rain",
-          "fishingScore": 7.7,
-          "aiCall": "A slight chance of rain after 5pm. Partly sunny. High near 66, with temperatures falling to around 61 in the afternoon. East northeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
-          "emoji": "🌧️"
-        },
-        {
           "day": "Wed, Nov 18",
-          "label": "Tomorrow",
-          "high": 70,
+          "label": "Today",
+          "high": 71,
           "low": null,
-          "wind": "ENE 15 mph",
-          "storms": 7,
+          "wind": "NE 15 mph",
+          "storms": 3,
           "headline": "Mostly Sunny",
-          "fishingScore": 8.2,
-          "aiCall": "Mostly sunny, with a high near 70. East northeast wind around 15 mph, with gusts as high as 30 mph.",
+          "fishingScore": 8.4,
+          "aiCall": "Mostly sunny. High near 71, with temperatures falling to around 68 in the afternoon. Northeast wind around 15 mph, with gusts as high as 30 mph.",
           "emoji": "☀️"
         },
         {
           "day": "Thu, Nov 19",
-          "label": "Thursday",
-          "high": 73,
+          "label": "Tomorrow",
+          "high": 68,
           "low": null,
-          "wind": "ENE 15 mph",
-          "storms": 13,
-          "headline": "Mostly Cloudy",
-          "fishingScore": 8,
-          "aiCall": "Mostly cloudy, with a high near 73. East northeast wind around 15 mph, with gusts as high as 30 mph.",
-          "emoji": "⛅"
+          "wind": "NE 15 mph",
+          "storms": 24,
+          "headline": "Slight Chance Rain Showers",
+          "fishingScore": 7.5,
+          "aiCall": "A slight chance of rain showers before 4pm. Partly sunny. High near 68, with temperatures falling to around 65 in the afternoon. Northeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 20%. New rainfall amounts less than a tenth of an inch possible.",
+          "emoji": "🌧️"
+        },
+        {
+          "day": "Fri, Nov 20",
+          "label": "Friday",
+          "high": 70,
+          "low": null,
+          "wind": "NE 15 mph",
+          "storms": 35,
+          "headline": "Chance Rain Showers",
+          "fishingScore": 7.1,
+          "aiCall": "A chance of rain showers. Mostly cloudy, with a high near 70. Northeast wind around 15 mph, with gusts as high as 25 mph. Chance of precipitation is 40%.",
+          "emoji": "🌧️"
         }
       ],
       "openMeteo": [
         {
-          "high": 64,
-          "low": 53,
-          "stormChance": 46,
-          "windSpeed": 15,
+          "high": 71,
+          "low": 55,
+          "stormChance": 19,
+          "windSpeed": 14,
+          "windDir": "NE",
+          "summary": "Heavy drizzle"
+        },
+        {
+          "high": 70,
+          "low": 61,
+          "stormChance": 29,
+          "windSpeed": 14,
           "windDir": "NE",
           "summary": "Light drizzle"
         },
         {
           "high": 67,
-          "low": 56,
+          "low": 62,
           "stormChance": 26,
-          "windSpeed": 13,
+          "windSpeed": 15,
           "windDir": "NE",
-          "summary": "Rain"
-        },
-        {
-          "high": 68,
-          "low": 61,
-          "stormChance": 19,
-          "windSpeed": 16,
-          "windDir": "NE",
-          "summary": "Light drizzle"
+          "summary": "Drizzle"
         }
       ],
       "previousDay": {
         "wind": {
-          "dir": "NE",
+          "dir": "ENE",
           "speed": 15
         },
-        "high": 59,
-        "stormChance": 11,
-        "tide": "High tide ~7:36 PM · Low tide ~7:13 AM · Sunrise 6:10 AM",
+        "high": 66,
+        "stormChance": 19,
+        "tide": "High tide ~8:01 PM · Low tide ~7:16 AM · Sunrise 6:11 AM",
         "wave": {
-          "height": 1.3,
-          "period": 3.6,
-          "direction": "E",
-          "swellHeight": 0.7,
-          "swellPeriod": 4,
+          "height": 3,
+          "period": 5,
+          "direction": "SE",
+          "swellHeight": 2,
+          "swellPeriod": 5.3,
           "swellDirection": "SE",
-          "windWaveHeight": 0.9
+          "windWaveHeight": 1.9
         }
       }
     }
