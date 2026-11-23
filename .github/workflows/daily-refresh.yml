@@ -2,11 +2,12 @@ name: Daily Conditions Refresh
 
 "on":
   schedule:
-    # 08:13 UTC = ~3:13 AM Central. Kept as a fallback trigger — the 331
+    # 06:07 UTC = 12:07 AM CST (1:07 AM CDT). Off the top of the hour, when
+    # GitHub's scheduler is busiest. Kept as a fallback trigger — the 331
     # Bridge app found GitHub's native schedule trigger unreliable and
     # switched to an external cron-job.org ping hitting workflow_dispatch
     # directly. Set that up here too once this repo is live.
-    - cron: '13 8 * * *'
+    - cron: '7 6 * * *'
   workflow_dispatch: {}
 
 jobs:
